@@ -92,7 +92,7 @@ code {
   margin-top: 0.5rem;
 }
 
-input:-webkit-autofill {
+/*input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #fff inset;
 }
 
@@ -108,7 +108,7 @@ input:-webkit-autofill:focus {
 .dark input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 50px #000 inset;
   color: #fff !important;
-}
+}*/
 
 .input.is-invalid,
 .dark .input.is-invalid {

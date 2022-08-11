@@ -301,7 +301,6 @@ export default ({
 									}
 									autoComplete="new-password"
 								/>
-
 								{formik.errors.password &&
 									formik.touched.password && (
 										<p className="form-prompt">
@@ -436,13 +435,13 @@ export default ({
 							</FormBlock>
 
 							<p tw="mt-4 mb-0 text-xs text-gray-600">
-								<input
+								<span tw="inline-block align-text-bottom"><input
 									type="checkbox"
 									name="tos"
 									id="tos"
 									className="input-checkbox"
 									tw="appearance-none border-solid border-2 border-gray-900 rounded-sm"
-								/>
+								/></span>
 								<InputLabel htmlFor="tos">
 									{agreementPrompt}{" "}
 									<a

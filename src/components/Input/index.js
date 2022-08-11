@@ -3,7 +3,7 @@ import Icon from "../Icon/index.js";
 
 import tw from "twin.macro";
 
-export const InputBase = tw.input`w-full p-4 box-border rounded-md bg-white dark:bg-gray-black border border-solid border-white dark:border-gray-dark placeholder-gray-500 focus:outline-none focus:border-primary-500 focus:bg-white font-bold focus:dark:border-primary-900 focus:dark:bg-gray-black dark:text-white invalid:border-state-danger autofill:bg-white dark:autofill:bg-gray-black shadow-none transition duration-300 ease-in-out`;
+export const InputBase = tw.input`w-full p-4 box-border rounded-md bg-white dark:bg-gray-black border border-solid border-white dark:border-gray-dark placeholder-gray-500 focus:outline-none focus:border-primary-500 focus:bg-white focus:dark:border-primary-900 focus:dark:bg-gray-black dark:text-white invalid:border-state-danger autofill:bg-white dark:autofill:bg-gray-black shadow-none transition duration-300 ease-in-out`;
 
 export const InputPassword = ({ ...field }) => {
 	const [showPassword, togglePassword] = useState(false);
