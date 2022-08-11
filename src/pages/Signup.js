@@ -150,9 +150,22 @@ export default ({
 			// }),
 			password: Yup.string()
 				.required("This field is required.")
+				.min(8, "Password should have at least 8 characters.")
 				.matches(
-					/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-					"Password must contain at least 8 letters, uppercase and lowercase characters, numbers, and a special character."
+					/(?=.*[A-Za-z])+/,
+					"Password must contain uppercase and lowercase characters."
+				).matches(
+					/(?=.*[A-Z])+/,
+					"Password must contain at least one uppercase character."
+				).matches(
+					/(?=.*[a-z])+/,
+					"Password must contain at least one lowercase character."
+				).matches(
+					/(?=.*\d)+/,
+					"Password must contain at least one number."
+				).matches(
+					/(?=.*[@$!%*#?&])+/,
+					"Password must contain at least one special character."
 				),
 			confirmPassword: Yup.string()
 				.oneOf([Yup.ref("password")], "Passwords should match.")
@@ -307,96 +320,6 @@ export default ({
 											{formik.errors.password}
 										</p>
 									)}
-								<PasswordCheck
-									className={
-										"box-password-check" +
-										(formik.errors.password &&
-										formik.touched.password
-											? " block"
-											: " hidden")
-									}
-								>
-									<p>Password must contain:</p>
-									<ul>
-										{/*<li className={lengthMin ? "is-success" : "is-fail"}>
-											<span className="icon-password-check">
-												{lengthMin ? 
-													<Icon
-													icon="check"
-													fill="none"
-													stroke="currentColor"
-													/> : 
-													<Icon
-													icon="x"
-													stroke="currentColor"
-												/>}
-												
-											</span>
-											At least 8 characters
-										</li>*/}
-										<li className="is-success">
-											<span className="icon-password-check">
-												<Icon
-													icon="check"
-													fill="none"
-													stroke="currentColor"
-												/>
-											</span>
-											At least 8 characters
-										</li>
-										<li className="is-fail">
-											<span className="icon-password-check">
-												<Icon
-													icon="x"
-													stroke="currentColor"
-												/>
-											</span>
-											At least 3 of the following
-											conditions:
-											<ul tw="list-none">
-												<li className="is-success">
-													<span className="icon-password-check">
-														<Icon
-															icon="check"
-															fill="none"
-															stroke="currentColor"
-														/>
-													</span>
-													Lowercase letters [a-z]
-												</li>
-												<li className="is-fail">
-													<span className="icon-password-check">
-														<Icon
-															icon="x"
-															stroke="currentColor"
-														/>
-													</span>
-													Uppercase letters [A-Z]
-												</li>
-												<li className="is-success">
-													<span className="icon-password-check">
-														<Icon
-															icon="check"
-															fill="none"
-															stroke="currentColor"
-														/>
-													</span>
-													Numbers [0-9]
-												</li>
-												<li className="is-fail">
-													<span className="icon-password-check">
-														<Icon
-															icon="x"
-															stroke="currentColor"
-														/>
-													</span>
-													Special characters
-													[@$!%*#?&]
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</PasswordCheck>
 							</FormBlock>
 							<FormBlock className="form-block">
 								<InputLabel
@@ -435,13 +358,15 @@ export default ({
 							</FormBlock>
 
 							<p tw="mt-4 mb-0 text-xs text-gray-600">
-								<span tw="inline-block align-text-bottom"><input
-									type="checkbox"
-									name="tos"
-									id="tos"
-									className="input-checkbox"
-									tw="appearance-none border-solid border-2 border-gray-900 rounded-sm"
-								/></span>
+								<span tw="inline-block align-text-bottom">
+									<input
+										type="checkbox"
+										name="tos"
+										id="tos"
+										className="input-checkbox"
+										tw="appearance-none border-solid border-2 border-gray-900 rounded-sm"
+									/>
+								</span>
 								<InputLabel htmlFor="tos">
 									{agreementPrompt}{" "}
 									<a
