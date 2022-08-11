@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+}
+
+.light body {
+  background: #f0eff4;
+  color: #1b1c20;
+}
+
+.dark body {
+  background: #1b1c20;
+  color: #fff;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* React-Modal */
+.ReactModal__Overlay {
+  transition: transform 300ms ease-in-out;
+  transition-delay: 100ms;
+  transform: scale(0);
+  /* transform: translateY(-150%); */
+}
+
+.ReactModal__Overlay--after-open {
+  transform: scale(1);
+  /* transform: translateY(0%); */
+}
+
+.ReactModal__Overlay--before-close {
+  transform: scale(0);
+  /* transform: translateY(-150%); */
+}
+
+.block {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.acr-primary {
+  text-decoration-color: transparent;
+  transition: all 0.3s ease-in-out;
+  -webkit-text-decoration-color: transparent;
+  -moz-text-decoration-color: transparent;
+}
+
+.acr-primary:hover {
+  text-decoration-color: #ff9701;
+  -webkit-text-decoration-color: #ff9701;
+  -moz-text-decoration-color: #ff9701;
+}
+
+.button-primary {
+  background-color: #ffbd00;
+  background-image: linear-gradient(
+    180deg,
+    #ffbd00 0%,
+    #ff9701 50%,
+    #ffbd00 100%
+  );
+  background-size: 100% 200%;
+  background-position: 0 0;
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button-primary:hover {
+  background-position: 0 100%;
+}
+
+.form-prompt {
+  color: #f44336;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px #fff inset;
+}
+
+.dark input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  color: #fff !important;
+}
+
+.dark input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px #000 inset;
+  color: #fff !important;
+}
+
+.input.is-invalid,
+.dark .input.is-invalid {
+  border: 1px solid #f44336;
+}
+
+.input[type="checkbox"] {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.input-checkbox {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border: 2px #9395a4 solid;
+  border-radius: 0.25rem;
+  margin: 0 0.5rem 0 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-checkbox:before {
+  content: url("data:image/svg+xml,%0A%3C!--%3Fxml version='1.0' encoding='UTF-8'%3F--%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='15px' height='10px' viewBox='0 0 14 10' version='1.1'%3E%3Cg%3E%3Cpath style='fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:%23ff8300;stroke-opacity:1;stroke-miterlimit:4;' d='M 1.500279 6.002344 L 6.997768 11.501953 L 17.499721 1.000391 ' transform='matrix(0.736842,0,0,0.769231,0,0)'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  top: 0.1em;
+  left: 0.05em;
+}
+
+.input-checkbox:checked {
+  border-color: #ff8300;
+}
+.input-checkbox:checked:before {
+  transform: scale(1);
+  opacity: 1;
+}
