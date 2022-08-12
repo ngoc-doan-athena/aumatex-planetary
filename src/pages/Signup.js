@@ -6,12 +6,16 @@ import { css } from "styled-components/macro"; // eslint-disable-next-line
 
 // import illustration and site logo
 import illustration from "../images/xtrading-signup-illustration.svg";
-import logo from "../images/logo-xtrading-text.svg";
+import logoLight from "../images/logo-xtrading-text.svg";
+import logoDark from "../images/logo-xtrading-text-dark.svg";
 
 // import modules
 import Icon from "../components/Icon/index.js";
 import { Container as ContainerBase } from "../components/Layouts";
-import { InputBase as Input } from "../components/Input/index.js";
+import {
+	InputBase as Input,
+	InputPassword,
+} from "../components/Input/index.js";
 
 // import Formik & Yup for form validation
 import { useFormik, Field, ErrorMessage } from "formik";
@@ -21,20 +25,21 @@ import * as Yup from "yup";
 const Container = tw(
 	ContainerBase
 )`min-h-screen font-medium flex justify-center m-0 font-inter`;
-const Content = tw.div`bg-gray-100 dark:bg-black text-black dark:text-white flex justify-center flex-1 relative`;
+const Content = tw.div`bg-gray-100 dark:bg-black text-black dark:text-white flex flex-col lg:flex-row justify-center flex-1 relative`;
 const MainContainer = tw.div`lg:w-1/2 xl:w-1/2 p-3 sm:p-6 flex flex-col box-border justify-center justify-items-center content-center `;
-const LogoLink = tw.a`absolute top-0 left-0 p-8`;
+const LogoLink = tw.a`lg:absolute lg:top-0 lg:left-0 p-8 pb-2 relative text-center block`;
 const LogoImage = tw.img`mx-auto w-20`;
-const MainContent = tw.div`mt-8 flex flex-col items-center`;
-const Heading = tw.h1`text-2xl xl:text-3xl font-extrabold mt-0`;
+const MainContent = tw.div`flex flex-col items-center px-4`;
+const Heading = tw.h1`text-2xl xl:text-3xl font-extrabold mt-0 mb-0 lg:mb-2`;
+const SubText = tw.p`text-gray-600 text-xs`;
 const FormContainer = tw.div`w-full flex-1 mt-1`;
+const Form = tw.form`mx-auto max-w-xs`;
 const FormBlock = styled.div`
 	${tw`first:mt-0 mt-4`}
 	.input {
 		${tw`mt-2`}
 	}
 `;
-const Form = tw.form`mx-auto max-w-sm`;
 const InputBase = tw(Input)`px-8 py-4 mt-2 shadow-none`;
 const InputLabel = styled.label`
 	${tw`mt-6 text-sm text-gray-600`}
@@ -42,58 +47,13 @@ const InputLabel = styled.label`
 		${tw`text-state-danger`}
 	}
 `;
-const PasswordCheck = styled.div`
-	${tw`mt-4 p-4 rounded-md box-border bg-white dark:bg-gray-black`}
-	p {
-		${tw`font-bold mt-0`}
-	}
-	ul {
-		${tw`list-none m-0 p-0`}
-	}
-	li ul {
-		${tw`pl-8`}
-	}
-	.icon-password-check {
-		${tw`inline-block align-middle mr-2`}
-	}
-	.is-success {
-		${tw`text-state-success`}
-	}
-	.is-fail {
-		${tw`text-state-danger`}
-	}
-`;
+
 const SubmitButton = tw.button`mt-8 tracking-wide border-none w-full p-4 rounded-md focus:shadow-outline focus:outline-none text-center`;
 const IllustrationContainer = tw.div`flex-1 bg-primary-100 text-center hidden lg:flex justify-center`;
 const IllustrationImage = styled.div`
 	${(props) => `background-image: url("${props.imageSrc}");`}
 	${tw`m-12 xl:m-16 w-3/4 max-w-lg bg-contain bg-center bg-no-repeat`}
 `;
-
-const InputPassword = ({ ...field }) => {
-	const [showPassword, togglePassword] = useState(false);
-
-	return (
-		<div className="input-group" tw="relative">
-			<Input type={showPassword ? "text" : "password"} {...field} />
-			<button
-				onClick={() => togglePassword(!showPassword)}
-				type="button"
-				tw="bg-transparent border-none px-3 py-3 text-gray-500 absolute right-0 top-0 mt-2"
-			>
-				{showPassword ? <Icon icon="eye-off" /> : <Icon icon="eye" />}
-			</button>
-		</div>
-	);
-};
-
-// const PasswordCondition = props => {
-//   const [length, lengthMin] = useState(false);
-//   const [number, hasNumber] = useState(false);
-//   const [uppercase, upperCase] = useState(false);
-//   const [lowercase, lowerCase] = useState(false);
-//   const [special, specChar] = useState(false);
-// };
 
 export default ({
 	logoLinkUrl = "/",
@@ -123,13 +83,7 @@ export default ({
 			confirmPassword: "",
 			tos: false,
 		},
-		// validate: {
-		// 	values.password.length < 8 ? lengthMin(false) : lengthMin(true),
-		// 	!/\d/.test(values.password) ? number(false) : number(true),
-		// 	!/[A-Z]/.test(values.password) ? uppercase(false) : uppercase(true),
-		// 	!/[a-z]/.test(values.password) ? lowercase(false) : lowercase(true),
-		// 	!/[@$!%*#?&]/.test(values.password) ? specChar(false) : specChar(true),
-		// },
+
 		validationSchema: Yup.object({
 			username: Yup.string().required("This field is required."),
 			email: Yup.string()
@@ -154,16 +108,20 @@ export default ({
 				.matches(
 					/(?=.*[A-Za-z])+/,
 					"Password must contain uppercase and lowercase characters."
-				).matches(
+				)
+				.matches(
 					/(?=.*[A-Z])+/,
 					"Password must contain at least one uppercase character."
-				).matches(
+				)
+				.matches(
 					/(?=.*[a-z])+/,
 					"Password must contain at least one lowercase character."
-				).matches(
+				)
+				.matches(
 					/(?=.*\d)+/,
 					"Password must contain at least one number."
-				).matches(
+				)
+				.matches(
 					/(?=.*[@$!%*#?&])+/,
 					"Password must contain at least one special character."
 				),
@@ -205,7 +163,7 @@ export default ({
 	<Container>
 		<Content>
 			<LogoLink href={logoLinkUrl}>
-				<LogoImage src={logo} />
+				<LogoImage src={logoLight} />
 			</LogoLink>
 			<IllustrationContainer>
 				<IllustrationImage imageSrc={illustrationImageSrc} />
@@ -401,7 +359,7 @@ export default ({
 							</SubmitButton>
 							{/*</Link>*/}
 						</Form>
-						<p tw="mt-8 text-sm text-gray-600 text-center">
+						<p tw="mt-4 text-sm text-gray-600 text-center">
 							{signInPrompt}{" "}
 							<a
 								href={signInUrl}
