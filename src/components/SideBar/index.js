@@ -14,22 +14,16 @@ const PremiumImage = tw.img`mx-auto w-full`;
 
 const SideBarConfig = [
 	{
-		text: "My Portfolio",
-		icon: <Icon icon="portfolio" />,
-		to: "/strategies/myportfolio",
-		section: "portfolio",
-	},
-	{
-		text: "Market Watch",
+		text: "Dashboard",
 		icon: <Icon icon="market" />,
-		to: "/market",
-		section: "market",
+		to: "/",
+		section: "dashboard",
 	},
 	{
-		text: "Auto Bot",
-		icon: <Icon icon="bot" />,
-		to: "/bots",
-		section: "bots",
+		text: "Auto Invest",
+		icon: <Icon icon="portfolio" />,
+		to: "/myportfolio",
+		section: "myportfolio",
 	},
 	{
 		text: "My Exchanges",
@@ -71,9 +65,9 @@ const SideBarRoot = () => {
 	}, [location]);
 
 	return (
-		<div
+		<aside
 			className="sidebar"
-			tw="bg-white p-4 rounded-r-lg drop-shadow-md flex flex-col"
+			tw="bg-white dark:bg-gray-black p-4 rounded-r-lg drop-shadow-md flex flex-col"
 		>
 			<h1 className="sidebar__logo" tw="text-center m-0">
 				<LogoImage src={logo} alt="xTrading" />
@@ -91,7 +85,7 @@ const SideBarRoot = () => {
 					<Link
 						to={item.to}
 						key={index}
-						tw="no-underline text-black block rounded-md p-3 text-gray-500 hover:text-primary-700 bg-white hover:bg-black hover:drop-shadow transition-all ease-in-out duration-150"
+						tw="no-underline text-black block rounded-md p-3 text-gray-500 hover:text-primary-700 hover:bg-black dark:hover:bg-gray-dark hover:drop-shadow transition-all ease-in-out duration-150"
 					>
 						<div
 							className={`sidebar__menu__item ${
@@ -101,7 +95,7 @@ const SideBarRoot = () => {
 						>
 							<div
 								className="sidebar__menu__item__icon"
-								tw="inline-block align-middle leading-none pr-1"
+								tw="inline-block align-middle leading-none pr-2"
 							>
 								{item.icon}
 							</div>
@@ -125,7 +119,7 @@ const SideBarRoot = () => {
 					/>
 				</Link>
 			</div>
-		</div>
+		</aside>
 	);
 };
 

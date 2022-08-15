@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; // eslint-disable-next-line
 
 import illustration from "../../../images/xtrading-login-illustration.svg";
 import logo from "../../../images/logo-xtrading-text.svg";
+import Icon from "../../../components/Icon/index.js";
 
 import { Container as ContainerBase } from "../../../components/Layouts";
-import { InputBase as Input } from "../../../components/Input/index.js";
+import {
+	InputBase as Input,
+	InputPassword,
+} from "../../../components/Input/index.js";
 
 // import recaptcha, Formik & Yup for form validation
 import { useFormik, Field, ErrorMessage } from "formik";
@@ -51,20 +55,44 @@ const IllustrationImage = styled.div`
 export default ({
 	logoLinkUrl = "/",
 	illustrationImageSrc = illustration,
-	headingText = "Forgot your password?",
-	subText = "Enter your email so we can assist you to retrieve it.",
-	inputLabelEmail = "Email Address",
+	headingText = "Change your password",
+	subText = "Enter your new password.",
+	inputLabelPassword = "New Password",
+	inputLabelConfirmPassword = "Confirm Password",
 	submitButtonText = "Continue",
-	backToHomeUrl = "/",
-	backToHomeText = "Back to home page",
+
 	// handling input values
 	formik = useFormik({
 		initialValues: {
-			email: "",
+			password: "",
+			confirmPassword: "",
 		},
 		validationSchema: Yup.object({
-			email: Yup.string()
-				.email("Please enter valid email format.")
+			password: Yup.string()
+				.required("This field is required.")
+				.min(8, "Password should have at least 8 characters.")
+				.matches(
+					/(?=.*[A-Za-z])+/,
+					"Password must contain uppercase and lowercase characters."
+				)
+				.matches(
+					/(?=.*[A-Z])+/,
+					"Password must contain at least one uppercase character."
+				)
+				.matches(
+					/(?=.*[a-z])+/,
+					"Password must contain at least one lowercase character."
+				)
+				.matches(
+					/(?=.*\d)+/,
+					"Password must contain at least one number."
+				)
+				.matches(
+					/(?=.*[@$!%*#?&])+/,
+					"Password must contain at least one special character."
+				),
+			confirmPassword: Yup.string()
+				.oneOf([Yup.ref("password")], "Passwords should match.")
 				.required("This field is required."),
 		}),
 		onSubmit: (values) => {
@@ -75,24 +103,24 @@ export default ({
 }) => (
 	<Container>
 		<Content>
+			<LogoLink href={logoLinkUrl}>
+				<LogoImage src={logo} />
+			</LogoLink>
 			<IllustrationContainer>
-				<LogoLink href={logoLinkUrl}>
-					<LogoImage src={logo} />
-				</LogoLink>
-				<IllustrationImage imageSrc={illustrationImageSrc} />
+				<IllustrationImage imageSrc={illustrationImageSrc} alt="" />
 			</IllustrationContainer>
 			<MainContainer>
 				<MainContent>
 					<Heading>{headingText}</Heading>
-					<p tw="text-gray-600 text-xs">{subText}</p>
+					<SubText>{subText}</SubText>
 					<FormContainer>
 						<Form onSubmit={formik.handleSubmit}>
 							<FormBlock className="form-block">
 								<InputLabel
-									htmlFor="email"
+									htmlFor="password"
 									className="input-label"
 								>
-									{inputLabelEmail}{" "}
+									{inputLabelPassword}{" "}
 									<span
 										className="require"
 										aria-hidden="true"
@@ -100,29 +128,64 @@ export default ({
 										*
 									</span>
 								</InputLabel>
-								<Input
-									type="text"
-									name="email"
-									value={formik.values.email}
+								<InputPassword
+									name="password"
+									value={formik.values.password}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									placeholder=""
 									className={
 										"input" +
-										(formik.errors.email &&
-										formik.touched.email
+										(formik.errors.password &&
+										formik.touched.password
 											? " is-invalid"
 											: "")
 									}
-									autoComplete="username"
+									autoComplete="new-password"
 								/>
-								{formik.errors.email &&
-									formik.touched.email && (
+								{formik.errors.password &&
+									formik.touched.password && (
 										<p className="form-prompt">
-											{formik.errors.email}
+											{formik.errors.password}
 										</p>
 									)}
 							</FormBlock>
+							<FormBlock className="form-block">
+								<InputLabel
+									htmlFor="confirmPassword"
+									className="input-label"
+								>
+									{inputLabelConfirmPassword}{" "}
+									<span
+										className="require"
+										aria-hidden="true"
+									>
+										*
+									</span>
+								</InputLabel>
+								<InputPassword
+									name="confirmPassword"
+									value={formik.values.confirmPassword}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									placeholder=""
+									className={
+										"input" +
+										(formik.errors.confirmPassword &&
+										formik.touched.confirmPassword
+											? " is-invalid"
+											: "")
+									}
+									autoComplete="new-password"
+								/>
+								{formik.errors.confirmPassword &&
+									formik.touched.confirmPassword && (
+										<p className="form-prompt">
+											{formik.errors.confirmPassword}
+										</p>
+									)}
+							</FormBlock>
+
 							<SubmitButton
 								type="submit"
 								className="button-primary"
@@ -130,14 +193,6 @@ export default ({
 								{submitButtonText}
 							</SubmitButton>
 						</Form>
-						<p tw="mt-8 text-sm text-center">
-							<a
-								href={backToHomeUrl}
-								tw="text-black no-underline"
-							>
-								{backToHomeText}
-							</a>
-						</p>
 					</FormContainer>
 				</MainContent>
 			</MainContainer>

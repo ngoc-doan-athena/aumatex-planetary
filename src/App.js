@@ -10,6 +10,8 @@ import MarketPage from "./pages/Market.js";
 import BotsPage from "./pages/Bots.js";
 import LoginPage from "./pages/Login.js";
 import ForgotPasswordPage from "./pages/authentication/login/ForgotPassword.js";
+import RenewPasswordPage from "./pages/authentication/login/RenewPassword.js";
+import ChangedPasswordPage from "./pages/authentication/login/ChangedPassword.js";
 import RegisterCompletePage from "./pages/authentication/signup/Complete.js";
 import SignupPage from "./pages/Signup.js";
 import MainLandingPage from "./MainLandingPage.js";
@@ -31,6 +33,8 @@ export default function App() {
 				<Route exact path="/" element={<MainLandingPage />} />
 				<Route exact path="/login" element={<LoginPage />} />
 				<Route exact path="/forgotpassword" element={<ForgotPasswordPage />} />
+				<Route exact path="/renewpassword" element={<RenewPasswordPage />} />
+				<Route exact path="/changedpassword" element={<ChangedPasswordPage />} />
 				<Route exact path="/register-completed" element={<RegisterCompletePage />} />
 				<Route exact path="/signup" element={<SignupPage />} />
 				<Route exact path="/myexchanges" element={<MyExchangesPage />} />
