@@ -8,7 +8,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { Container as ContainerBase } from "../components/Layouts";
 import Sidebar from "../components/SideBar/index.js";
 import Header from "../components/Header/index.js";
-
+import { BoxBase as Box} from "../components/Box/index.js";
 
 const Container = tw(
 	ContainerBase
@@ -25,7 +25,7 @@ export default ({
 				<Sidebar />
 				<MainContent>
 					<Header headingText={headingText} />
-					<Outlet />
+					<Box />
 				</MainContent>
 			</Content>
 		</Container>

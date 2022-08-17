@@ -47,7 +47,7 @@ const InputLabel = styled.label`
 		${tw`text-state-danger`}
 	}
 `;
-
+const FormPrompt = tw.p`transition duration-300 ease-in-out`;
 const SubmitButton = tw.button`mt-8 tracking-wide border-none w-full p-4 rounded-md focus:shadow-outline focus:outline-none text-center`;
 const IllustrationContainer = tw.div`flex-1 bg-primary-100 text-center hidden lg:flex justify-center`;
 const IllustrationImage = styled.div`
@@ -190,6 +190,7 @@ export default ({
 								<Input
 									type="text"
 									name="username"
+									id="username"
 									value={formik.values.username}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
@@ -204,9 +205,9 @@ export default ({
 								/>
 								{formik.errors.username &&
 									formik.touched.username && (
-										<p className="form-prompt">
+										<FormPrompt className="form-prompt">
 											{formik.errors.username}
-										</p>
+										</FormPrompt>
 									)}
 							</FormBlock>
 							<FormBlock className="form-block">
@@ -225,6 +226,7 @@ export default ({
 								<Input
 									type="email"
 									name="email"
+									id="email"
 									value={formik.values.email}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
@@ -239,9 +241,9 @@ export default ({
 								/>
 								{formik.errors.email &&
 									formik.touched.email && (
-										<p className="form-prompt">
+										<FormPrompt className="form-prompt">
 											{formik.errors.email}
-										</p>
+										</FormPrompt>
 									)}
 							</FormBlock>
 							<FormBlock className="form-block">
@@ -259,6 +261,7 @@ export default ({
 								</InputLabel>
 								<InputPassword
 									name="password"
+									id="password"
 									value={formik.values.password}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
@@ -274,9 +277,9 @@ export default ({
 								/>
 								{formik.errors.password &&
 									formik.touched.password && (
-										<p className="form-prompt">
+										<FormPrompt className="form-prompt">
 											{formik.errors.password}
-										</p>
+										</FormPrompt>
 									)}
 							</FormBlock>
 							<FormBlock className="form-block">
@@ -294,6 +297,7 @@ export default ({
 								</InputLabel>
 								<InputPassword
 									name="confirmPassword"
+									id="confirmPassword"
 									value={formik.values.confirmPassword}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
@@ -309,9 +313,9 @@ export default ({
 								/>
 								{formik.errors.confirmPassword &&
 									formik.touched.confirmPassword && (
-										<p className="form-prompt">
+										<FormPrompt className="form-prompt">
 											{formik.errors.confirmPassword}
-										</p>
+										</FormPrompt>
 									)}
 							</FormBlock>
 
@@ -345,9 +349,9 @@ export default ({
 								</InputLabel>
 							</p>
 							{formik.errors.tos && formik.touched.tos && (
-								<p className="form-prompt">
+								<FormPrompt className="form-prompt">
 									{formik.errors.tos}
-								</p>
+								</FormPrompt>
 							)}
 
 							{/*<Link to="/myexchanges">*/}

@@ -5,19 +5,21 @@ import { css } from "styled-components/macro"; // eslint-disable-next-line
 import FeatherIcon from "feather-icons-react";
 import { ThemeContext } from "./ThemeContext";
 
+const ThemeToggle = tw.div`absolute right-0 top-0 z-10`;
+const ThemeToggleButton = tw.div`transition duration-500 ease-in-out rounded-full p-2 my-4 mx-2 text-2xl cursor-pointer text-gray-900 dark:text-primary-900`;
+
 const Toggle = () => {
 	const { theme, setTheme } = React.useContext(ThemeContext);
 
 	return (
-		<div className="theme-toggle" tw="absolute right-0 top-0 z-10">
-			<div tw="transition duration-500 ease-in-out rounded-full p-2">
+		<ThemeToggle className="theme-toggle">
+			<ThemeToggleButton className="theme-toggle__button">
 				{theme === "dark" ? (
 					<FeatherIcon
 						icon="sun"
 						onClick={() =>
 							setTheme(theme === "dark" ? "light" : "dark")
 						}
-						tw="text-gray-900 dark:text-primary-900 text-2xl cursor-pointer"
 					/>
 				) : (
 					<FeatherIcon
@@ -25,11 +27,10 @@ const Toggle = () => {
 						onClick={() =>
 							setTheme(theme === "dark" ? "light" : "dark")
 						}
-						tw="text-gray-900 dark:text-primary-900 text-2xl cursor-pointer"
 					/>
 				)}
-			</div>
-		</div>
+			</ThemeToggleButton>
+		</ThemeToggle>
 	);
 };
 

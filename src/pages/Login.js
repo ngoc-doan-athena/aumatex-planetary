@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; // eslint-disable-next-line
@@ -115,6 +116,7 @@ export default ({
 								<Input
 									type="text"
 									name="email"
+									id="email"
 									value={formik.values.email}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
@@ -130,9 +132,9 @@ export default ({
 								/>
 								{formik.errors.email &&
 									formik.touched.email && (
-										<p className="form-prompt">
+										<FormPrompt className="form-prompt">
 											{formik.errors.email}
-										</p>
+										</FormPrompt>
 									)}
 							</FormBlock>
 							<FormBlock className="form-block">
@@ -150,6 +152,7 @@ export default ({
 								</InputLabel>
 								<InputPassword
 									name="password"
+									id="password"
 									value={formik.values.password}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
@@ -166,9 +169,9 @@ export default ({
 
 								{formik.errors.password &&
 									formik.touched.password && (
-										<p className="form-prompt">
+										<FormPrompt className="form-prompt">
 											{formik.errors.password}
-										</p>
+										</FormPrompt>
 									)}
 							</FormBlock>
 

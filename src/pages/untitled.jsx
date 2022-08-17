@@ -330,3 +330,79 @@ export default ({
 		</Content>
 	</Container>
 );
+
+
+/*<PasswordCheck
+	className={
+		"box-password-check" +
+		(formik.errors.password &&
+		formik.touched.password
+			? " block"
+			: " hidden")
+	}
+>
+	<p>Password must contain:</p>
+	<ul>
+		<li className="is-success">
+			<span className="icon-password-check">
+				<Icon
+					icon="check"
+					fill="none"
+					stroke="currentColor"
+				/>
+			</span>
+			At least 8 characters
+		</li>
+		<li className="is-fail">
+			<span className="icon-password-check">
+				<Icon
+					icon="x"
+					stroke="currentColor"
+				/>
+			</span>
+			At least 3 of the following
+			conditions:
+			<ul tw="list-none">
+				<li className="is-success">
+					<span className="icon-password-check">
+						<Icon
+							icon="check"
+							fill="none"
+							stroke="currentColor"
+						/>
+					</span>
+					Lowercase letters [a-z]
+				</li>
+				<li className="is-fail">
+					<span className="icon-password-check">
+						<Icon
+							icon="x"
+							stroke="currentColor"
+						/>
+					</span>
+					Uppercase letters [A-Z]
+				</li>
+				<li className="is-success">
+					<span className="icon-password-check">
+						<Icon
+							icon="check"
+							fill="none"
+							stroke="currentColor"
+						/>
+					</span>
+					Numbers [0-9]
+				</li>
+				<li className="is-fail">
+					<span className="icon-password-check">
+						<Icon
+							icon="x"
+							stroke="currentColor"
+						/>
+					</span>
+					Special characters
+					[@$!%*#?&]
+				</li>
+			</ul>
+		</li>
+	</ul>
+</PasswordCheck>*/

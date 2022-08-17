@@ -5,8 +5,11 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; // eslint-disable-next-line
 
+import { ThemeContext } from "../../helpers/ThemeContext";
+
 import Icon from "../Icon/index.js";
-import logo from "../../images/logo-xtrading-text.svg";
+import logoLight from "../../images/logo-xtrading-text.svg";
+import logoDark from "../../images/logo-xtrading-text-dark.svg";
 import premium from "../../images/xtrading-banner-premium.svg";
 
 const LogoImage = tw.img`mx-auto w-20`;
@@ -22,7 +25,7 @@ const SideBarConfig = [
 	{
 		text: "Auto Invest",
 		icon: <Icon icon="portfolio" />,
-		to: "/myportfolio",
+		to: "/strategies/myportfolio",
 		section: "myportfolio",
 	},
 	{
@@ -40,6 +43,8 @@ const SideBarConfig = [
 ];
 
 const SideBarRoot = () => {
+	const { theme } = React.useContext(ThemeContext);
+
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [stepHeight, setStepHeight] = useState(0);
 	const sidebarRef = useRef();
@@ -70,7 +75,7 @@ const SideBarRoot = () => {
 			tw="bg-white dark:bg-gray-black p-4 rounded-r-lg drop-shadow-md flex flex-col"
 		>
 			<h1 className="sidebar__logo" tw="text-center m-0">
-				<LogoImage src={logo} alt="xTrading" />
+				<LogoImage src={theme === "dark" ? logoDark : logoLight} alt="xTrading" />
 			</h1>
 			<div ref={sidebarRef} className="sidebar__menu" tw="relative">
 				<div
@@ -85,27 +90,23 @@ const SideBarRoot = () => {
 					<Link
 						to={item.to}
 						key={index}
-						tw="no-underline text-black block rounded-md p-3 text-gray-500 hover:text-primary-700 hover:bg-black dark:hover:bg-gray-dark hover:drop-shadow transition-all ease-in-out duration-150"
-					>
-						<div
-							className={`sidebar__menu__item ${
+						tw="flex items-center no-underline text-black block rounded-md p-3 text-gray-500 hover:text-primary-700 hover:bg-black dark:hover:bg-gray-dark hover:drop-shadow transition-all ease-in-out duration-150"
+						className={`sidebar__menu__item ${
 								activeIndex === index ? "is-active" : " "
 							}`}
-							tw="flex items-center"
+					>
+						<span
+							className="sidebar__menu__item__icon"
+							tw="inline-block align-middle leading-none pr-2"
 						>
-							<div
-								className="sidebar__menu__item__icon"
-								tw="inline-block align-middle leading-none pr-2"
-							>
-								{item.icon}
-							</div>
-							<div
-								className="sidebar__menu__item__text"
-								tw="inline-block align-middle"
-							>
-								{item.text}
-							</div>
-						</div>
+							{item.icon}
+						</span>
+						<span
+							className="sidebar__menu__item__text"
+							tw="inline-block align-middle"
+						>
+							{item.text}
+						</span>
 					</Link>
 				))}
 			</div>
