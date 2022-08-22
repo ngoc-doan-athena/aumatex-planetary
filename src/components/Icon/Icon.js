@@ -18,7 +18,7 @@ const Icon = ({
 		<svg
 			width={size}
 			height={size}
-			viewBox="0 0 24 24"
+			viewBox={`0 0 ${size} ${size}`}
 			fill={fill}
 			stroke={stroke}
 			strokeWidth="1.5"

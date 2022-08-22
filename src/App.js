@@ -15,6 +15,7 @@ import ChangedPasswordPage from "./pages/authentication/login/ChangedPassword.js
 import RegisterCompletePage from "./pages/authentication/signup/Complete.js";
 import SignupPage from "./pages/Signup.js";
 import MainLandingPage from "./MainLandingPage.js";
+import ContactPage from "./pages/contact/index.js";
 
 // import component page
 // import ComponentPage from "../src/ComponentPage.js";
@@ -41,6 +42,7 @@ export default function App() {
 				<Route exact path="/strategies/myportfolio" element={<MyPortfolioPage />} />
 				<Route exact path="/market" element={<MarketPage />} />
 				<Route exact path="/bots" element={<BotsPage />} />
+				<Route exact path="/contact" element={<ContactPage />} />
 			</Routes>
 		</Router>
 	);

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink as SidebarLink, Link, useLocation } from "react-router-dom";
 
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -14,31 +14,35 @@ import premium from "../../images/xtrading-banner-premium.svg";
 
 const LogoImage = tw.img`mx-auto w-20`;
 const PremiumImage = tw.img`mx-auto w-full`;
+const SideBar = tw.aside`bg-white dark:bg-gray-black p-4 rounded-t-lg lg:rounded-r-lg drop-shadow-md flex flex-col`;
+const SidebarLogo = tw.h1`text-center m-0`;
+const SidebarMenu = tw.div`relative mt-4`;
+const SidebarPromo = tw.div`mt-auto`;
 
 const SideBarConfig = [
 	{
 		text: "Dashboard",
 		icon: <Icon icon="market" />,
 		to: "/",
-		section: "dashboard",
+		page: "dashboard",
 	},
 	{
 		text: "Auto Invest",
 		icon: <Icon icon="portfolio" />,
 		to: "/strategies/myportfolio",
-		section: "myportfolio",
+		page: "myportfolio",
 	},
 	{
 		text: "My Exchanges",
 		icon: <Icon icon="exchange" />,
 		to: "/myexchanges",
-		section: "exchanges",
+		page: "exchanges",
 	},
 	{
 		text: "Contact",
 		icon: <Icon icon="mail" />,
 		to: "/contact",
-		section: "contact",
+		page: "contact",
 	},
 ];
 
@@ -46,7 +50,7 @@ const SideBarRoot = () => {
 	const { theme } = React.useContext(ThemeContext);
 
 	const [activeIndex, setActiveIndex] = useState(0);
-	const [stepHeight, setStepHeight] = useState(0);
+	// const [stepHeight, setStepHeight] = useState(0);
 	const sidebarRef = useRef();
 	const indicatorRef = useRef();
 	const location = useLocation();
@@ -56,61 +60,58 @@ const SideBarRoot = () => {
 			const sidebarItem = sidebarRef.current.querySelector(
 				".sidebar__menu__item"
 			);
-			indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
-			setStepHeight(sidebarItem.clientHeight);
 		}, 50);
 	}, []);
 
 	useEffect(() => {
 		const curPath = window.location.pathname.split("/")[1];
 		const activeItem = SideBarConfig.findIndex(
-			(item) => item.section === curPath
+			(item) => item.page === curPath
 		);
 		setActiveIndex(curPath.length === 0 ? 0 : activeItem);
 	}, [location]);
 
 	return (
-		<aside
-			className="sidebar"
-			tw="bg-white dark:bg-gray-black p-4 rounded-r-lg drop-shadow-md flex flex-col"
-		>
-			<h1 className="sidebar__logo" tw="text-center m-0">
-				<LogoImage src={theme === "dark" ? logoDark : logoLight} alt="xTrading" />
-			</h1>
-			<div ref={sidebarRef} className="sidebar__menu" tw="relative">
-				<div
+		<SideBar className="sidebar">
+			<SidebarLogo className="sidebar__logo">
+				<LogoImage
+					src={theme === "dark" ? logoDark : logoLight}
+					alt="xTrading"
+				/>
+			</SidebarLogo>
+			<SidebarMenu ref={sidebarRef} className="sidebar__menu">
+				{/*<div
 					ref={indicatorRef}
 					className="sidebar__menu__indicator"
 					style={{
 						transform: `translateX(-50%) translateY(${activeIndex *
 							stepHeight}px)`,
 					}}
-				></div>
+				></div>*/}
 				{SideBarConfig.map((item, index) => (
-					<Link
+					<SidebarLink
 						to={item.to}
 						key={index}
+						className="sidebar__menu__item"
+						activeClassName="is-active"
 						tw="flex items-center no-underline text-black block rounded-md p-3 text-gray-500 hover:text-primary-700 hover:bg-black dark:hover:bg-gray-dark hover:drop-shadow transition-all ease-in-out duration-150"
-						className={`sidebar__menu__item ${
-								activeIndex === index ? "is-active" : " "
-							}`}
 					>
 						<span
-							className="sidebar__menu__item__icon"
+							className="sidebar__menu__icon"
 							tw="inline-block align-middle leading-none pr-2"
 						>
 							{item.icon}
 						</span>
 						<span
-							className="sidebar__menu__item__text"
+							className="sidebar__menu__text"
 							tw="inline-block align-middle"
 						>
 							{item.text}
 						</span>
-					</Link>
+					</SidebarLink>
 				))}
-			</div>
-			<div className="sidebar__promo" tw="mt-auto">
+			</SidebarMenu>
+			<SidebarPromo className="sidebar__promo" tw="mt-auto">
 				<Link to="/promotion" target="_blank">
 					{" "}
 					{/*TODO: dummy link*/}
@@ -119,8 +120,8 @@ const SideBarRoot = () => {
 						alt="Unlock more bots, trade easier! Get PRO now!"
 					/>
 				</Link>
-			</div>
-		</aside>
+			</SidebarPromo>
+		</SideBar>
 	);
 };
 
