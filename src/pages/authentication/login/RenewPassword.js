@@ -5,6 +5,7 @@ import { css } from "styled-components/macro"; // eslint-disable-next-line
 
 import illustration from "../../../images/xtrading-login-illustration.svg";
 import logo from "../../../images/logo-xtrading-text.svg";
+import logoDark from "../../../images/logo-xtrading-text-dark.svg";
 import Icon from "../../../components/Icon/index.js";
 
 import { Container as ContainerBase } from "../../../components/Layouts";
@@ -12,6 +13,8 @@ import {
 	InputBase as Input,
 	InputPassword,
 } from "../../../components/Input/index.js";
+
+import { ThemeContext } from "../../../helpers/ThemeContext";
 
 // import recaptcha, Formik & Yup for form validation
 import { useFormik, Field, ErrorMessage } from "formik";
@@ -22,7 +25,8 @@ const Container = tw(
 )`min-h-screen font-medium flex justify-center m-0 font-inter`;
 const Content = tw.div`bg-gray-100 dark:bg-black text-black dark:text-white flex flex-col lg:flex-row justify-center flex-1 relative`;
 const MainContainer = tw.div`lg:w-1/2 xl:w-1/2 p-3 sm:p-6 flex flex-col box-border justify-center justify-items-center content-center `;
-const LogoLink = tw.a`lg:absolute lg:top-0 lg:left-0 p-8 pb-2 relative text-center block`;
+const LogoLink = tw.a`absolute top-0 left-0 p-8 hidden lg:block`;
+const LogoLinkContent = tw.a`p-8 pt-0 relative text-center block lg:hidden`;
 const LogoImage = tw.img`mx-auto w-20`;
 const MainContent = tw.div`flex flex-col items-center px-4`;
 const Heading = tw.h1`text-2xl xl:text-3xl font-extrabold mt-0 mb-0 lg:mb-2`;
@@ -43,14 +47,25 @@ const InputLabel = styled.label`
 		${tw`text-state-danger`}
 	}
 `;
-const SubmitButton = styled.button`
-	${tw`mt-8 tracking-wide text-base font-semibold border-none text-black w-full py-4 rounded-md focus:shadow-outline focus:outline-none text-center`}
+const SubmitButton = styled.a`
+	${tw`mt-8 block no-underline tracking-wide text-base font-semibold border-none text-black w-full py-4 rounded-md focus:shadow-outline focus:outline-none text-center`}
 `;
 const IllustrationContainer = tw.div`flex-1 bg-primary-100 text-center hidden lg:flex justify-center`;
 const IllustrationImage = styled.div`
 	${(props) => `background-image: url("${props.imageSrc}");`}
 	${tw`m-12 xl:m-16 w-3/4 max-w-lg bg-contain bg-center bg-no-repeat`}
 `;
+
+const LogoContent = () => {
+	const { theme } = React.useContext(ThemeContext);
+	const logoLinkUrl = "/";
+
+	return (
+		<LogoLinkContent href={logoLinkUrl}>
+			<LogoImage src={theme === "dark" ? logoDark : logo} />
+		</LogoLinkContent>
+	);
+};
 
 export default ({
 	logoLinkUrl = "/",
@@ -110,6 +125,7 @@ export default ({
 				<IllustrationImage imageSrc={illustrationImageSrc} alt="" />
 			</IllustrationContainer>
 			<MainContainer>
+				<LogoContent />
 				<MainContent>
 					<Heading>{headingText}</Heading>
 					<SubText>{subText}</SubText>
@@ -186,8 +202,14 @@ export default ({
 									)}
 							</FormBlock>
 
-							<SubmitButton
+							{/*<SubmitButton
 								type="submit"
+								className="button-primary"
+							>
+								{submitButtonText}
+							</SubmitButton>*/}
+							<SubmitButton
+								href="/changedpassword"
 								className="button-primary"
 							>
 								{submitButtonText}

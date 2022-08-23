@@ -59,8 +59,8 @@ export default ({
 							<THead>
 								<tr>
 									<THeadCell data-th=""></THeadCell>
-									<THeadCell data-th="Exchange name">Exchange name</THeadCell>
-									<THeadCell data-th="Wallet API">Wallet API</THeadCell>
+									<THeadCell data-th="Exchange name">Exchange</THeadCell>
+									<THeadCell data-th="Wallet API">Wallet name</THeadCell>
 									<THeadCell data-th="Creation date">Creation date</THeadCell>
 									<THeadCell data-th="Used on">Used on</THeadCell>
 									<THeadCell data-th="Balance">Balance</THeadCell>

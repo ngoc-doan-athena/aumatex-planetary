@@ -50,12 +50,12 @@ export default ({
 			<MainContainer>
 				<MainContent>
 					<FormContainer>
-						<Form>
-							<State>
-								<StateIcon src={state} />
+						<State>
+							<StateIcon src={state} />
 							</State>
 							<Heading>{headingText}</Heading>
 							<SubText>{subText}</SubText>
+						<Form>
 							<SubmitButton
 								href="/login"
 								className="button-primary"
