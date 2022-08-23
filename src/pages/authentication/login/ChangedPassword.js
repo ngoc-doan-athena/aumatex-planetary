@@ -23,7 +23,7 @@ const LogoImage = tw.img`mx-auto w-20`;
 const MainContent = tw.div`flex flex-col items-center px-4`;
 const Heading = tw.h1`text-2xl xl:text-3xl font-extrabold mt-0 mb-0 lg:mb-2`;
 const SubText = tw.p`text-gray-600 text-xs`;
-const FormContainer = tw.div`w-full flex-1 mt-1`;
+const FormContainer = tw.div`w-full flex-1 mt-1 text-center`;
 const Form = tw.div`mx-auto max-w-xs`;
 const SubmitButton = styled.a`
 	${tw`mt-8 block tracking-wide text-base font-semibold border-none text-black w-full py-4 rounded-md focus:shadow-outline focus:outline-none text-center no-underline`}
