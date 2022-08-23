@@ -174,6 +174,15 @@ export default ({
 										</FormPrompt>
 									)}
 							</FormBlock>
+							<p tw="mt-4">
+								<a
+									href={forgotPasswordUrl}
+									tw="text-primary-900"
+									className="acr-primary"
+								>
+									{forgotPasswordText}
+								</a>
+							</p>
 
 							<div
 								className="box-captcha"
