@@ -66,6 +66,21 @@ code {
   -moz-text-decoration-color: #ff9701;
 }
 
+button {
+  font-size: 1rem;
+  background-size: 100% 200%;
+  background-position: 0 0;
+  transition: all 0.3s ease-in-out;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 36px;
+}
+
+button * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .button-primary {
   background-color: #ffbd00;
   background-image: linear-gradient(
@@ -74,12 +89,6 @@ code {
     #ff9701 50%,
     #ffbd00 100%
   );
-  background-size: 100% 200%;
-  background-position: 0 0;
-  transition: all 0.3s ease-in-out;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
 }
 
 .button-primary:hover {
@@ -151,4 +160,13 @@ input:-webkit-autofill:focus {
 .input-checkbox:checked:before {
   transform: scale(1);
   opacity: 1;
+}
+
+.sidebar__menu__item.active {
+  color: #fdb04b;
+  background: #181A1F;
+}
+
+.table-data {
+  border-spacing: 0 0.5rem;
 }

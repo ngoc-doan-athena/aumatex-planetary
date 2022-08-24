@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Icon from "../Icon/index.js";
 
 import tw from "twin.macro";

@@ -66,12 +66,13 @@ export default ({
 				<LogoContent />
 				<MainContent>
 					<FormContainer>
+						<State>
+							<StateIcon src={state} />
+						</State>
+						<Heading>{headingText}</Heading>
+						<SubText>{subText}</SubText>
 						<Form>
-							<State>
-								<StateIcon src={state} />
-							</State>
-							<Heading>{headingText}</Heading>
-							<SubText>{subText}</SubText>
+							
 							<SubmitButton
 								href="/login"
 								className="button-primary"
