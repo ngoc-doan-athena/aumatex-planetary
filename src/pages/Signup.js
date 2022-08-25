@@ -6,8 +6,8 @@ import { css } from "styled-components/macro"; // eslint-disable-next-line
 
 // import illustration and site logo
 import illustration from "../images/xtrading-signup-illustration.svg";
-import logoLight from "../images/logo-xtrading-text.svg";
-import logoDark from "../images/logo-xtrading-text-dark.svg";
+import logo from "../images/logo-xtrading-text.svg";
+import { LogoByTheme as LogoToggle } from "../components/Logo";
 
 // import modules
 import Icon from "../components/Icon/index.js";
@@ -27,8 +27,10 @@ const Container = tw(
 )`min-h-screen font-medium flex justify-center m-0 font-inter`;
 const Content = tw.div`bg-gray-100 dark:bg-black text-black dark:text-white flex flex-col lg:flex-row justify-center flex-1 relative`;
 const MainContainer = tw.div`lg:w-1/2 xl:w-1/2 p-3 sm:p-6 flex flex-col box-border justify-center justify-items-center content-center `;
-const LogoLink = tw.a`lg:absolute lg:top-0 lg:left-0 p-8 pb-2 relative text-center block`;
+const LogoLink = tw.a`absolute top-0 left-0 p-8 hidden lg:block`;
+const LogoLinkContent = tw.a`p-8 pt-0 relative text-center block lg:hidden`;
 const LogoImage = tw.img`mx-auto w-20`;
+const LogoByTheme = tw(LogoToggle)`mx-auto w-20`;
 const MainContent = tw.div`flex flex-col items-center px-4`;
 const Heading = tw.h1`text-2xl xl:text-3xl font-extrabold mt-0 mb-0 lg:mb-2`;
 const SubText = tw.p`text-gray-600 text-xs`;
@@ -163,12 +165,13 @@ export default ({
 	<Container>
 		<Content>
 			<LogoLink href={logoLinkUrl}>
-				<LogoImage src={logoLight} />
+				<LogoImage src={logo} />
 			</LogoLink>
 			<IllustrationContainer>
 				<IllustrationImage imageSrc={illustrationImageSrc} />
 			</IllustrationContainer>
 			<MainContainer>
+				<LogoLinkContent><LogoToggle /></LogoLinkContent>
 				<MainContent>
 					<Heading>{headingText}</Heading>
 					<p tw="text-gray-600 text-sm">{subText}</p>

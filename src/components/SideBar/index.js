@@ -11,13 +11,12 @@ import Icon from "../Icon/index.js";
 import logoLight from "../../images/logo-xtrading-text.svg";
 import logoDark from "../../images/logo-xtrading-text-dark.svg";
 import premium from "../../images/xtrading-banner-premium.svg";
+import SidebarPromo from "../SideBar/SidebarPromo.js"
 
 const LogoImage = tw.img`mx-auto w-20`;
-const PremiumImage = tw.img`mx-auto w-full`;
 const SideBar = tw.aside`bg-white dark:bg-gray-black p-4 rounded-t-lg lg:rounded-r-lg drop-shadow-md flex flex-col`;
 const SidebarLogo = tw.h1`text-center m-0`;
 const SidebarMenu = tw.div`relative mt-4`;
-const SidebarPromo = tw.div`mt-auto`;
 
 const SideBarConfig = [
 	{
@@ -80,21 +79,13 @@ const SideBarRoot = () => {
 				/>
 			</SidebarLogo>
 			<SidebarMenu ref={sidebarRef} className="sidebar__menu">
-				{/*<div
-					ref={indicatorRef}
-					className="sidebar__menu__indicator"
-					style={{
-						transform: `translateX(-50%) translateY(${activeIndex *
-							stepHeight}px)`,
-					}}
-				></div>*/}
 				{SideBarConfig.map((item, index) => (
 					<SidebarLink
 						to={item.to}
 						key={index}
 						className="sidebar__menu__item"
 						activeClassName="is-active"
-						tw="flex items-center no-underline text-black block rounded-md p-3 text-gray-500 hover:text-primary-700 hover:bg-black dark:hover:bg-gray-dark hover:drop-shadow transition-all ease-in-out duration-150"
+						tw="flex items-center no-underline text-black block rounded-md p-3 my-2 text-gray-500 hover:text-primary-700 hover:bg-black dark:hover:bg-gray-dark hover:drop-shadow transition-all ease-in-out duration-150"
 					>
 						<span
 							className="sidebar__menu__icon"
@@ -111,16 +102,7 @@ const SideBarRoot = () => {
 					</SidebarLink>
 				))}
 			</SidebarMenu>
-			<SidebarPromo className="sidebar__promo" tw="mt-auto">
-				<Link to="/promotion" target="_blank">
-					{" "}
-					{/*TODO: dummy link*/}
-					<PremiumImage
-						src={premium}
-						alt="Unlock more bots, trade easier! Get PRO now!"
-					/>
-				</Link>
-			</SidebarPromo>
+			<SidebarPromo />
 		</SideBar>
 	);
 };

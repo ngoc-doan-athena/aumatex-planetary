@@ -22,7 +22,7 @@ const Table = tw.table`w-full border-separate `;
 const THead = tw.thead``;
 const THeadCell = tw.th`align-middle bg-gray-100 dark:bg-gray-dark dark:text-white p-3 text-left first:w-12 last:w-28 first:rounded-l-md last:rounded-r-md`;
 const TBody = tw.tbody`p-3`;
-const TBodyRow = tw.tr`transition-all ease-in-out duration-150 hover:bg-gray-100 dark:hover:bg-gray-dark`;
+const TBodyRow = tw.tr`transition-all hover:bg-gray-100 dark:hover:bg-gray-dark`;
 const TBodyCell = tw.td`align-middle p-3 first:rounded-l-md last:rounded-r-md`;
 const TRow = tw.tr`relative`;
 
@@ -131,7 +131,7 @@ export default ({ headingText = "My Exchanges" }) => {
 									</TBodyCell>
 									<TBodyCell>
 										<ExchangePlace className="exchange-place">
-											<a href="#">Portfolio</a>
+											<a href="/myportfolio">Portfolio</a>
 										</ExchangePlace>
 									</TBodyCell>
 									<TBodyCell>
