@@ -1,19 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink as SidebarLink, Link, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; // eslint-disable-next-line
 
-import { ThemeContext } from "../../helpers/ThemeContext";
-
 import Icon from "../Icon/index.js";
-import logoLight from "../../images/logo-xtrading-text.svg";
-import logoDark from "../../images/logo-xtrading-text-dark.svg";
-import premium from "../../images/xtrading-banner-premium.svg";
-import SidebarPromo from "../SideBar/SidebarPromo.js"
+import { LogoByTheme as LogoImage } from "../Logo";
+import SidebarPromo from "../SideBar/SidebarPromo.js";
 
-const LogoImage = tw.img`mx-auto w-20`;
+const LogoByTheme = tw(LogoImage)`mx-auto w-20`;
 const SideBar = tw.aside`bg-white dark:bg-gray-black p-4 rounded-t-lg lg:rounded-r-lg drop-shadow-md flex flex-col`;
 const SidebarLogo = tw.h1`text-center m-0`;
 const SidebarMenu = tw.div`relative mt-4`;
@@ -46,7 +42,6 @@ const SideBarConfig = [
 ];
 
 const SideBarRoot = () => {
-	const { theme } = React.useContext(ThemeContext);
 
 	const [activeIndex, setActiveIndex] = useState(0);
 	// const [stepHeight, setStepHeight] = useState(0);
@@ -73,18 +68,14 @@ const SideBarRoot = () => {
 	return (
 		<SideBar className="sidebar">
 			<SidebarLogo className="sidebar__logo">
-				<LogoImage
-					src={theme === "dark" ? logoDark : logoLight}
-					alt="xTrading"
-				/>
+				<LogoImage />
 			</SidebarLogo>
 			<SidebarMenu ref={sidebarRef} className="sidebar__menu">
 				{SideBarConfig.map((item, index) => (
-					<SidebarLink
+					<NavLink
 						to={item.to}
 						key={index}
 						className="sidebar__menu__item"
-						activeClassName="is-active"
 						tw="flex items-center no-underline text-black block rounded-md p-3 my-2 text-gray-500 hover:text-primary-700 hover:bg-black dark:hover:bg-gray-dark hover:drop-shadow transition-all ease-in-out duration-150"
 					>
 						<span
@@ -99,7 +90,7 @@ const SideBarRoot = () => {
 						>
 							{item.text}
 						</span>
-					</SidebarLink>
+					</NavLink>
 				))}
 			</SidebarMenu>
 			<SidebarPromo />

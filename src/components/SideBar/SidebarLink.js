@@ -13,9 +13,9 @@ class SidebarLink extends React.Component {
 		var className = isActive ? "is-active" : "";
 
 		return (
-			<NavLink className={className} {...this.props}>
+			<SidebarLink className={className} {...this.props}>
 				{this.props.children}
-			</NavLink>
+			</SidebarLink>
 		);
 	}
 }

@@ -171,7 +171,9 @@ export default ({
 				<IllustrationImage imageSrc={illustrationImageSrc} />
 			</IllustrationContainer>
 			<MainContainer>
-				<LogoLinkContent><LogoToggle /></LogoLinkContent>
+				<LogoLinkContent>
+					<LogoToggle />
+				</LogoLinkContent>
 				<MainContent>
 					<Heading>{headingText}</Heading>
 					<p tw="text-gray-600 text-sm">{subText}</p>

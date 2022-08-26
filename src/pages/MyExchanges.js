@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import { Outlet } from "react-router-dom";
 
 import tw from "twin.macro";
@@ -8,9 +8,12 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { Container as ContainerBase } from "../components/Layouts";
 import Sidebar from "../components/SideBar/index.js";
 import HeaderRoot from "../components/Header/HeaderRoot.js";
-import { BoxBase as Box } from "../components/Box/index.js";
+import { BoxBase as Box } from "../components/Box";
+import Pagination from "../components/Pagination/index.js";
 import Icon from "../components/Icon/index.js";
 import FeatherIcon from "feather-icons-react";
+
+import data from "../pages/myexchanges/exchanges.json";
 
 const Container = tw(
 	ContainerBase
@@ -44,9 +47,21 @@ const LabelSuccess = tw.span`inline-block py-2 px-2 w-28 rounded-full bg-state-s
 const LabelDanger = tw.span`inline-block py-2 px-2 w-28 rounded-full bg-state-danger/10 text-state-danger border border-solid border-state-danger text-center`;
 
 const ButtonConnect = tw.button`tracking-wide block w-full border-none py-2 px-4 rounded-md`;
-const ButtonControl = tw.button`tracking-wide block w-full bg-transparent border border-solid border-gray-500 text-gray-500 hover:text-primary-700 hover:border-primary-700 py-1 px-2 rounded-md drop-shadow-none mr-3 last:mr-0`;
+const ButtonControl = tw.button`tracking-wide block w-full bg-transparent border border-solid border-gray-500 text-gray-500 hover:text-primary-900 hover:border-primary-900 py-1 px-2 rounded-md drop-shadow-none mr-3 last:mr-0`;
+
+const AddExchange = tw.div`relative mt-4`;
+const AddExchangeButton = tw.button`tracking-wide inline-block bg-transparent border border-solid border-primary-700 text-primary-700 hover:text-primary-900 hover:border-primary-900 p-3 rounded-md`;
+
+let PageSize = 4;
 
 export default ({ headingText = "My Exchanges" }) => {
+	const [currentPage, setCurrentPage] = useState(1);
+
+	const currentTableData = useMemo(() => {
+		const firstPageIndex = (currentPage - 1) * PageSize;
+		const lastPageIndex = firstPageIndex + PageSize;
+		return data.slice(firstPageIndex, lastPageIndex);
+	}, [currentPage]);
 	return (
 		<Container>
 			<Content>
@@ -104,114 +119,139 @@ export default ({ headingText = "My Exchanges" }) => {
 								</TRow>
 							</THead>
 							<TBody>
-								<TBodyRow data-connect="true">
-									<TBodyCell>
-										<ExchangeIcon className="exchange-icon">
-											<Icon
-												icon="binance"
-												size="32"
-												fill="#fff"
-											/>
-										</ExchangeIcon>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeName className="exchange-name">
-											Binance
-										</ExchangeName>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeApi className="exchange-api">
-											XTR API
-										</ExchangeApi>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeDate className="exchange-date">
-											Dec 22, 2022
-										</ExchangeDate>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangePlace className="exchange-place">
-											<a href="/myportfolio">Portfolio</a>
-										</ExchangePlace>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeBalance className="exchange-balance">
-											$2,000
-										</ExchangeBalance>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeStatus className="exchange-status">
-											<LabelSuccess className="label-success">
-												Connected
-											</LabelSuccess>
-										</ExchangeStatus>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeControl className="exchange-control">
-											<ButtonControl className="button-secondary">
-												<FeatherIcon
-													icon="settings"
-													stroke="currentColor"
-													size="20"
-												/>{" "}
-												<span>Settings</span>
-											</ButtonControl>
-										</ExchangeControl>
-									</TBodyCell>
-								</TBodyRow>
-								<TBodyRow data-connect="false">
-									<TBodyCell>
-										<ExchangeIcon className="exchange-icon">
-											<Icon
-												icon="binance"
-												size="32"
-												fill="#fff"
-											/>
-										</ExchangeIcon>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeName className="exchange-name">
-											Binance
-										</ExchangeName>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeApi className="exchange-api">
-											-
-										</ExchangeApi>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeDate className="exchange-date">
-											-
-										</ExchangeDate>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangePlace className="exchange-place">
-											-
-										</ExchangePlace>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeBalance className="exchange-balance">
-											-
-										</ExchangeBalance>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeStatus className="exchange-status">
-											<LabelDanger className="label-danger">
-												Disconnected
-											</LabelDanger>
-										</ExchangeStatus>
-									</TBodyCell>
-									<TBodyCell>
-										<ExchangeControl className="exchange-control">
-											<ButtonConnect className="button-primary">
-												Connect
-											</ButtonConnect>
-										</ExchangeControl>
-									</TBodyCell>
-								</TBodyRow>
+								{currentTableData.map((item, index) => {
+									return (
+										<TBodyRow
+											key={index}
+											data-exchange-id={item._id}
+											data-connect={item.isConnected}
+										>
+											<TBodyCell>
+												<ExchangeIcon className="exchange-icon">
+													<Icon
+														icon="binance"
+														size="32"
+														fill="#fff"
+													/>
+												</ExchangeIcon>
+											</TBodyCell>
+											<TBodyCell>
+												<ExchangeName className="exchange-name">
+													{item.exchange_name}
+												</ExchangeName>
+											</TBodyCell>
+											<TBodyCell>
+												<ExchangeApi className="wallet-name">
+													{item.isConnected ===
+													true ? (
+														<span>
+															{item.wallet_id}
+														</span>
+													) : (
+														<span>-</span>
+													)}
+												</ExchangeApi>
+											</TBodyCell>
+											<TBodyCell>
+												<ExchangeDate className="exchange-date">
+													{item.isConnected ===
+													true ? (
+														<span>
+															{item.create_date}
+														</span>
+													) : (
+														<span>-</span>
+													)}
+												</ExchangeDate>
+											</TBodyCell>
+											<TBodyCell>
+												<ExchangePlace className="exchange-place">
+													{item.isConnected ===
+													true ? (
+														<a
+															href={
+																item.portfolio_url
+															}
+														>
+															{
+																item.portfolio_name
+															}
+														</a>
+													) : (
+														<span>-</span>
+													)}
+												</ExchangePlace>
+											</TBodyCell>
+											<TBodyCell>
+												<ExchangeBalance className="exchange-balance">
+													{item.isConnected ===
+													true ? (
+														<span>
+															{item.balance}
+														</span>
+													) : (
+														<span>-</span>
+													)}
+												</ExchangeBalance>
+											</TBodyCell>
+											<TBodyCell>
+												<ExchangeStatus className="exchange-status">
+													{item.isConnected ===
+													true ? (
+														<LabelSuccess className="label-success">
+															Connected
+														</LabelSuccess>
+													) : (
+														<LabelDanger className="label-danger">
+															Disconnected
+														</LabelDanger>
+													)}
+												</ExchangeStatus>
+											</TBodyCell>
+											<TBodyCell>
+												<ExchangeControl className="exchange-control">
+													{item.isConnected ===
+													true ? (
+														<ButtonControl className="button-secondary">
+															<FeatherIcon
+																icon="settings"
+																stroke="currentColor"
+																size="20"
+															/>{" "}
+															<span>
+																Settings
+															</span>
+														</ButtonControl>
+													) : (
+														<ButtonConnect className="button-primary">
+															Connect
+														</ButtonConnect>
+													)}
+												</ExchangeControl>
+											</TBodyCell>
+										</TBodyRow>
+									);
+								})}
 							</TBody>
 						</Table>
+						<Pagination
+							className="pagination-bar"
+							currentPage={currentPage}
+							totalCount={data.length}
+							pageSize={PageSize}
+							onPageChange={(page) => setCurrentPage(page)}
+						/>
 					</Box>
+					<AddExchange>
+						<AddExchangeButton>
+							<FeatherIcon
+								icon="plus"
+								stroke="currentColor"
+								size="20"
+							/>{" "}
+							<span>Add New Exchange</span>
+						</AddExchangeButton>
+					</AddExchange>
 				</MainContent>
 			</Content>
 		</Container>

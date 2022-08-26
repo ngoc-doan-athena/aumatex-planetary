@@ -6,17 +6,17 @@ import { css } from "styled-components/macro"; // eslint-disable-next-line
 
 import illustration from "../images/xtrading-login-illustration.svg";
 import logo from "../images/logo-xtrading-text.svg";
-import { LogoByTheme as LogoToggle } from "../components/Logo";
+import { LogoByTheme as LogoToggle } from "../components/Logo"; // eslint-disable-next-line
 import Icon from "../components/Icon";
 
 import { Container as ContainerBase } from "../components/Layouts";
 import {
 	InputBase as Input,
 	InputPassword,
-} from "../components/Input/index.js";
+} from "../components/Input/index.js"; // eslint-disable-next-line
 
 // import recaptcha, Formik & Yup for form validation
-import { useFormik, Field, ErrorMessage } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import ReCAPTCHA from "react-google-recaptcha";
 

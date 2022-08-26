@@ -7,7 +7,7 @@ import premiumImgSrc from "../../images/xtrading-banner-premium.svg";
 const PremiumImg = tw.img`mx-auto w-full`;
 const SidebarPromoBox = tw.div`mt-auto`;
 
-const SidebarPromo = () => {
+const SidebarPromo = ({PremiumImgAlt = "Unlock more bots, trade easier! Get PRO now!"}) => {
 	return (
 		<SidebarPromoBox className="sidebar__promo" tw="mt-auto">
 			<Link to="/promotion" target="_blank">
@@ -15,7 +15,7 @@ const SidebarPromo = () => {
 				{/*TODO: dummy link*/}
 				<PremiumImg
 					src={premiumImgSrc}
-					alt="Unlock more bots, trade easier! Get PRO now!"
+					alt={PremiumImgAlt}
 				/>
 			</Link>
 		</SidebarPromoBox>
