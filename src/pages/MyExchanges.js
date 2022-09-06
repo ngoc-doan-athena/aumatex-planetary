@@ -1,6 +1,10 @@
 import React, { useState, useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import tw from "twin.macro";
+import {
+	BrowserRouter as Router,
+	Route,
+	Link,
+	Redirect,
+} from "react-router-dom";import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
@@ -101,12 +105,6 @@ export default ({ headingText = "My Exchanges" }) => {
 
 	const handleClick = event => {
 		setSetupExchangeShown(current => !current);
-	};
-
-	let navigate = useNavigate();
-	const routeChange = () => {
-		let path = `/setupexchange`;
-		navigate(path);
 	};
 
 	return (
@@ -299,7 +297,7 @@ export default ({ headingText = "My Exchanges" }) => {
 							/>{" "}
 							<span>Add New Exchange</span>
 						</AddExchangeButton>*/}
-						<AddExchangeButton href="/myexchanges/setting">
+						<AddExchangeButton href="/myexchanges/create">
 							<FeatherIcon
 								icon="plus"
 								stroke="currentColor"

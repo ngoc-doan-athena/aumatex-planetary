@@ -10,6 +10,10 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
+// import recaptcha, Formik & Yup for form validation
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
 import { Container as ContainerBase } from "../../components/Layouts";
 import Sidebar from "../../components/SideBar/index.js";
 import HeaderDetail from "../../components/Header/HeaderDetail.js";
@@ -18,9 +22,6 @@ import {
 	InputBase as Input,
 	InputPassword,
 } from "../../components/Input/index.js"; // eslint-disable-next-line
-import FeatherIcon from "feather-icons-react";
-
-import data from "../myexchanges/exchanges.json";
 
 const Container = tw(
 	ContainerBase
@@ -82,12 +83,15 @@ const RemoveButton = styled.button`
 	${tw`mt-8 inline-block tracking-wide text-base font-semibold border border-solid border-state-danger bg-transparent text-state-danger w-56 py-4 mr-2 rounded-md focus:shadow-outline focus:outline-none text-center`}
 `;
 
+let PageSize = 4;
+
 export default ({
-	headingText = "Exchange Setting",
+	headingText = "Exchange Setup",
 	submitButtonText = "Connect Exchange",
 	removeButtonText = "Remove",
-}) => {
 
+	
+}) => {
 	return (
 		<Container>
 			<Content>

@@ -1,4 +1,10 @@
 import React from "react";
+import {
+	BrowserRouter as Router,
+	Route,
+	Link,
+	Redirect,
+} from "react-router-dom";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; // eslint-disable-next-line
@@ -18,8 +24,16 @@ const Heading = styled.h1`
 	}
 `;
 const HeadingLink = tw.a`inline-block align-middle no-underline text-black dark:text-white`;
+const LabelSuccess = tw.span`inline-block py-2 px-2 w-28 rounded-full bg-state-success/10 text-state-success border border-solid border-state-success text-center text-[0.9rem] font-medium ml-4`;
+const LabelDanger = tw.span`inline-block py-2 px-2 w-28 rounded-full bg-state-danger/10 text-state-danger border border-solid border-state-danger text-center text-[0.9rem] font-medium ml-4`;
 
 const HeaderDetail = ({ headingText }) => {
+	let connectedStatus = new URLSearchParams(window.location.search).get(
+		"connected"
+	);
+
+	console.log(connectedStatus)
+
 	return (
 		<Header className="header">
 			<HeaderContent className="header-content">
@@ -30,6 +44,15 @@ const HeaderDetail = ({ headingText }) => {
 						<FeatherIcon icon="arrow-left" />
 						{headingText}
 					</HeadingLink>
+					{connectedStatus === "true" ? (
+						<LabelSuccess className="label-success">
+							Connected
+						</LabelSuccess>
+					) : (
+						<LabelDanger className="label-danger">
+							Disconnected
+						</LabelDanger>
+					)}
 				</Heading>
 				<HeaderAccount />
 			</HeaderContent>
