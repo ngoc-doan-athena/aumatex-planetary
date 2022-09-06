@@ -1,68 +1,30 @@
 import { useMemo } from "react";
+import tw from "twin.macro";
 import PropTypes from "prop-types";
-// import { v4 as uuidv4 } from "uuid";
 
-// @mui material components
-// import { Table as MuiTable } from "@mui/material";
-// import TableBody from "@mui/material/TableBody";
-// import TableContainer from "@mui/material/TableContainer";
-// import TableRow from "@mui/material/TableRow";
-
-// Soft UI Dashboard React components
 import BoxBase from "../Box/index.js";
-// import SoftAvatar from "components/SoftAvatar";
-// import SoftTypography from "components/SoftTypography";
 
-// Soft UI Dashboard React base styles
-// import colors from "assets/theme/base/colors";
-// import typography from "assets/theme/base/typography";
-// import borders from "assets/theme/base/borders";
+const Table = tw.table`w-full border-separate `;
+const THead = tw.thead``;
+const THeadCell = tw.th`align-middle bg-gray-100 dark:bg-gray-dark dark:text-white p-3 text-left first:w-12 last:w-28 first:rounded-l-md last:rounded-r-md`;
+const TBody = tw.tbody`p-3`;
+const TBodyRow = tw.tr`transition-all hover:bg-gray-100 dark:hover:bg-gray-dark`;
+const TBodyCell = tw.td`align-middle p-3 first:rounded-l-md last:rounded-r-md`;
+const TRow = tw.tr`relative`;
 
-function Table({ columns, rows }) {
-	const { light } = colors;
-	const { size, fontWeightBold } = typography;
-	const { borderWidth } = borders;
-	const TableContainer;
-	const TableBody;
-	const Table;
-
-	const renderColumns = columns.map(({ name, align, width }, key) => {
-		let pl;
-		let pr;
-
-		if (key === 0) {
-			pl = 3;
-			pr = 3;
-		} else if (key === columns.length - 1) {
-			pl = 3;
-			pr = 3;
-		} else {
-			pl = 1;
-			pr = 1;
-		}
-
+function Table({ columns, rows, props... }) {
+	const renderColumns = columns.map((item, key) => {
 		return (
-			<BoxBase
+			<TableHeadCell
 				key={name}
-				component="th"
-				// width={width || "auto"}
-				// pt={1.5}
-				// pb={1.25}
-				// pl={align === "left" ? pl : 3}
-				// pr={align === "right" ? pr : 3}
-				// textAlign={align}
-				// fontSize={size.xxs}
-				// fontWeight={fontWeightBold}
-				// color="secondary"
-				// opacity={0.7}
-				// borderBottom={`${borderWidth[1]} solid ${light.main}`}
+				props...
 			>
 				{name}
-			</BoxBase>
+			</TableHeadCell>
 		);
 	});
 
-	const renderRows = rows.map((row, key) => {
+	const renderRows = rows.map((row, key, index) => {
 		const rowKey = `row-${key}`;
 
 		const tableRow = columns.map(({ name, align }) => {
@@ -70,72 +32,38 @@ function Table({ columns, rows }) {
 
 			if (Array.isArray(row[name])) {
 				template = (
-					<BoxBase
-						key={uuidv4()}
-						component="td"
-						p={1}
-						borderBottom={
-							row.hasBorder ? `${borderWidth[1]} solid ${light.main}` : null
-						}
+					<TBodyCell
+						key={index}
+						props...
 					>
-						<BoxBase display="flex" alignItems="center" py={0.5} px={1}>
-							<BoxBase mr={2}>
-								<SoftAvatar
-									src={row[name][0]}
-									name={row[name][1]}
-									variant="rounded"
-									size="sm"
-								/>
-							</BoxBase>
-							<SoftTypography
-								variant="button"
-								fontWeight="medium"
-								sx={{ width: "max-content" }}
-							>
-								{row[name][1]}
-							</SoftTypography>
-						</BoxBase>
-					</BoxBase>
+						{row[name][1]}
+					</TBodyCell>
 				);
 			} else {
 				template = (
-					<BoxBase
-						key={uuidv4()}
-						component="td"
-						p={1}
-						textAlign={align}
-						borderBottom={
-							row.hasBorder ? `${borderWidth[1]} solid ${light.main}` : null
-						}
+					<TBodyCell
+						key={index}
+						props...
 					>
-						<SoftTypography
-							variant="button"
-							fontWeight="regular"
-							color="secondary"
-							sx={{ display: "inline-block", width: "max-content" }}
-						>
-							{row[name]}
-						</SoftTypography>
-					</BoxBase>
+						{row[name]}
+					</TBodyCell>
 				);
 			}
 
 			return template;
 		});
 
-		return <TableRow key={rowKey}>{tableRow}</TableRow>;
+		return <TBodyRow key={rowKey} props...>{tableRow}</TBodyRow>;
 	});
 
 	return useMemo(
 		() => (
-			<TableContainer>
-				<MuiTable>
-					<BoxBase component="thead">
-						<TableRow>{renderColumns}</TableRow>
-					</BoxBase>
-					<TableBody>{renderRows}</TableBody>
-				</MuiTable>
-			</TableContainer>
+			<Table>
+				<THead>
+					<TRow>{renderColumns}</TRow>
+				</THead>
+				<TBody>{renderRows}</TBody>
+			</Table>
 		),
 		[columns, rows]
 	);

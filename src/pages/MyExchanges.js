@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Outlet } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -11,6 +10,10 @@ import HeaderRoot from "../components/Header/HeaderRoot.js";
 import { BoxBase as Box } from "../components/Box";
 import Pagination from "../components/Pagination/index.js";
 import Icon from "../components/Icon/index.js";
+import {
+	InputBase as Input,
+	InputPassword,
+} from "../components/Input/index.js"; // eslint-disable-next-line
 import FeatherIcon from "feather-icons-react";
 
 import data from "../pages/myexchanges/exchanges.json";
@@ -19,7 +22,7 @@ const Container = tw(
 	ContainerBase
 )`min-h-screen font-medium flex justify-center m-0 font-inter`;
 const Content = tw.div`bg-gray-100 dark:bg-black text-black dark:text-white flex flex-col lg:flex-row justify-center flex-1 relative`;
-const MainContent = tw.div`flex-1 px-12`;
+const MainContent = tw.div`flex-1 px-12 pb-8`;
 
 const Table = tw.table`w-full border-separate `;
 const THead = tw.thead``;
@@ -29,14 +32,14 @@ const TBodyRow = tw.tr`transition-all hover:bg-gray-100 dark:hover:bg-gray-dark`
 const TBodyCell = tw.td`align-middle p-3 first:rounded-l-md last:rounded-r-md`;
 const TRow = tw.tr`relative`;
 
-const ExchangeIcon = tw.span`p-2 rounded-full bg-currency-bnb inline-block leading-none text-[0px]`;
+const ExchangeIcon = tw.span`p-2 rounded-full inline-block leading-none text-[0px]`;
 const ExchangeName = tw.span`font-bold`;
 const ExchangeApi = tw.span`relative`;
 const ExchangeDate = tw.span`relative`;
 const ExchangePlace = styled.span`
 	${tw`relative`}
 	a {
-		${tw`text-blue-900`}
+		${tw`text-blue-900 hover:text-primary-900`}
 	}
 `;
 const ExchangeBalance = tw.span`relative`;
@@ -46,15 +49,48 @@ const ExchangeControl = tw.div`relative`;
 const LabelSuccess = tw.span`inline-block py-2 px-2 w-28 rounded-full bg-state-success/10 text-state-success border border-solid border-state-success text-center`;
 const LabelDanger = tw.span`inline-block py-2 px-2 w-28 rounded-full bg-state-danger/10 text-state-danger border border-solid border-state-danger text-center`;
 
-const ButtonConnect = tw.button`tracking-wide block w-full border-none py-2 px-4 rounded-md`;
-const ButtonControl = tw.button`tracking-wide block w-full bg-transparent border border-solid border-gray-500 text-gray-500 hover:text-primary-900 hover:border-primary-900 py-1 px-2 rounded-md drop-shadow-none mr-3 last:mr-0`;
+const ButtonConnect = tw.a`tracking-wide block w-full border-none py-3 px-4 rounded-md no-underline leading-none box-border text-center text-black font-bold`;
+const ButtonControl = styled.a`
+	${
+		tw`tracking-wide block w-full bg-transparent border border-solid border-gray-500 text-gray-500 hover:text-primary-900 hover:border-primary-900 py-2 px-2 rounded-md drop-shadow-none mr-3 last:mr-0 no-underline leading-none box-border text-center`}
+	* {
+		${tw`inline-block align-middle`}
+	}
+`;
 
 const AddExchange = tw.div`relative mt-4`;
-const AddExchangeButton = tw.button`tracking-wide inline-block bg-transparent border border-solid border-primary-700 text-primary-700 hover:text-primary-900 hover:border-primary-900 p-3 rounded-md`;
+// const AddExchangeButton = tw.button`tracking-wide inline-block bg-transparent border border-solid border-primary-700 text-primary-700 hover:text-primary-900 hover:border-primary-900 p-3 rounded-md`;
+const AddExchangeButton = styled.a`
+	${tw`tracking-wide inline-block bg-transparent border border-solid border-primary-700 text-primary-700 hover:text-primary-900 hover:border-primary-900 p-3 rounded-md no-underline leading-none transition duration-300 ease-in-out`}
+	* {
+		${tw`inline-block align-middle`}
+	}
+`;
+
+const FormContainer = tw.div`w-full flex-1 mt-1`;
+const Form = tw.form`max-w-[800px]`;
+const FormBlock = styled.div`
+	${tw`first:mt-0 mt-4`}
+	.input {
+		${tw`mt-2`}
+	}
+`;
+const FormPrompt = tw.p`transition duration-300 ease-in-out`;
+const InputBase = tw(Input)`px-8 py-4 first:mt-0 mt-1 shadow-none`;
+const InputLabel = styled.label`
+	${tw`mt-6 text-sm text-gray-600`}
+	.require {
+		${tw`text-state-danger`}
+	}
+`;
+const SubmitButton = styled.a`
+	${tw`mt-8 block no-underline tracking-wide text-base font-semibold border-none text-black w-full py-4 rounded-md focus:shadow-outline focus:outline-none text-center`}
+`;
 
 let PageSize = 4;
 
 export default ({ headingText = "My Exchanges" }) => {
+	const [setupExchangeShown, setSetupExchangeShown, editExchangeShown, setEditExchangeShown] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const currentTableData = useMemo(() => {
@@ -62,6 +98,17 @@ export default ({ headingText = "My Exchanges" }) => {
 		const lastPageIndex = firstPageIndex + PageSize;
 		return data.slice(firstPageIndex, lastPageIndex);
 	}, [currentPage]);
+
+	const handleClick = event => {
+		setSetupExchangeShown(current => !current);
+	};
+
+	let navigate = useNavigate();
+	const routeChange = () => {
+		let path = `/setupexchange`;
+		navigate(path);
+	};
+
 	return (
 		<Container>
 			<Content>
@@ -127,9 +174,9 @@ export default ({ headingText = "My Exchanges" }) => {
 											data-connect={item.isConnected}
 										>
 											<TBodyCell>
-												<ExchangeIcon className="exchange-icon">
+												<ExchangeIcon className={"exchange-icon exchange-icon-" + (item.exchange_icon)}>
 													<Icon
-														icon="binance"
+														icon={item.exchange_icon}
 														size="32"
 														fill="#fff"
 													/>
@@ -212,7 +259,7 @@ export default ({ headingText = "My Exchanges" }) => {
 												<ExchangeControl className="exchange-control">
 													{item.isConnected ===
 													true ? (
-														<ButtonControl className="button-secondary">
+														<ButtonControl href={"/myexchanges/setting/" + (item._id) + "?connected=true"} className="button-secondary">
 															<FeatherIcon
 																icon="settings"
 																stroke="currentColor"
@@ -223,7 +270,7 @@ export default ({ headingText = "My Exchanges" }) => {
 															</span>
 														</ButtonControl>
 													) : (
-														<ButtonConnect className="button-primary">
+														<ButtonConnect href={"/myexchanges/setting/" + (item._id) + "?connected=false"} className="button-primary">
 															Connect
 														</ButtonConnect>
 													)}
@@ -240,10 +287,19 @@ export default ({ headingText = "My Exchanges" }) => {
 							totalCount={data.length}
 							pageSize={PageSize}
 							onPageChange={(page) => setCurrentPage(page)}
+							tw="mt-4"
 						/>
 					</Box>
 					<AddExchange>
-						<AddExchangeButton>
+						{/*<AddExchangeButton onClick={handleClick}>
+							<FeatherIcon
+								icon="plus"
+								stroke="currentColor"
+								size="20"
+							/>{" "}
+							<span>Add New Exchange</span>
+						</AddExchangeButton>*/}
+						<AddExchangeButton href="/myexchanges/setting/:id">
 							<FeatherIcon
 								icon="plus"
 								stroke="currentColor"
@@ -257,3 +313,104 @@ export default ({ headingText = "My Exchanges" }) => {
 		</Container>
 	);
 };
+
+// function ExchangeForm() {
+// 	return (
+// 		<FormContainer>
+// 			<Form>
+// 				<FormBlock className="form-block">
+// 					<InputLabel
+// 						htmlFor="apikey"
+// 						className="input-label"
+// 					>
+// 						API Key{" "}
+// 						<span
+// 							className="require"
+// 							aria-hidden="true"
+// 						>
+// 							*
+// 						</span>
+// 					</InputLabel>
+// 					<div tw="flex flex-row items-center">
+// 						<Input
+// 							type="text"
+// 							name="apikey"
+// 							id="apikey"
+// 							value=""
+// 							placeholder=""
+// 							className="input"
+// 						/>
+// 						<span tw="inline-block align-middle w-32 ml-2 mt-1">
+// 							<a
+// 								href="#"
+// 								tw="text-primary-900"
+// 								className="acr-primary"
+// 							>
+// 								How to find it?
+// 							</a>
+// 						</span>
+// 					</div>
+// 				</FormBlock>
+// 				<FormBlock className="form-block">
+// 					<InputLabel
+// 						htmlFor="apisecret"
+// 						className="input-label"
+// 					>
+// 						API Secret{" "}
+// 						<span
+// 							className="require"
+// 							aria-hidden="true"
+// 						>
+// 							*
+// 						</span>
+// 					</InputLabel>
+// 					<Input
+// 						type="text"
+// 						name="apisecret"
+// 						id="apisecret"
+// 						value=""
+// 						placeholder=""
+// 						className="input"
+// 					/>
+// 				</FormBlock>
+// 				<FormBlock className="form-block">
+// 					<InputLabel
+// 						htmlFor="accountname"
+// 						className="input-label"
+// 					>
+// 						Account name
+// 					</InputLabel>
+// 					<Input
+// 						type="text"
+// 						name="accountname"
+// 						id="accountname"
+// 						value=""
+// 						placeholder=""
+// 						className="input"
+// 					/>
+// 				</FormBlock>
+// 				<p tw="mt-4 mb-0 text-xs text-gray-600">
+// 					<span tw="inline-block align-text-bottom">
+// 						<input
+// 							type="checkbox"
+// 							name="tos"
+// 							id="tos"
+// 							className="input-checkbox"
+// 							tw="appearance-none border-solid border-2 border-gray-900 rounded-sm"
+// 						/>
+// 					</span>
+// 					<InputLabel htmlFor="tos">
+// 						By checking this box you have agreed to our{" "}
+// 						<a
+// 							href="/termsofservice"
+// 							tw="text-primary-900"
+// 							className="acr-primary"
+// 						>
+// 							Terms of service
+// 						</a>
+// 					</InputLabel>
+// 				</p>
+// 			</Form>
+// 		</FormContainer>
+// 	);
+// }

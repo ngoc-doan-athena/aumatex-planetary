@@ -20,6 +20,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import ReCAPTCHA from "react-google-recaptcha";
 
+import data from "../pages/authentication/mock.json";
+
 const Container = tw(
 	ContainerBase
 )`min-h-screen font-medium flex justify-center m-0 font-inter`;
@@ -48,9 +50,7 @@ const InputLabel = styled.label`
 		${tw`text-state-danger`}
 	}
 `;
-const SubmitButton = styled.a`
-	${tw`mt-8 block no-underline tracking-wide text-base font-semibold border-none text-black w-full py-4 rounded-md focus:shadow-outline focus:outline-none text-center`}
-`;
+const SubmitButton = tw.button`mt-8 block no-underline tracking-wide text-base font-semibold border-none text-black w-full py-4 rounded-md focus:shadow-outline focus:outline-none text-center`;
 const IllustrationContainer = tw.div`flex-1 bg-primary-100 text-center hidden lg:flex justify-center`;
 const IllustrationImage = styled.div`
 	${(props) => `background-image: url("${props.imageSrc}");`}
@@ -76,16 +76,17 @@ export default ({
 		initialValues: {
 			email: "",
 			password: "",
+			recaptcha: "",
 		},
 		validationSchema: Yup.object({
 			email: Yup.string()
 				.email("Please enter valid email format.")
 				.required("This field is required."),
 			password: Yup.string().required("This field is required."),
+			recaptcha: Yup.string().required("Please complete the captcha test."),
 		}),
 		onSubmit: (values) => {
-			console.log("Info sent!");
-			// history.push('/myexchanges');
+			window.location.href = '/myexchanges';
 		},
 	}),
 }) => (
@@ -195,17 +196,18 @@ export default ({
 								<ReCAPTCHA
 									sitekey="6Lc5nCkhAAAAAPf6YClkfVSILUdUJlJ2Fhr5kHl0"
 									data-size="compact"
+									// verifyCallback={(response) => { setFieldValue("recaptcha", response); }}
 								/>
+								{formik.errors.recaptcha &&
+									formik.touched.recaptcha && (
+										<FormPrompt className="form-prompt">
+											{formik.errors.recaptcha}
+										</FormPrompt>
+									)}
 							</div>
 
-							{/*<SubmitButton
-								type="submit"
-								className="button-primary"
-							>
-								{submitButtonText}
-							</SubmitButton>*/}
 							<SubmitButton
-								href="/myexchanges"
+								type="submit"
 								className="button-primary"
 							>
 								{submitButtonText}

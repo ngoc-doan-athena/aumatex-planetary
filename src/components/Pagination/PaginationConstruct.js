@@ -1,14 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import tw from "twin.macro";
+import styled from "styled-components";
+import { css } from "styled-components/macro"; //eslint-disable-line
 
 import { usePagination, trunCate } from "./PaginationContext.js";
 import FeatherIcon from "feather-icons-react";
 
 const PaginationRoot = tw.div`relative text-center`;
-const PaginationWrap = tw.ul`flex flex-row items-center justify-center list-none m-0 p-0`;
-const PaginationLink = tw.li`inline-block cursor-pointer py-2 px-3 mx-1 align-middle leading-none bg-gray-100 dark:bg-gray-dark rounded-sm`;
-const PaginationControl = tw.li`inline-block cursor-pointer p-2 mx-1 align-middle leading-3 bg-gray-100 dark:bg-gray-dark rounded-sm`;
+const PaginationWrap = styled.ul`
+	${tw`flex flex-row items-center justify-center list-none m-0 p-0`}
+	.is-disabled {
+		${tw`pointer-events-none text-gray-400 dark:text-gray-900/25`}
+	}
+	.is-current {
+		${tw`bg-primary-700 dark:bg-primary-900 text-white`}
+	}
+`;
+const PaginationLink = styled.li`
+	${tw`inline-block cursor-pointer py-2 px-3 mx-1 align-middle leading-none bg-gray-100 dark:bg-gray-dark hover:bg-primary-700 dark:hover:bg-primary-900 hover:text-white rounded-sm transition duration-300 ease-in-out`}
+`;
+const PaginationControl = tw.li`inline-block cursor-pointer p-2 mx-1 align-middle leading-3 bg-gray-100 dark:bg-gray-dark rounded-sm hover:bg-primary-700 dark:hover:bg-primary-900 hover:text-white rounded-sm transition duration-300 ease-in-out`;
 
 const Pagination = (props) => {
 	const {
@@ -49,6 +61,7 @@ const Pagination = (props) => {
 						"pagination__item " +
 						(currentPage === 1 ? "is-disabled" : " ")
 					}
+					disabled={currentPage === 1 ? true : false}
 					onClick={onPrevious}
 				>
 					<FeatherIcon
@@ -62,7 +75,7 @@ const Pagination = (props) => {
 						return (
 							<PaginationLink
 								key={index}
-								className="pagination__item dots"
+								className="pagination__item is-dots"
 							>
 								&#8230;
 							</PaginationLink>
@@ -89,6 +102,7 @@ const Pagination = (props) => {
 						"pagination__item " +
 						(currentPage === lastPage ? "is-disabled" : " ")
 					}
+					disabled={currentPage === lastPage ? true : false}
 					onClick={onNext}
 				>
 					<FeatherIcon

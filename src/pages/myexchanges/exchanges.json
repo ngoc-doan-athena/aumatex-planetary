@@ -2,6 +2,7 @@
   {
     "_id": "630747075d6b7a98b13fdb5c",
     "exchange_name": "FTX",
+    "exchange_icon": "ftx",
     "isConnected": false,
     "balance": "$331",
     "portfolio_url": "/strategies/myportfolio/dw0piyv",
@@ -12,6 +13,7 @@
   {
     "_id": "630747076dd5394d7af4403d",
     "exchange_name": "Coinbase",
+    "exchange_icon": "coinbase",
     "isConnected": true,
     "balance": "$2,207",
     "portfolio_url": "/strategies/myportfolio/vvqurgh",
@@ -22,6 +24,7 @@
   {
     "_id": "63074707dd1c3ad849aa3377",
     "exchange_name": "ByBit",
+    "exchange_icon": "bybit",
     "isConnected": true,
     "balance": "$932",
     "portfolio_url": "/strategies/myportfolio/a39s4ir",
@@ -32,6 +35,7 @@
   {
     "_id": "6307470798a77e48e480c7a6",
     "exchange_name": "Binance",
+    "exchange_icon": "binance",
     "isConnected": true,
     "balance": "$594",
     "portfolio_url": "/strategies/myportfolio/yp4xe15",
@@ -42,6 +46,7 @@
   {
     "_id": "630747072195e3149b627d13",
     "exchange_name": "Kucoin",
+    "exchange_icon": "kucoin",
     "isConnected": false,
     "balance": "$3,752",
     "portfolio_url": "/strategies/myportfolio/li65ne2",
@@ -52,6 +57,7 @@
   {
     "_id": "630747077f5f08f11565804b",
     "exchange_name": "Kucoin",
+    "exchange_icon": "kucoin",
     "isConnected": true,
     "balance": "$4,132",
     "portfolio_url": "/strategies/myportfolio/bzaroy1",
@@ -62,6 +68,7 @@
   {
     "_id": "63074707f46130c05e12ac64",
     "exchange_name": "ByBit",
+    "exchange_icon": "bybit",
     "isConnected": true,
     "balance": "$2,960",
     "portfolio_url": "/strategies/myportfolio/bse26t8",
@@ -72,6 +79,7 @@
   {
     "_id": "6307470784d053b6f12d87ab",
     "exchange_name": "Coinbase",
+    "exchange_icon": "coinbase",
     "isConnected": false,
     "balance": "$2,430",
     "portfolio_url": "/strategies/myportfolio/hqgh4uq",
@@ -82,6 +90,7 @@
   {
     "_id": "63074707aa9ddef74b0e0dcd",
     "exchange_name": "Kucoin",
+    "exchange_icon": "kucoin",
     "isConnected": true,
     "balance": "$2,546",
     "portfolio_url": "/strategies/myportfolio/y6kb4f3",
@@ -92,6 +101,7 @@
   {
     "_id": "63074707214c9c08bf23b399",
     "exchange_name": "Coinbase",
+    "exchange_icon": "coinbase",
     "isConnected": true,
     "balance": "$3,680",
     "portfolio_url": "/strategies/myportfolio/r4tgs57",
@@ -102,6 +112,7 @@
   {
     "_id": "6307470722591f2b2b64f8fe",
     "exchange_name": "ByBit",
+    "exchange_icon": "bybit",
     "isConnected": true,
     "balance": "$2,695",
     "portfolio_url": "/strategies/myportfolio/bu0trst",
@@ -112,6 +123,7 @@
   {
     "_id": "63074707b2d91a0d0e88ab8e",
     "exchange_name": "Kucoin",
+    "exchange_icon": "kucoin",
     "isConnected": true,
     "balance": "$2,142",
     "portfolio_url": "/strategies/myportfolio/e72ddef",
@@ -122,6 +134,7 @@
   {
     "_id": "6307470704ae7cf9c4ad5b64",
     "exchange_name": "FTX",
+    "exchange_icon": "ftx",
     "isConnected": true,
     "balance": "$2,009",
     "portfolio_url": "/strategies/myportfolio/y3f8fvh",
@@ -132,6 +145,7 @@
   {
     "_id": "630747071b43fd3e67f64610",
     "exchange_name": "Binance",
+    "exchange_icon": "binance",
     "isConnected": true,
     "balance": "$2,904",
     "portfolio_url": "/strategies/myportfolio/w9h2vw2",
@@ -142,6 +156,7 @@
   {
     "_id": "630747074a18e86e06a274bf",
     "exchange_name": "Kucoin",
+    "exchange_icon": "kucoin",
     "isConnected": true,
     "balance": "$4,828",
     "portfolio_url": "/strategies/myportfolio/8w470fw",
@@ -152,6 +167,7 @@
   {
     "_id": "630747079e83375c3278960e",
     "exchange_name": "Binance",
+    "exchange_icon": "binance",
     "isConnected": false,
     "balance": "$2,922",
     "portfolio_url": "/strategies/myportfolio/6b15zbd",
@@ -162,6 +178,7 @@
   {
     "_id": "63074707151b34ced0230e72",
     "exchange_name": "Kucoin",
+    "exchange_icon": "kucoin",
     "isConnected": false,
     "balance": "$4,850",
     "portfolio_url": "/strategies/myportfolio/om7ggpl",
@@ -172,6 +189,7 @@
   {
     "_id": "6307470761f4f51085b28c0e",
     "exchange_name": "Binance",
+    "exchange_icon": "binance",
     "isConnected": false,
     "balance": "$2,566",
     "portfolio_url": "/strategies/myportfolio/k1txiz2",
@@ -182,6 +200,7 @@
   {
     "_id": "630747073d88f67ac7469767",
     "exchange_name": "Coinbase",
+    "exchange_icon": "coinbase",
     "isConnected": true,
     "balance": "$1,506",
     "portfolio_url": "/strategies/myportfolio/2ejhp0y",
@@ -192,6 +211,7 @@
   {
     "_id": "63074707205e7efbfa262a4d",
     "exchange_name": "Binance",
+    "exchange_icon": "binance",
     "isConnected": true,
     "balance": "$136",
     "portfolio_url": "/strategies/myportfolio/lmqpsn1",

@@ -89,6 +89,8 @@ button * {
     #ff9701 50%,
     #ffbd00 100%
   );
+  background-size: 100% 200%;
+  transition: all 0.3s ease-in-out;
 }
 
 .button-primary:hover {
@@ -169,4 +171,23 @@ input:-webkit-autofill:focus {
 
 .table-data {
   border-spacing: 0 0.5rem;
+}
+
+.exchange-icon-binance {
+  background: #F3BA2F;
+}
+.exchange-icon-ftx {
+  background: #11A9BC;
+}
+.exchange-icon-kucoin {
+  background: #23AF91;
+}
+.exchange-icon-coinbase {
+  background: #1652f0;
+}
+.exchange-icon-bybit {
+  background: #17181e;
+}
+.exchange-icon-bitfinex {
+  background: #16B157;
 }
