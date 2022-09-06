@@ -87,7 +87,7 @@ const SubmitButton = styled.a`
 	${tw`mt-8 block no-underline tracking-wide text-base font-semibold border-none text-black w-full py-4 rounded-md focus:shadow-outline focus:outline-none text-center`}
 `;
 
-let PageSize = 4;
+let PageSize = 5;
 
 export default ({ headingText = "My Exchanges" }) => {
 	const [setupExchangeShown, setSetupExchangeShown, editExchangeShown, setEditExchangeShown] = useState(false);
@@ -299,7 +299,7 @@ export default ({ headingText = "My Exchanges" }) => {
 							/>{" "}
 							<span>Add New Exchange</span>
 						</AddExchangeButton>*/}
-						<AddExchangeButton href="/myexchanges/setting/:id">
+						<AddExchangeButton href="/myexchanges/setting">
 							<FeatherIcon
 								icon="plus"
 								stroke="currentColor"

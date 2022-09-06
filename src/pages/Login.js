@@ -76,14 +76,14 @@ export default ({
 		initialValues: {
 			email: "",
 			password: "",
-			recaptcha: "",
+			// recaptcha: "",
 		},
 		validationSchema: Yup.object({
 			email: Yup.string()
 				.email("Please enter valid email format.")
 				.required("This field is required."),
 			password: Yup.string().required("This field is required."),
-			recaptcha: Yup.string().required("Please complete the captcha test."),
+			// recaptcha: Yup.string().required("Please complete the captcha test."),
 		}),
 		onSubmit: (values) => {
 			window.location.href = '/myexchanges';
