@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import PropTypes from "prop-types";
 import {
 	BrowserRouter as Router,
 	Route,
@@ -10,6 +11,10 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
+// import recaptcha, Formik & Yup for form validation
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
 import { Container as ContainerBase } from "../../components/Layouts";
 import Sidebar from "../../components/SideBar/index.js";
 import HeaderDetail from "../../components/Header/HeaderDetail.js";
@@ -18,9 +23,6 @@ import {
 	InputBase as Input,
 	InputPassword,
 } from "../../components/Input/index.js"; // eslint-disable-next-line
-import FeatherIcon from "feather-icons-react";
-
-import data from "../myexchanges/exchanges.json";
 
 const Container = tw(
 	ContainerBase
@@ -76,18 +78,40 @@ const InputLabel = styled.label`
 	}
 `;
 const SubmitButton = styled.button`
-	${tw`mt-8 inline-block justify-self-end tracking-wide text-base font-semibold border-none text-black w-56 py-4 rounded-md focus:shadow-outline focus:outline-none text-center disabled:bg-none disabled:bg-gray-400 disabled:text-gray-600 disabled:cursor-not-allowed pointer-events-none`}
+	${tw`mt-8 inline-block justify-self-end tracking-wide text-base font-semibold border-none text-black w-56 py-4 rounded-md focus:shadow-outline focus:outline-none text-center disabled:bg-none disabled:bg-gray-400 disabled:text-gray-600 disabled:cursor-not-allowed disabled:pointer-events-none`}
 `;
 const RemoveButton = styled.button`
 	${tw`mt-8 inline-block tracking-wide text-base font-semibold border border-solid border-state-danger bg-transparent text-state-danger w-56 py-4 mr-2 rounded-md focus:shadow-outline focus:outline-none text-center`}
 `;
 
 export default ({
-	headingText = "Exchange Setting",
+	headingText = "Exchange Setup",
 	submitButtonText = "Connect Exchange",
 	removeButtonText = "Remove",
-}) => {
+	textHint = "How to find it?",
+	apiKeyText = "API Key",
+	apiSecretText = "API Secret",
+	accountNameText = "Account Name",
+	tosHint = "By checking this box you have agreed to our",
+	tosText = "Terms of Service",
 
+	// handling input values
+	formik = useFormik({
+		initialValues: {
+			apikey: "",
+			apisecret: "",
+			accountname: "",
+		},
+		validationSchema: Yup.object({
+			apikey: Yup.string().required("This field is required."),
+			apisecret: Yup.string().required("This field is required."),
+		}),
+		onSubmit: (values) => {
+			window.location.href = '/myexchanges';
+		},
+	}),
+
+}) => {
 	return (
 		<Container>
 			<Content>
@@ -95,13 +119,13 @@ export default ({
 				<MainContent>
 					<HeaderDetail headingText={headingText} />
 					<FormContainer>
-						<Form>
+						<Form onSubmit={formik.handleSubmit}>
 							<FormBlock className="form-block">
 								<InputLabel
 									htmlFor="apikey"
 									className="input-label"
 								>
-									API Key{" "}
+									{apiKeyText}{" "}
 									<span
 										className="require"
 										aria-hidden="true"
@@ -114,9 +138,17 @@ export default ({
 										type="text"
 										name="apikey"
 										id="apikey"
-										value=""
-										placeholder=""
-										className="input"
+										value={formik.values.apikey}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									placeholder=""
+									className={
+										"input" +
+										(formik.errors.apikey &&
+										formik.touched.apikey
+											? " is-invalid"
+											: "")
+									}
 									/>
 									<span tw="inline-block align-middle w-32 ml-2 mt-1">
 										<a
@@ -124,17 +156,23 @@ export default ({
 											tw="text-primary-900"
 											className="acr-primary"
 										>
-											How to find it?
+											{textHint}
 										</a>
 									</span>
 								</div>
+								{formik.errors.apikey &&
+									formik.touched.apikey && (
+										<FormPrompt className="form-prompt">
+											{formik.errors.apikey}
+										</FormPrompt>
+									)}
 							</FormBlock>
 							<FormBlock className="form-block">
 								<InputLabel
 									htmlFor="apisecret"
 									className="input-label"
 								>
-									API Secret{" "}
+									{apiSecretText}{" "}
 									<span
 										className="require"
 										aria-hidden="true"
@@ -146,17 +184,31 @@ export default ({
 									type="text"
 									name="apisecret"
 									id="apisecret"
-									value=""
+									value={formik.values.apisecret}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
 									placeholder=""
-									className="input"
+									className={
+										"input" +
+										(formik.errors.apisecret &&
+										formik.touched.apisecret
+											? " is-invalid"
+											: "")
+									}
 								/>
+								{formik.errors.apisecret &&
+									formik.touched.apisecret && (
+										<FormPrompt className="form-prompt">
+											{formik.errors.apisecret}
+										</FormPrompt>
+									)}
 							</FormBlock>
 							<FormBlock className="form-block">
 								<InputLabel
 									htmlFor="accountname"
 									className="input-label"
 								>
-									Account name
+									{accountNameText}
 								</InputLabel>
 								<Input
 									type="text"
@@ -179,13 +231,13 @@ export default ({
 									/>
 								</span>
 								<InputLabel htmlFor="tos">
-									By checking this box you have agreed to our{" "}
+									{tosHint}{" "}
 									<a
 										href="/termsofservice"
 										tw="text-primary-900"
 										className="acr-primary"
 									>
-										Terms of service
+										{tosText}
 									</a>
 								</InputLabel>
 							</p>
@@ -198,7 +250,7 @@ export default ({
 								</RemoveButton>
 								<SubmitButton
 									type="submit"
-									disabled
+									disabled={!(formik.isValid && formik.dirty)}
 									className="button-primary"
 								>
 									{submitButtonText}

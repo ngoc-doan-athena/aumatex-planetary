@@ -4,7 +4,8 @@ import {
 	Route,
 	Link,
 	Redirect,
-} from "react-router-dom";import tw from "twin.macro";
+} from "react-router-dom";
+import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
@@ -55,8 +56,7 @@ const LabelDanger = tw.span`inline-block py-2 px-2 w-28 rounded-full bg-state-da
 
 const ButtonConnect = tw.a`tracking-wide block w-full border-none py-3 px-4 rounded-md no-underline leading-none box-border text-center text-black font-bold`;
 const ButtonControl = styled.a`
-	${
-		tw`tracking-wide block w-full bg-transparent border border-solid border-gray-500 text-gray-500 hover:text-primary-900 hover:border-primary-900 py-2 px-2 rounded-md drop-shadow-none mr-3 last:mr-0 no-underline leading-none box-border text-center`}
+	${tw`tracking-wide block w-full bg-transparent border border-solid border-gray-500 text-gray-500 hover:text-primary-900 hover:border-primary-900 py-2 px-2 rounded-md drop-shadow-none mr-3 last:mr-0 no-underline leading-none box-border text-center`}
 	* {
 		${tw`inline-block align-middle`}
 	}
@@ -94,7 +94,12 @@ const SubmitButton = styled.a`
 let PageSize = 5;
 
 export default ({ headingText = "My Exchanges" }) => {
-	const [setupExchangeShown, setSetupExchangeShown, editExchangeShown, setEditExchangeShown] = useState(false);
+	const [
+		setupExchangeShown,
+		setSetupExchangeShown,
+		editExchangeShown,
+		setEditExchangeShown,
+	] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const currentTableData = useMemo(() => {
@@ -103,8 +108,8 @@ export default ({ headingText = "My Exchanges" }) => {
 		return data.slice(firstPageIndex, lastPageIndex);
 	}, [currentPage]);
 
-	const handleClick = event => {
-		setSetupExchangeShown(current => !current);
+	const handleClick = (event) => {
+		setSetupExchangeShown((current) => !current);
 	};
 
 	return (
@@ -172,9 +177,16 @@ export default ({ headingText = "My Exchanges" }) => {
 											data-connect={item.isConnected}
 										>
 											<TBodyCell>
-												<ExchangeIcon className={"exchange-icon exchange-icon-" + (item.exchange_icon)}>
+												<ExchangeIcon
+													className={
+														"exchange-icon exchange-icon-" +
+														item.exchange_icon
+													}
+												>
 													<Icon
-														icon={item.exchange_icon}
+														icon={
+															item.exchange_icon
+														}
 														size="32"
 														fill="#fff"
 													/>
@@ -257,7 +269,14 @@ export default ({ headingText = "My Exchanges" }) => {
 												<ExchangeControl className="exchange-control">
 													{item.isConnected ===
 													true ? (
-														<ButtonControl href={"/myexchanges/setting/" + (item._id) + "?connected=true"} className="button-secondary">
+														<ButtonControl
+															href={
+																"/myexchanges/setting/" +
+																item._id +
+																"?connected=true"
+															}
+															className="button-secondary"
+														>
 															<FeatherIcon
 																icon="settings"
 																stroke="currentColor"
@@ -268,7 +287,14 @@ export default ({ headingText = "My Exchanges" }) => {
 															</span>
 														</ButtonControl>
 													) : (
-														<ButtonConnect href={"/myexchanges/setting/" + (item._id) + "?connected=false"} className="button-primary">
+														<ButtonConnect
+															href={
+																"/myexchanges/setting/" +
+																item._id +
+																"?connected=false"
+															}
+															className="button-primary"
+														>
 															Connect
 														</ButtonConnect>
 													)}

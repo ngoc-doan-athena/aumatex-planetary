@@ -32,8 +32,6 @@ const HeaderDetail = ({ headingText }) => {
 		"connected"
 	);
 
-	console.log(connectedStatus)
-
 	return (
 		<Header className="header">
 			<HeaderContent className="header-content">

@@ -136,8 +136,7 @@ export default ({
 			),
 		}),
 		onSubmit: (values) => {
-			console.log("Info sent!");
-			// history.push('/myexchanges');
+			window.location.href="/register-completed"
 		},
 		// onSubmit: (values, actions) => {
 		// 	sleep(300)
