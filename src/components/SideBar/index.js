@@ -10,9 +10,14 @@ import { LogoByTheme as LogoImage } from "../Logo";
 import SidebarPromo from "../SideBar/SidebarPromo.js";
 
 const LogoByTheme = tw(LogoImage)`mx-auto w-20`;
-const SideBar = tw.aside`bg-white dark:bg-gray-black p-4 rounded-t-lg lg:rounded-r-lg drop-shadow-md flex flex-col`;
-const SidebarLogo = tw.h1`text-center m-0`;
-const SidebarMenu = tw.div`relative mt-4`;
+const SideBar = tw.aside`bg-white dark:bg-gray-black box-border py-3 lg:p-4 rounded-t-lg lg:rounded-r-lg drop-shadow-md flex lg:flex-col sticky bottom-0 z-10`;
+const SidebarLogo = tw.h1`hidden lg:block text-center m-0`;
+const SidebarMenu = styled.div`
+	${tw`relative lg:mt-4 flex items-stretch lg:block w-full lg:w-auto`}
+	svg {
+		${tw`w-[20px] h-[20px] lg:w-[24px] lg:h-[24px]`}
+	}
+`;
 
 const SideBarConfig = [
 	{
@@ -76,11 +81,11 @@ const SideBarRoot = () => {
 						to={item.to}
 						key={index}
 						className="sidebar__menu__item"
-						tw="flex items-center no-underline text-black block rounded-md p-3 my-2 text-gray-500 hover:text-primary-700 hover:bg-black dark:hover:bg-gray-dark hover:drop-shadow transition-all ease-in-out duration-150"
+						tw="flex flex-1 items-center no-underline text-black block text-center lg:text-left rounded-md py-3 lg:p-3 lg:my-2 text-[0px] lg:text-[1rem] text-gray-500 lg:hover:text-primary-700 lg:hover:bg-black lg:dark:hover:bg-gray-dark hover:drop-shadow transition-all ease-in-out duration-150"
 					>
 						<span
 							className="sidebar__menu__icon"
-							tw="inline-block align-middle leading-none pr-2"
+							tw="inline-block align-middle leading-none lg:pr-2"
 						>
 							{item.icon}
 						</span>
