@@ -10,7 +10,7 @@ import { LogoByTheme as LogoImage } from "../Logo";
 import SidebarPromo from "../SideBar/SidebarPromo.js";
 
 const LogoByTheme = tw(LogoImage)`mx-auto w-20`;
-const SideBar = tw.aside`bg-white dark:bg-gray-black box-border py-3 lg:p-4 rounded-t-lg lg:rounded-r-lg drop-shadow-md flex lg:flex-col sticky bottom-0 z-10`;
+const SideBar = tw.aside`bg-white dark:bg-gray-black box-border p-3 lg:p-4 rounded-t-lg lg:rounded-r-lg drop-shadow-md flex lg:flex-col sticky bottom-0 z-10`;
 const SidebarLogo = tw.h1`hidden lg:block text-center m-0`;
 const SidebarMenu = styled.div`
 	${tw`relative lg:mt-4 flex items-stretch lg:block w-full lg:w-auto`}

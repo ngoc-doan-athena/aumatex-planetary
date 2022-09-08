@@ -50,6 +50,7 @@ const ExchangePlace = styled.span`
 const ExchangeBalance = tw.span`relative`;
 const ExchangeStatus = tw.span`relative`;
 const ExchangeControl = tw.div`relative`;
+const ExchangeDetail = tw.div`block text-[0.8rem] lg:hidden font-normal`;
 
 const LabelSuccess = tw.span`inline-block py-2 px-2 w-28 rounded-full bg-state-success/10 text-state-success border border-solid border-state-success text-center`;
 const LabelDanger = tw.span`inline-block py-2 px-2 w-28 rounded-full bg-state-danger/10 text-state-danger border border-solid border-state-danger text-center`;
@@ -135,24 +136,28 @@ export default ({ headingText = "My Exchanges" }) => {
 									<THeadCell
 										data-th="Wallet name"
 										aria-label="Wallet name"
+										tw="hidden lg:table-cell"
 									>
 										Wallet name
 									</THeadCell>
 									<THeadCell
 										data-th="Creation date"
 										aria-label="Creation date"
+										tw="hidden lg:table-cell"
 									>
 										Creation date
 									</THeadCell>
 									<THeadCell
 										data-th="Used on"
 										aria-label="Used on"
+										tw="hidden lg:table-cell"
 									>
 										Used on
 									</THeadCell>
 									<THeadCell
 										data-th="Balance"
 										aria-label="Balance"
+										tw="hidden lg:table-cell"
 									>
 										Balance
 									</THeadCell>
@@ -195,9 +200,30 @@ export default ({ headingText = "My Exchanges" }) => {
 											<TBodyCell>
 												<ExchangeName className="exchange-name">
 													{item.exchange_name}
+													{item.isConnected ===
+													true ? (
+														<ExchangeDetail>
+															<span tw="text-gray-900">
+																{item.balance}
+															</span>
+															{" "}-{" "}
+															<a
+																href={
+																	item.portfolio_url
+																}
+																tw="text-blue-900"
+															>
+																{
+																	item.portfolio_name
+																}
+															</a>
+														</ExchangeDetail>
+													) : (
+														''
+													)}
 												</ExchangeName>
 											</TBodyCell>
-											<TBodyCell>
+											<TBodyCell tw="hidden lg:table-cell">
 												<ExchangeApi className="wallet-name">
 													{item.isConnected ===
 													true ? (
@@ -209,7 +235,7 @@ export default ({ headingText = "My Exchanges" }) => {
 													)}
 												</ExchangeApi>
 											</TBodyCell>
-											<TBodyCell>
+											<TBodyCell tw="hidden lg:table-cell">
 												<ExchangeDate className="exchange-date">
 													{item.isConnected ===
 													true ? (
@@ -221,7 +247,7 @@ export default ({ headingText = "My Exchanges" }) => {
 													)}
 												</ExchangeDate>
 											</TBodyCell>
-											<TBodyCell>
+											<TBodyCell tw="hidden lg:table-cell">
 												<ExchangePlace className="exchange-place">
 													{item.isConnected ===
 													true ? (
@@ -239,7 +265,7 @@ export default ({ headingText = "My Exchanges" }) => {
 													)}
 												</ExchangePlace>
 											</TBodyCell>
-											<TBodyCell>
+											<TBodyCell tw="hidden lg:table-cell">
 												<ExchangeBalance className="exchange-balance">
 													{item.isConnected ===
 													true ? (
@@ -337,104 +363,3 @@ export default ({ headingText = "My Exchanges" }) => {
 		</Container>
 	);
 };
-
-// function ExchangeForm() {
-// 	return (
-// 		<FormContainer>
-// 			<Form>
-// 				<FormBlock className="form-block">
-// 					<InputLabel
-// 						htmlFor="apikey"
-// 						className="input-label"
-// 					>
-// 						API Key{" "}
-// 						<span
-// 							className="require"
-// 							aria-hidden="true"
-// 						>
-// 							*
-// 						</span>
-// 					</InputLabel>
-// 					<div tw="flex flex-row items-center">
-// 						<Input
-// 							type="text"
-// 							name="apikey"
-// 							id="apikey"
-// 							value=""
-// 							placeholder=""
-// 							className="input"
-// 						/>
-// 						<span tw="inline-block align-middle w-32 ml-2 mt-1">
-// 							<a
-// 								href="#"
-// 								tw="text-primary-900"
-// 								className="acr-primary"
-// 							>
-// 								How to find it?
-// 							</a>
-// 						</span>
-// 					</div>
-// 				</FormBlock>
-// 				<FormBlock className="form-block">
-// 					<InputLabel
-// 						htmlFor="apisecret"
-// 						className="input-label"
-// 					>
-// 						API Secret{" "}
-// 						<span
-// 							className="require"
-// 							aria-hidden="true"
-// 						>
-// 							*
-// 						</span>
-// 					</InputLabel>
-// 					<Input
-// 						type="text"
-// 						name="apisecret"
-// 						id="apisecret"
-// 						value=""
-// 						placeholder=""
-// 						className="input"
-// 					/>
-// 				</FormBlock>
-// 				<FormBlock className="form-block">
-// 					<InputLabel
-// 						htmlFor="accountname"
-// 						className="input-label"
-// 					>
-// 						Account name
-// 					</InputLabel>
-// 					<Input
-// 						type="text"
-// 						name="accountname"
-// 						id="accountname"
-// 						value=""
-// 						placeholder=""
-// 						className="input"
-// 					/>
-// 				</FormBlock>
-// 				<p tw="mt-4 mb-0 text-xs text-gray-600">
-// 					<span tw="inline-block align-text-bottom">
-// 						<input
-// 							type="checkbox"
-// 							name="tos"
-// 							id="tos"
-// 							className="input-checkbox"
-// 							tw="appearance-none border-solid border-2 border-gray-900 rounded-sm"
-// 						/>
-// 					</span>
-// 					<InputLabel htmlFor="tos">
-// 						By checking this box you have agreed to our{" "}
-// 						<a
-// 							href="/termsofservice"
-// 							tw="text-primary-900"
-// 							className="acr-primary"
-// 						>
-// 							Terms of service
-// 						</a>
-// 					</InputLabel>
-// 				</p>
-// 			</Form>
-// 		</FormContainer>
-// 	);
-// }
