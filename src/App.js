@@ -1,6 +1,12 @@
 import React from "react";
+import {
+	useParams, //eslint-disable-line
+	BrowserRouter as Router,
+	Routes,
+	Route,
+} from "react-router-dom";
+
 import "../src/index.css";
-import tw from "twin.macro";
 
 import { css } from "styled-components/macro"; //eslint-disable-line
 
@@ -18,16 +24,6 @@ import RegisterCompletePage from "./pages/authentication/signup/Complete.js";
 import SignupPage from "./pages/Signup.js";
 import MainLandingPage from "./MainLandingPage.js";
 import ContactPage from "./pages/contact/index.js";
-
-// import component page
-// import ComponentPage from "../src/ComponentPage.js";
-
-import {
-	useParams, //eslint-disable-line
-	BrowserRouter as Router,
-	Routes,
-	Route,
-} from "react-router-dom";
 
 export default function App() {
 	return (

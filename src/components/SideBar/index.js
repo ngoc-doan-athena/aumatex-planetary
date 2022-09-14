@@ -14,9 +14,6 @@ const SideBar = tw.aside`bg-white dark:bg-gray-black box-border p-3 lg:p-4 round
 const SidebarLogo = tw.h1`hidden lg:block text-center m-0`;
 const SidebarMenu = styled.div`
 	${tw`relative lg:mt-4 flex items-stretch lg:block w-full lg:w-auto`}
-	svg {
-		${tw`w-[20px] h-[20px] lg:w-[24px] lg:h-[24px]`}
-	}
 `;
 
 const SideBarConfig = [

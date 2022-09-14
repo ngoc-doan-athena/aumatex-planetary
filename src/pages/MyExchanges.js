@@ -31,13 +31,18 @@ const MainContent = tw.div`flex-1 p-4 pt-0 lg:px-12 lg:pb-8 order-first lg:order
 
 const Table = tw.table`w-full border-separate`;
 const THead = tw.thead``;
-const THeadCell = tw.th`align-middle bg-gray-100 dark:bg-gray-dark dark:text-white p-3 text-left first:w-12 last:w-28 first:rounded-l-md last:rounded-r-md`;
+const THeadCell = tw.th`align-middle bg-gray-100 dark:bg-gray-dark dark:text-white py-3 px-1 lg:p-3 text-left first:w-12 last:w-28 first:rounded-l-md last:rounded-r-md`;
 const TBody = tw.tbody`p-3`;
 const TBodyRow = tw.tr`transition-all hover:bg-gray-100 dark:hover:bg-gray-dark`;
-const TBodyCell = tw.td`align-middle p-3 first:rounded-l-md last:rounded-r-md`;
+const TBodyCell = tw.td`align-middle py-3 px-1 lg:p-3 first:rounded-l-md last:rounded-r-md`;
 const TRow = tw.tr`relative`;
 
-const ExchangeIcon = tw.span`p-2 rounded-full inline-block leading-none text-[0px]`;
+const ExchangeIcon = styled.span`
+	${tw`p-2 rounded-full inline-block leading-none text-[0px]`}
+	svg {
+		${tw`w-[26px] h-[26px] lg:w-auto lg:h-auto`}
+	}
+`;
 const ExchangeName = tw.span`font-bold`;
 const ExchangeApi = tw.span`relative`;
 const ExchangeDate = tw.span`relative`;
@@ -52,8 +57,8 @@ const ExchangeStatus = tw.span`relative`;
 const ExchangeControl = tw.div`relative`;
 const ExchangeDetail = tw.div`block text-[0.8rem] lg:hidden font-normal`;
 
-const LabelSuccess = tw.span`inline-block py-2 px-2 w-28 rounded-full bg-state-success/10 text-state-success border border-solid border-state-success text-center`;
-const LabelDanger = tw.span`inline-block py-2 px-2 w-28 rounded-full bg-state-danger/10 text-state-danger border border-solid border-state-danger text-center`;
+const LabelSuccess = tw.span`inline-block py-2 px-2 lg:w-28 rounded-full text-[0px] lg:text-[0.8rem] bg-state-success/10 text-state-success border border-solid border-state-success text-center`;
+const LabelDanger = tw.span`inline-block py-2 px-2 lg:w-28 rounded-full text-[0px] lg:text-[0.8rem] bg-state-danger/10 text-state-danger border border-solid border-state-danger text-center`;
 
 const ButtonConnect = tw.a`tracking-wide block w-full border-none py-3 px-4 rounded-md no-underline leading-none box-border text-center text-black font-bold`;
 const ButtonControl = styled.a`
@@ -205,8 +210,8 @@ export default ({ headingText = "My Exchanges" }) => {
 														<ExchangeDetail>
 															<span tw="text-gray-900">
 																{item.balance}
-															</span>
-															{" "}-{" "}
+															</span>{" "}
+															-{" "}
 															<a
 																href={
 																	item.portfolio_url
@@ -219,7 +224,7 @@ export default ({ headingText = "My Exchanges" }) => {
 															</a>
 														</ExchangeDetail>
 													) : (
-														''
+														""
 													)}
 												</ExchangeName>
 											</TBodyCell>

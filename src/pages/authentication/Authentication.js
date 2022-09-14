@@ -3,35 +3,17 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; // eslint-disable-next-line
 
-import illustrationLogin from "../images/xtrading-login-illustration.svg";
-import illustrationSignup from "../images/xtrading-signup-illustration.svg";
-import logoLight from "../../images/logo-xtrading-text.svg";
-import logoDark from "../../images/logo-xtrading-text-dark.svg";
-import Icon from "../components/Icon/index.js";
-
-import { ThemeContext } from "../../helpers/ThemeContext";
-
-import { Container as ContainerBase } from "../components/Layouts";
 import {
 	InputBase as Input,
 	InputPassword,
-} from "../components/Input/index.js";
+} from "../../components/Input/index.js";
 
-// import recaptcha, Formik & Yup for form validation
-import { useFormik, Field, ErrorMessage } from "formik";
+// form validation
+import Firebase from 'firebase/compat/app';
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const Container = tw(
-	ContainerBase
-)`min-h-screen font-medium flex justify-center m-0 font-inter`;
-const Content = tw.div`bg-gray-100 dark:bg-black text-black dark:text-white flex flex-col lg:flex-row justify-center flex-1 relative`;
-const MainContainer = tw.div`lg:w-1/2 xl:w-1/2 p-3 sm:p-6 flex flex-col box-border justify-center justify-items-center content-center `;
-const LogoLink = tw.a`lg:absolute lg:top-0 lg:left-0 p-8 pb-2 relative text-center block`;
-const LogoImage = tw.img`mx-auto w-20`;
-const MainContent = tw.div`flex flex-col items-center px-4`;
-const Heading = tw.h1`text-2xl xl:text-3xl font-extrabold mt-0 mb-0 lg:mb-2`;
-const SubText = tw.p`text-gray-600 text-xs`;
 const FormContainer = tw.div`w-full flex-1 mt-1`;
 const Form = tw.form`mx-auto max-w-xs`;
 const FormBlock = styled.div`
@@ -49,164 +31,379 @@ const InputLabel = styled.label`
 	}
 `;
 const SubmitButton = styled.button`
-	${tw`mt-8 tracking-wide text-base font-semibold border-none text-black w-full py-4 rounded-md focus:shadow-outline focus:outline-none text-center`}
-`;
-const IllustrationContainer = tw.div`flex-1 bg-primary-100 text-center hidden lg:flex justify-center`;
-const IllustrationImage = styled.div`
-	${(props) => `background-image: url("${props.imageSrc}");`}
-	${tw`m-12 xl:m-16 w-3/4 max-w-lg bg-contain bg-center bg-no-repeat`}
+	${tw`mt-8 tracking-wide text-base font-semibold border-none text-black w-full py-4 rounded-md focus:shadow-outline focus:outline-none text-center disabled:bg-none disabled:bg-gray-400 disabled:text-gray-600 disabled:cursor-not-allowed disabled:pointer-events-none`}
 `;
 
-// toggle logo by theme
-const logoTheming = () => {
-	const { theme } = React.useContext(ThemeContext);
-
-	return <LogoImage src={theme === "dark" ? logoDark : logoLight} alt="xTrading" />
-};
-
-
-export default ({
-	logoLinkUrl = "/",
-	illustrationLoginImageSrc = illustrationLogin,
-	illustrationSignupImageSrc = illustrationSignup,
-	headingText = "Welcome to xTrading",
-	subTextLogin = "Please login to proceed.",
-	subTextSignup = "Please create an account to get started.",
+const LoginForm = ({
 	inputLabelEmail = "Email Address",
 	inputLabelPassword = "Password",
-	inputLabelConfirmPassword = "Confirm Password",
 	submitButtonText = "Continue",
 	forgotPasswordText = "Forgot password?",
 	forgotPasswordUrl = "/forgotpassword",
-	tosText = "Terms of Service",
-	tosUrl = "/termsofservice",
-	privacyText = "Privacy Policy",
-	privacyUrl = "/privacy",
 	signupPrompt = "Don't have an account?",
 	signupText = "Sign up",
 	signupUrl = "/signup",
-	loginPrompt = "Already have an account?",
-	loginText = "Login",
-	loginUrl = "/login",
+}) => {
+	const formik = useFormik({
+		initialValues: {
+			email: "",
+			password: "",
+			recaptcha: "",
+		},
+		validationSchema: Yup.object({
+			email: Yup.string()
+				.email("Please enter valid email format.")
+				.required("This field is required."),
+			password: Yup.string().required("This field is required."),
+			recaptcha: Yup.string().required(
+				"Please complete the captcha test."
+			),
+		}),
+		onSubmit: (values) => {
+			window.location.href = "/myexchanges";
+		},
+	});
+	return (
+		<FormContainer>
+			<Form onSubmit={formik.handleSubmit}>
+				<FormBlock className="form-block">
+					<InputLabel htmlFor="email" className="input-label">
+						{inputLabelEmail}{" "}
+						<span className="require" aria-hidden="true">
+							*
+						</span>
+					</InputLabel>
+					<Input
+						type="text"
+						name="email"
+						value={formik.values.email}
+						onChange={formik.handleChange}
+						onBlur={formik.handleBlur}
+						placeholder=""
+						className={
+							"input" +
+							(formik.errors.email && formik.touched.email
+								? " is-invalid"
+								: "")
+						}
+						autoComplete="username"
+					/>
+					{formik.errors.email && formik.touched.email && (
+						<p className="form-prompt">{formik.errors.email}</p>
+					)}
+				</FormBlock>
+				<FormBlock className="form-block">
+					<InputLabel htmlFor="password" className="input-label">
+						{inputLabelPassword}{" "}
+						<span className="require" aria-hidden="true">
+							*
+						</span>
+					</InputLabel>
+					<InputPassword
+						name="password"
+						value={formik.values.password}
+						onChange={formik.handleChange}
+						onBlur={formik.handleBlur}
+						placeholder=""
+						className={
+							"input" +
+							(formik.errors.password && formik.touched.password
+								? " is-invalid"
+								: "")
+						}
+						autoComplete="current-password"
+					/>
 
-}) => (
-	<Container>
-		<Content>
-			<LogoLink href={logoLinkUrl}>
-				<logoTheming />
-			</LogoLink>
-			<IllustrationContainer>
-				<IllustrationImage imageSrc={illustrationLoginImageSrc} alt="" />
-			</IllustrationContainer>
-			<MainContainer>
-				<MainContent>
-					<Heading>{headingText}</Heading>
-					<SubText>{subText}</SubText>
-					<FormContainer>
-						<Form onSubmit={formik.handleSubmit}>
-							<FormBlock className="form-block">
-								<InputLabel
-									htmlFor="email"
-									className="input-label"
-								>
-									{inputLabelEmail}{" "}
-									<span
-										className="require"
-										aria-hidden="true"
-									>
-										*
-									</span>
-								</InputLabel>
-								<Input
-									type="text"
-									name="email"
-									value={formik.values.email}
-									onChange={formik.handleChange}
-									onBlur={formik.handleBlur}
-									placeholder=""
-									className={
-										"input" +
-										(formik.errors.email &&
-										formik.touched.email
-											? " is-invalid"
-											: "")
-									}
-									autoComplete="username"
-								/>
-								{formik.errors.email &&
-									formik.touched.email && (
-										<p className="form-prompt">
-											{formik.errors.email}
-										</p>
-									)}
-							</FormBlock>
-							<FormBlock className="form-block">
-								<InputLabel
-									htmlFor="password"
-									className="input-label"
-								>
-									{inputLabelPassword}{" "}
-									<span
-										className="require"
-										aria-hidden="true"
-									>
-										*
-									</span>
-								</InputLabel>
-								<InputPassword
-									name="password"
-									value={formik.values.password}
-									onChange={formik.handleChange}
-									onBlur={formik.handleBlur}
-									placeholder=""
-									className={
-										"input" +
-										(formik.errors.password &&
-										formik.touched.password
-											? " is-invalid"
-											: "")
-									}
-									autoComplete="current-password"
-								/>
+					{formik.errors.password && formik.touched.password && (
+						<p className="form-prompt">{formik.errors.password}</p>
+					)}
+				</FormBlock>
+				<FormBlock className="form-block">
+					<div className="box-captcha" tw="flex justify-center">
+						<ReCAPTCHA
+							sitekey="6Lc5nCkhAAAAAPf6YClkfVSILUdUJlJ2Fhr5kHl0"
+							data-size="compact"
+							verifyCallback={(response) => {
+								formik.setFieldValue("recaptcha", response);
+							}}
+						/>
+					</div>
+					{formik.errors.recaptcha && formik.touched.recaptcha && (
+						<FormPrompt className="form-prompt">
+							{formik.errors.recaptcha}
+						</FormPrompt>
+					)}
+				</FormBlock>
 
-								{formik.errors.password &&
-									formik.touched.password && (
-										<p className="form-prompt">
-											{formik.errors.password}
-										</p>
-									)}
-							</FormBlock>
+				<SubmitButton
+					type="submit"
+					className="button-primary"
+				>
+					{submitButtonText}
+				</SubmitButton>
+			</Form>
+			<p tw="mt-4 text-sm text-gray-600 text-center">
+				{signupPrompt}{" "}
+				<a
+					href={signupUrl}
+					tw="text-primary-900"
+					className="acr-primary"
+				>
+					{signupText}
+				</a>
+			</p>
+		</FormContainer>
+	);
+};
 
-							<div
-								className="box-captcha"
-								tw="mt-4 flex justify-center"
-							>
-								<ReCAPTCHA
-									sitekey="6Lc5nCkhAAAAAPf6YClkfVSILUdUJlJ2Fhr5kHl0"
-									data-size="compact"
-								/>
-							</div>
+const SignupForm = ({
+	inputLabelUsername = "Username",
+	inputLabelEmail = "Email Address",
+	inputLabelPassword = "Password",
+	inputLabelConfirmPassword = "Confirm Password",
+	agreementPrompt = "I have read and agreed to the",
+	tosText = "Terms of Service",
+	tosUrl = "/termsofservice",
+	privacyText = "Privacy Policy",
+	privacyPolicyUrl = "/privacy",
+	submitButtonText = "Continue",
+	signInPrompt = "Already have an account?",
+	signInText = "Sign In",
+	signInUrl = "/login",
+}) => {
+	const formik = useFormik({
+		initialValues: {
+			username: "",
+			email: "",
+			password: "",
+			confirmPassword: "",
+			tos: false,
+		},
+		validationSchema: Yup.object({
+			username: Yup.string().required("This field is required."),
+			email: Yup.string()
+				.email("Please enter valid email format.")
+				.required("This field is required."),
+			password: Yup.string()
+				.required("This field is required.")
+				.min(8, "Password should have at least 8 characters.")
+				.matches(
+					/(?=.*[A-Za-z])+/,
+					"Password must contain uppercase and lowercase characters."
+				)
+				.matches(
+					/(?=.*[A-Z])+/,
+					"Password must contain at least one uppercase character."
+				)
+				.matches(
+					/(?=.*[a-z])+/,
+					"Password must contain at least one lowercase character."
+				)
+				.matches(
+					/(?=.*\d)+/,
+					"Password must contain at least one number."
+				)
+				.matches(
+					/(?=.*[@$!%*#?&])+/,
+					"Password must contain at least one special character."
+				),
+			confirmPassword: Yup.string()
+				.oneOf([Yup.ref("password")], "Passwords should match.")
+				.required("This field is required."),
+			tos: Yup.boolean().oneOf(
+				[true],
+				"You must accept the terms and conditions."
+			),
+		}),
+		onSubmit: (values) => {
+			let ref1 = Firebase.database()
+				.ref()
+				.child("users")
+				.push();
+			let key = ref1.key;
+			values.id = key;
+			ref1.set(values);
 
-							<SubmitButton
-								type="submit"
-								className="button-primary"
-							>
-								{submitButtonText}
-							</SubmitButton>
-						</Form>
-						<p tw="mt-4 text-sm text-gray-600 text-center">
-							{signupPrompt}{" "}
-							<a
-								href={signupUrl}
-								tw="text-primary-900"
-								className="acr-primary"
-							>
-								{signupText}
-							</a>
-						</p>
-					</FormContainer>
-				</MainContent>
-			</MainContainer>
-		</Content>
-	</Container>
-);
+			window.location.href = "/register-completed";
+		},
+	});
+	return (
+		<FormContainer>
+			<Form onSubmit={formik.handleSubmit}>
+				<FormBlock className="form-block">
+					<InputLabel htmlFor="username" className="input-label">
+						{inputLabelUsername}{" "}
+						<span className="require" aria-hidden="true">
+							*
+						</span>
+					</InputLabel>
+					<Input
+						type="text"
+						name="username"
+						id="username"
+						value={formik.values.username}
+						onChange={formik.handleChange}
+						onBlur={formik.handleBlur}
+						placeholder=""
+						className={
+							"input" +
+							(formik.errors.username && formik.touched.username
+								? " is-invalid"
+								: "")
+						}
+					/>
+					{formik.errors.username && formik.touched.username && (
+						<FormPrompt className="form-prompt">
+							{formik.errors.username}
+						</FormPrompt>
+					)}
+				</FormBlock>
+				<FormBlock className="form-block">
+					<InputLabel htmlFor="email" className="input-label">
+						{inputLabelEmail}{" "}
+						<span className="require" aria-hidden="true">
+							*
+						</span>
+					</InputLabel>
+					<Input
+						type="email"
+						name="email"
+						id="email"
+						value={formik.values.email}
+						onChange={formik.handleChange}
+						onBlur={formik.handleBlur}
+						placeholder=""
+						className={
+							"input" +
+							(formik.errors.email && formik.touched.email
+								? " is-invalid"
+								: "")
+						}
+					/>
+					{formik.errors.email && formik.touched.email && (
+						<FormPrompt className="form-prompt">
+							{formik.errors.email}
+						</FormPrompt>
+					)}
+				</FormBlock>
+				<FormBlock className="form-block">
+					<InputLabel htmlFor="password" className="input-label">
+						{inputLabelPassword}{" "}
+						<span className="require" aria-hidden="true">
+							*
+						</span>
+					</InputLabel>
+					<InputPassword
+						name="password"
+						id="password"
+						value={formik.values.password}
+						onChange={formik.handleChange}
+						onBlur={formik.handleBlur}
+						placeholder=""
+						className={
+							"input" +
+							(formik.errors.password && formik.touched.password
+								? " is-invalid"
+								: "")
+						}
+						autoComplete="new-password"
+					/>
+					{formik.errors.password && formik.touched.password && (
+						<FormPrompt className="form-prompt">
+							{formik.errors.password}
+						</FormPrompt>
+					)}
+				</FormBlock>
+				<FormBlock className="form-block">
+					<InputLabel
+						htmlFor="confirmPassword"
+						className="input-label"
+					>
+						{inputLabelConfirmPassword}{" "}
+						<span className="require" aria-hidden="true">
+							*
+						</span>
+					</InputLabel>
+					<InputPassword
+						name="confirmPassword"
+						id="confirmPassword"
+						value={formik.values.confirmPassword}
+						onChange={formik.handleChange}
+						onBlur={formik.handleBlur}
+						placeholder=""
+						className={
+							"input" +
+							(formik.errors.confirmPassword &&
+							formik.touched.confirmPassword
+								? " is-invalid"
+								: "")
+						}
+						autoComplete="new-password"
+					/>
+					{formik.errors.confirmPassword &&
+						formik.touched.confirmPassword && (
+							<FormPrompt className="form-prompt">
+								{formik.errors.confirmPassword}
+							</FormPrompt>
+						)}
+				</FormBlock>
+
+				<p tw="mt-4 mb-0 text-xs text-gray-600">
+					<span tw="inline-block align-text-bottom">
+						<input
+							type="checkbox"
+							name="tos"
+							id="tos"
+							onChange={formik.handleChange}
+							value="tos"
+							className="input-checkbox"
+							tw="appearance-none border-solid border-2 border-gray-900 rounded-sm"
+						/>
+					</span>
+					<InputLabel htmlFor="tos">
+						{agreementPrompt}{" "}
+						<a
+							href={tosUrl}
+							tw="text-primary-900"
+							className="acr-primary"
+						>
+							{tosText}
+						</a>{" "}
+						and{" "}
+						<a
+							href={privacyPolicyUrl}
+							tw="text-primary-900"
+							className="acr-primary"
+						>
+							{privacyText}
+						</a>
+					</InputLabel>
+				</p>
+				{formik.errors.tos && formik.touched.tos && (
+					<FormPrompt className="form-prompt">
+						{formik.errors.tos}
+					</FormPrompt>
+				)}
+
+				<SubmitButton
+					type="submit"
+					className="button-primary"
+				>
+					{submitButtonText}
+				</SubmitButton>
+			</Form>
+			<p tw="mt-4 text-sm text-gray-600 text-center">
+				{signInPrompt}{" "}
+				<a
+					href={signInUrl}
+					tw="text-primary-900"
+					className="acr-primary"
+				>
+					{signInText}
+				</a>
+			</p>
+		</FormContainer>
+	);
+};
+
+export { SignupForm, LoginForm };
