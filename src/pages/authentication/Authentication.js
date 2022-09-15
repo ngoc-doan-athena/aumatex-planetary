@@ -12,7 +12,7 @@ import {
 import Firebase from 'firebase/compat/app';
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import ReCAPTCHA from "react-google-recaptcha";
+import Recaptcha from "react-google-recaptcha";
 
 const FormContainer = tw.div`w-full flex-1 mt-1`;
 const Form = tw.form`mx-auto max-w-xs`;
@@ -120,8 +120,9 @@ const LoginForm = ({
 				</FormBlock>
 				<FormBlock className="form-block">
 					<div className="box-captcha" tw="flex justify-center">
-						<ReCAPTCHA
+						<Recaptcha
 							sitekey="6Lc5nCkhAAAAAPf6YClkfVSILUdUJlJ2Fhr5kHl0"
+							render="explicit"
 							data-size="compact"
 							verifyCallback={(response) => {
 								formik.setFieldValue("recaptcha", response);

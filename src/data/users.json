@@ -1,0 +1,569 @@
+[
+  {
+    "_id": "632156f17f314d624049bde6",
+    "guid": "c5488ca1-5ee4-4a66-9e9a-96e0cd285f6b",
+    "balance": "$90,602",
+    "avatar": "https://ui-avatars.com/api/?name=charisecharisma99&background=random&color=fff&rounded=true&bold=true",
+    "name": "Clayton Taylor",
+    "email": "claytontaylor@voipa.com",
+    "phone": "+(893) 443-2289",
+    "registered": "2022-01-26",
+    "username": "charisecharisma99",
+    "wallet_id": "np4svr9oqh",
+    "exchange": [
+      {
+        "is_connected": true,
+        "secret": "bznxg04b5s20homdn9sddoy9mymj5m4m",
+        "name": "Bybit",
+        "balance": "$4,191",
+        "portfolio_url": "/strategies/myportfolio/684kzsb"
+      },
+      {
+        "is_connected": false,
+        "secret": "le5fnt3p7951i08jhwgptib7oeuknznq",
+        "name": "Binance",
+        "balance": "$5,847",
+        "portfolio_url": "/strategies/myportfolio/hxpjlwm"
+      },
+      {
+        "is_connected": true,
+        "secret": "tkfofle8ql74y5je0cpr9t0grod54w4",
+        "name": "Coinbase",
+        "balance": "$6,060",
+        "portfolio_url": "/strategies/myportfolio/0n37g52"
+      }
+    ],
+    "country": "USA",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f1b3ba98adba68af10",
+    "guid": "d81018a5-fa3e-4cdd-9625-86b976eff184",
+    "balance": "$98,559",
+    "avatar": "https://ui-avatars.com/api/?name=valency22&background=random&color=fff&rounded=true&bold=true",
+    "name": "Morrison Mcintosh",
+    "email": "morrisonmcintosh@voipa.com",
+    "phone": "+(936) 517-2910",
+    "registered": "2022-04-24",
+    "username": "valency22",
+    "wallet_id": "bq5otpw1x4n",
+    "exchange": [
+      {
+        "is_connected": false,
+        "secret": "ayrej2t3nx51pxno34j063hrumdkgu8",
+        "name": "Coinbase",
+        "balance": "$4,571",
+        "portfolio_url": "/strategies/myportfolio/7pssej6"
+      },
+      {
+        "is_connected": false,
+        "secret": "uzvp8tkhre4877lfjmvcakzani7o9hdm",
+        "name": "Binance",
+        "balance": "$9,223",
+        "portfolio_url": "/strategies/myportfolio/k3r5m7s"
+      }
+    ],
+    "country": "Hong Kong",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f131fa46563d50347d",
+    "guid": "13ed9a27-a241-4b9e-be15-cfeac537a293",
+    "balance": "$33,049",
+    "avatar": "https://ui-avatars.com/api/?name=valency80&background=random&color=fff&rounded=true&bold=true",
+    "name": "Lynette Gardner",
+    "email": "lynettegardner@voipa.com",
+    "phone": "+(995) 589-3534",
+    "registered": "2022-05-04",
+    "username": "valency80",
+    "wallet_id": "ll3qtj5n5u",
+    "exchange": [
+      {
+        "is_connected": false,
+        "secret": "nga5g8hf722z7fp6dmoqew6v2xqsoiq",
+        "name": "FTX",
+        "balance": "$8,391",
+        "portfolio_url": "/strategies/myportfolio/8e8tpli"
+      }
+    ],
+    "country": "Vietnam",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f17718fcf684c8d389",
+    "guid": "d79c4ec7-8877-4976-a208-00272920edbe",
+    "balance": "$37,306",
+    "avatar": "https://ui-avatars.com/api/?name=sapanwood40&background=random&color=fff&rounded=true&bold=true",
+    "name": "Betty Garner",
+    "email": "bettygarner@voipa.com",
+    "phone": "+(835) 421-2873",
+    "registered": "2022-02-25",
+    "username": "sapanwood40",
+    "wallet_id": "6ovc9leazp9",
+    "exchange": [
+      {
+        "is_connected": true,
+        "secret": "hhnxf6jhfl22g4uq67am3cvibuff5xi",
+        "name": "Bybit",
+        "balance": "$8,508",
+        "portfolio_url": "/strategies/myportfolio/15352q4"
+      },
+      {
+        "is_connected": false,
+        "secret": "9qklad4acl51brogjihngev2aacdkmg",
+        "name": "Bybit",
+        "balance": "$6,846",
+        "portfolio_url": "/strategies/myportfolio/afdu7h0"
+      },
+      {
+        "is_connected": true,
+        "secret": "0x8jtx272k17lqo6636x9cp66m8jcam7",
+        "name": "Kucoin",
+        "balance": "$7,816",
+        "portfolio_url": "/strategies/myportfolio/fycs4aq"
+      },
+      {
+        "is_connected": false,
+        "secret": "56j5n52aze81m96rzbt67ja68l56w5r",
+        "name": "Coinbase",
+        "balance": "$6,688",
+        "portfolio_url": "/strategies/myportfolio/e5jgupp"
+      },
+      {
+        "is_connected": true,
+        "secret": "22qndgg9n21ucjbxkgajflnavnj0g8h",
+        "name": "Kucoin",
+        "balance": "$461",
+        "portfolio_url": "/strategies/myportfolio/fsg4bon"
+      }
+    ],
+    "country": "Singapore",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f1be6c88f23b4df70f",
+    "guid": "d3ee6965-c69d-46c3-9c9b-473bb5e3aa4a",
+    "balance": "$28,379",
+    "avatar": "https://ui-avatars.com/api/?name=saidel24&background=random&color=fff&rounded=true&bold=true",
+    "name": "Tanisha Michael",
+    "email": "tanishamichael@voipa.com",
+    "phone": "+(990) 478-3745",
+    "registered": "2022-06-12",
+    "username": "saidel24",
+    "wallet_id": "2f0xht6ulvp",
+    "exchange": [
+      {
+        "is_connected": true,
+        "secret": "x7yoxb4eqd94dmyejju3p5yx6lkxwlxn",
+        "name": "Kucoin",
+        "balance": "$485",
+        "portfolio_url": "/strategies/myportfolio/jrno9nl"
+      },
+      {
+        "is_connected": true,
+        "secret": "4fi2sav0er69u9bfp2qzay9cc20vn1c",
+        "name": "Coinbase",
+        "balance": "$1,488",
+        "portfolio_url": "/strategies/myportfolio/a4fhlk9"
+      }
+    ],
+    "country": "Canada",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f19b987d6eee9b5d1f",
+    "guid": "a365bbe2-d42f-49f3-99f1-4c9af9aad5a8",
+    "balance": "$62,838",
+    "avatar": "https://ui-avatars.com/api/?name=sukkoth68&background=random&color=fff&rounded=true&bold=true",
+    "name": "Vickie Barrett",
+    "email": "vickiebarrett@voipa.com",
+    "phone": "+(893) 507-3530",
+    "registered": "2022-09-14",
+    "username": "sukkoth68",
+    "wallet_id": "vaiap02tv2j",
+    "exchange": [
+      {
+        "is_connected": true,
+        "secret": "bnuv67b3v99t2adsostsprhgoa34m",
+        "name": "Coinbase",
+        "balance": "$5,632",
+        "portfolio_url": "/strategies/myportfolio/h1lgbr4"
+      },
+      {
+        "is_connected": false,
+        "secret": "cracs3tg77754mj29f95zhwzayewct",
+        "name": "Kucoin",
+        "balance": "$8,963",
+        "portfolio_url": "/strategies/myportfolio/faduqgi"
+      },
+      {
+        "is_connected": true,
+        "secret": "22ajiwsd7q87ggpkp0u0rp0rtudhby0r",
+        "name": "Coinbase",
+        "balance": "$7,182",
+        "portfolio_url": "/strategies/myportfolio/0fatv0t"
+      },
+      {
+        "is_connected": false,
+        "secret": "r1sjjy6g371jqvjccsiqj581yfv6b8",
+        "name": "Binance",
+        "balance": "$9,411",
+        "portfolio_url": "/strategies/myportfolio/88ft2yz"
+      }
+    ],
+    "country": "Hong Kong",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f16fc1742070f28ab2",
+    "guid": "8f452dc7-790d-4740-9045-12ecacdd952d",
+    "balance": "$11,300",
+    "avatar": "https://ui-avatars.com/api/?name=sapanwood78&background=random&color=fff&rounded=true&bold=true",
+    "name": "Mattie Mayer",
+    "email": "mattiemayer@voipa.com",
+    "phone": "+(851) 460-3632",
+    "registered": "2022-07-07",
+    "username": "sapanwood78",
+    "wallet_id": "m8vtv7b190d",
+    "exchange": [
+      {
+        "is_connected": false,
+        "secret": "f04cp6e0g989w162c75ufj755cahnf0c",
+        "name": "Binance",
+        "balance": "$7,692",
+        "portfolio_url": "/strategies/myportfolio/20o2tdd"
+      },
+      {
+        "is_connected": true,
+        "secret": "6o6e1uai4854o8ovuc551chnzncrmw7w",
+        "name": "FTX",
+        "balance": "$807",
+        "portfolio_url": "/strategies/myportfolio/upgme3w"
+      },
+      {
+        "is_connected": true,
+        "secret": "9qsdv9wocx85a5z5ku3s7n7kd6atpsp",
+        "name": "Bybit",
+        "balance": "$5,552",
+        "portfolio_url": "/strategies/myportfolio/bw472ng"
+      },
+      {
+        "is_connected": true,
+        "secret": "6rfsh6wtbn51ybdg8nf5ldltv0gzfpr7",
+        "name": "Bybit",
+        "balance": "$7,566",
+        "portfolio_url": "/strategies/myportfolio/hnnes1n"
+      },
+      {
+        "is_connected": false,
+        "secret": "4bwai9p7ce192xtjrg4h67oimiuegvkd",
+        "name": "Binance",
+        "balance": "$3,291",
+        "portfolio_url": "/strategies/myportfolio/lm67n8o"
+      }
+    ],
+    "country": "Canada",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f14ec35adfa71f992a",
+    "guid": "3585c20b-d67a-4ad0-9575-2334c40ede90",
+    "balance": "$43,957",
+    "avatar": "https://ui-avatars.com/api/?name=charisecharisma49&background=random&color=fff&rounded=true&bold=true",
+    "name": "Maribel French",
+    "email": "maribelfrench@voipa.com",
+    "phone": "+(819) 585-3907",
+    "registered": "2022-03-03",
+    "username": "charisecharisma49",
+    "wallet_id": "yq4lcaf71kf",
+    "exchange": [],
+    "country": "Hong Kong",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f17b3caeef0f2e4149",
+    "guid": "899634a0-fc0d-4d58-b54c-76e4e1e074b0",
+    "balance": "$3,036",
+    "avatar": "https://ui-avatars.com/api/?name=saidel97&background=random&color=fff&rounded=true&bold=true",
+    "name": "Monroe Washington",
+    "email": "monroewashington@voipa.com",
+    "phone": "+(862) 427-3259",
+    "registered": "2022-02-21",
+    "username": "saidel97",
+    "wallet_id": "prcuuh0kdy8",
+    "exchange": [],
+    "country": "USA",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f12d1d8a97774534b4",
+    "guid": "226d4f14-a67c-4943-bb21-25d181730c77",
+    "balance": "$3,366",
+    "avatar": "https://ui-avatars.com/api/?name=fulgurator95&background=random&color=fff&rounded=true&bold=true",
+    "name": "Nunez Haney",
+    "email": "nunezhaney@voipa.com",
+    "phone": "+(907) 581-3684",
+    "registered": "2022-01-07",
+    "username": "fulgurator95",
+    "wallet_id": "zb1kwqjt16",
+    "exchange": [
+      {
+        "is_connected": false,
+        "secret": "x7ofycwjf32hlebks0r6fbk3q18wcbyv",
+        "name": "Kucoin",
+        "balance": "$6,790",
+        "portfolio_url": "/strategies/myportfolio/k58g8l2"
+      },
+      {
+        "is_connected": true,
+        "secret": "h44rph9yz22adud30q32ul5y1b0q2ya",
+        "name": "FTX",
+        "balance": "$4,729",
+        "portfolio_url": "/strategies/myportfolio/ugkshij"
+      },
+      {
+        "is_connected": false,
+        "secret": "hrriy4n5xj786v0hzqppxqcrx00zolwq",
+        "name": "Binance",
+        "balance": "$7,772",
+        "portfolio_url": "/strategies/myportfolio/o2gulia"
+      },
+      {
+        "is_connected": false,
+        "secret": "l6bc0qsf5o940sg7riyw8fhlmg2uuq7w",
+        "name": "Bybit",
+        "balance": "$4,527",
+        "portfolio_url": "/strategies/myportfolio/todsqdn"
+      },
+      {
+        "is_connected": true,
+        "secret": "jycvj4n0iy1252n2bcey46a1725pv3i",
+        "name": "Bybit",
+        "balance": "$9,384",
+        "portfolio_url": "/strategies/myportfolio/fzsbovy"
+      }
+    ],
+    "country": "USA",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f1fe99e5172e05bf3b",
+    "guid": "5b8fd4e4-430a-4b78-aad3-7144b7306aee",
+    "balance": "$94,398",
+    "avatar": "https://ui-avatars.com/api/?name=fulgurator85&background=random&color=fff&rounded=true&bold=true",
+    "name": "Taylor Sexton",
+    "email": "taylorsexton@voipa.com",
+    "phone": "+(967) 581-3825",
+    "registered": "2022-08-21",
+    "username": "fulgurator85",
+    "wallet_id": "f5sn28nvfgi",
+    "exchange": [
+      {
+        "is_connected": true,
+        "secret": "y4899tmpec12clm81xkktr0wzoa4tpp",
+        "name": "Binance",
+        "balance": "$7,756",
+        "portfolio_url": "/strategies/myportfolio/t8ljuhg"
+      },
+      {
+        "is_connected": false,
+        "secret": "36o0orr31dm84v7czmd3yte39lsw2d2b",
+        "name": "Binance",
+        "balance": "$9,071",
+        "portfolio_url": "/strategies/myportfolio/ps1rmn4"
+      },
+      {
+        "is_connected": false,
+        "secret": "0684p05wj392tsh8v7kq8aj0rctxoytc6",
+        "name": "Coinbase",
+        "balance": "$2,412",
+        "portfolio_url": "/strategies/myportfolio/3wbev1m"
+      },
+      {
+        "is_connected": true,
+        "secret": "9337vmi99d75x1stm5za8cokuwauq2j",
+        "name": "FTX",
+        "balance": "$3,818",
+        "portfolio_url": "/strategies/myportfolio/9d1apgb"
+      },
+      {
+        "is_connected": true,
+        "secret": "m98zbjmpdb83gtbd0n9smfksi9flyf4u",
+        "name": "Kucoin",
+        "balance": "$9,364",
+        "portfolio_url": "/strategies/myportfolio/38bdjf2"
+      }
+    ],
+    "country": "Vietnam",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f11138a011d88e3f56",
+    "guid": "05853c0a-dd39-42cb-8dbf-441c7bcff7c7",
+    "balance": "$29,080",
+    "avatar": "https://ui-avatars.com/api/?name=saidel100&background=random&color=fff&rounded=true&bold=true",
+    "name": "Shepherd Young",
+    "email": "shepherdyoung@voipa.com",
+    "phone": "+(812) 465-2635",
+    "registered": "2022-06-25",
+    "username": "saidel100",
+    "wallet_id": "8khf0g4z98e",
+    "exchange": [
+      {
+        "is_connected": true,
+        "secret": "4tsyw3qwr124gmotqi8s61jfx1964",
+        "name": "Coinbase",
+        "balance": "$3,148",
+        "portfolio_url": "/strategies/myportfolio/jjpin49"
+      },
+      {
+        "is_connected": false,
+        "secret": "20f4iz65210tz6omynbdb80avkcfwv",
+        "name": "FTX",
+        "balance": "$5,094",
+        "portfolio_url": "/strategies/myportfolio/7uzmr6f"
+      },
+      {
+        "is_connected": true,
+        "secret": "xtwi3ocfef48e88gzu4t6c1j8fk8zz5a",
+        "name": "Binance",
+        "balance": "$6,793",
+        "portfolio_url": "/strategies/myportfolio/ga9j46j"
+      }
+    ],
+    "country": "Vietnam",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f158c36e07cfda3e35",
+    "guid": "c1ddcc72-9876-4048-9ed8-ab5482311d69",
+    "balance": "$11,694",
+    "avatar": "https://ui-avatars.com/api/?name=charisecharisma43&background=random&color=fff&rounded=true&bold=true",
+    "name": "Gilda Thornton",
+    "email": "gildathornton@voipa.com",
+    "phone": "+(933) 448-2501",
+    "registered": "2022-03-02",
+    "username": "charisecharisma43",
+    "wallet_id": "9wlvx4lv2xr",
+    "exchange": [
+      {
+        "is_connected": false,
+        "secret": "gpx81d8v5j97q9ghhm5hklq5pqifm2ec",
+        "name": "Kucoin",
+        "balance": "$9,574",
+        "portfolio_url": "/strategies/myportfolio/3drupeb"
+      },
+      {
+        "is_connected": false,
+        "secret": "eiacmmdosb17j9u4meoaowp06ywztrqh",
+        "name": "Bybit",
+        "balance": "$9,344",
+        "portfolio_url": "/strategies/myportfolio/zqn6otz"
+      },
+      {
+        "is_connected": true,
+        "secret": "muu9gw8m87594m2yb3qcifux513ajfq",
+        "name": "Coinbase",
+        "balance": "$6,647",
+        "portfolio_url": "/strategies/myportfolio/8z1xv7y"
+      },
+      {
+        "is_connected": true,
+        "secret": "790yq5dpoh81rhjvpwh5mfot0spsunaj",
+        "name": "Coinbase",
+        "balance": "$8,969",
+        "portfolio_url": "/strategies/myportfolio/0uuaj3r"
+      }
+    ],
+    "country": "Vietnam",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f114df3fd817e104f2",
+    "guid": "0ba4306a-268e-49dd-b790-b3bca0c1422e",
+    "balance": "$95,177",
+    "avatar": "https://ui-avatars.com/api/?name=valency65&background=random&color=fff&rounded=true&bold=true",
+    "name": "Violet Holman",
+    "email": "violetholman@voipa.com",
+    "phone": "+(902) 491-3488",
+    "registered": "2022-03-28",
+    "username": "valency65",
+    "wallet_id": "7lbjkt4z43r",
+    "exchange": [
+      {
+        "is_connected": false,
+        "secret": "frsaff645f42cf9vkr1jkx72klyx0hc",
+        "name": "Coinbase",
+        "balance": "$8,745",
+        "portfolio_url": "/strategies/myportfolio/xdbks8s"
+      },
+      {
+        "is_connected": true,
+        "secret": "kxg4y7sasp49raexvqu5y6rw1t04mqa9",
+        "name": "Kucoin",
+        "balance": "$4,340",
+        "portfolio_url": "/strategies/myportfolio/dyalxv9"
+      },
+      {
+        "is_connected": false,
+        "secret": "wi5uyukun938cc41ddse31ktdmv0et",
+        "name": "Bybit",
+        "balance": "$2,776",
+        "portfolio_url": "/strategies/myportfolio/tt5rqcf"
+      },
+      {
+        "is_connected": true,
+        "secret": "da0btrcxhc89g4uznnppld8n5eqmedrm",
+        "name": "Coinbase",
+        "balance": "$6,422",
+        "portfolio_url": "/strategies/myportfolio/ff5w4ma"
+      },
+      {
+        "is_connected": false,
+        "secret": "0gtj66f24l52x7c2j9s4b6n6y3dsi6o",
+        "name": "Coinbase",
+        "balance": "$6,390",
+        "portfolio_url": "/strategies/myportfolio/8twdqsc"
+      }
+    ],
+    "country": "Vietnam",
+    "currency": "USD"
+  },
+  {
+    "_id": "632156f1f5c5e8ffc6bb34f2",
+    "guid": "7658d241-c2c0-4bea-b97f-3b421860ac29",
+    "balance": "$47,714",
+    "avatar": "https://ui-avatars.com/api/?name=aardvark48&background=random&color=fff&rounded=true&bold=true",
+    "name": "Augusta Carroll",
+    "email": "augustacarroll@voipa.com",
+    "phone": "+(833) 546-2542",
+    "registered": "2022-06-04",
+    "username": "aardvark48",
+    "wallet_id": "jm4kj6ctb8",
+    "exchange": [
+      {
+        "is_connected": false,
+        "secret": "rxcth61zf798miulgi7v5mcpm7t4ul",
+        "name": "Coinbase",
+        "balance": "$5,380",
+        "portfolio_url": "/strategies/myportfolio/vp2zhyd"
+      },
+      {
+        "is_connected": true,
+        "secret": "e01hmjvsg29byjwz113mq1lcr3neq5",
+        "name": "Bybit",
+        "balance": "$3,853",
+        "portfolio_url": "/strategies/myportfolio/uo9fj5o"
+      },
+      {
+        "is_connected": true,
+        "secret": "spvfxl1s0j70wmh3o1h8tzlo769oliu",
+        "name": "FTX",
+        "balance": "$8,144",
+        "portfolio_url": "/strategies/myportfolio/d1mzgy7"
+      }
+    ],
+    "country": "Singapore",
+    "currency": "USD"
+  }
+]
