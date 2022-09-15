@@ -47,7 +47,7 @@ const SubmitButton = styled.button`
 	${tw`ml-2 inline-block justify-self-end tracking-wide text-base font-semibold border-none text-black w-56 py-4 rounded-md focus:shadow-outline focus:outline-none text-center disabled:bg-none disabled:bg-gray-400 disabled:text-gray-600 disabled:cursor-not-allowed disabled:pointer-events-none`}
 `;
 const RemoveButton = styled.button`
-	${tw`inline-block tracking-wide text-base font-semibold border border-solid border-state-danger bg-transparent text-state-danger w-56 py-4 rounded-md focus:shadow-outline focus:outline-none text-center`}
+	${tw`inline-block tracking-wide text-base font-semibold border border-solid border-red-700 bg-transparent text-red-700 w-56 py-4 rounded-md focus:shadow-outline focus:outline-none text-center hover:text-red-900 hover:border-red-900`}
 `;
 
 const ModalBox = styled(ModalContext)`
@@ -96,7 +96,12 @@ const Setting = ({
 	}),
 }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
-	const toggleModal = () => setModalIsOpen(!modalIsOpen);
+	const [modalConfirmIsOpen, setModalConfirmIsOpen] = useState(false);
+	const toggleModal = (e) => {
+		e.preventDefault();
+		setModalIsOpen(!modalIsOpen);
+	};
+	const toggleModalConfirm = () => setModalConfirmIsOpen(!modalConfirmIsOpen);
 
 	return (
 		<>
@@ -215,7 +220,7 @@ const Setting = ({
 						</InputLabel>
 					</p>
 					<ButtonGroup>
-						<RemoveButton type="button" className="button-danger">
+						<RemoveButton type="button" className="button-danger" onClick={toggleModalConfirm}>
 							{removeButtonText}
 						</RemoveButton>
 						<SubmitButton
@@ -245,17 +250,59 @@ const Setting = ({
 					</ModalClose>
 					<h3>How to get your Binance API-Key?</h3>
 					<ol>
-						<li>Click the link below to go to the Binance API Management page.</li>
+						<li>
+							Click the link below to go to the Binance API
+							Management page.
+						</li>
 						<li>Name your new API-Key and click Create.</li>
 						<li>Enter your Google Authentication Code.</li>
-						<li>Open your E-Mail client and verify the key creation.</li>
-						<li>Back on Binance make sure the Enable Withdrawal checkbox is disabled on the key you just created.</li>
+						<li>
+							Open your E-Mail client and verify the key creation.
+						</li>
+						<li>
+							Back on Binance make sure the Enable Withdrawal
+							checkbox is disabled on the key you just created.
+						</li>
 						<li>Enable Spot & Margin Trading has to be enabled.</li>
-						<li>Copy the API-Key and API-Secret to the fields here on xTrading.</li>
-						<li>Make sure the API access is working by testing the connection.</li>
+						<li>
+							Copy the API-Key and API-Secret to the fields here
+							on xTrading.
+						</li>
+						<li>
+							Make sure the API access is working by testing the
+							connection.
+						</li>
 					</ol>
 					<p tw="text-center">
-						<ModalButton href="https://www.binance.com/en/my/settings/api-management" target="_blank" className="button-primary">Go to Binance API Management</ModalButton>
+						<ModalButton
+							href="https://www.binance.com/en/my/settings/api-management"
+							target="_blank"
+							className="button-primary"
+						>
+							Go to Binance API Management
+						</ModalButton>
+					</p>
+				</div>
+			</ModalBox>
+			<ModalBox
+				className="modal"
+				isOpen={modalConfirmIsOpen}
+				onRequestClose={toggleModalConfirm}
+				closeTimeoutMS={300}
+				shouldCloseOnOverlayClick={true}
+			>
+				<div className="modal__content">
+					<ModalClose
+						onClick={toggleModalConfirm}
+						title="Close Modal"
+						className="modal__close"
+					>
+						<Icon icon="x" size="24" />
+					</ModalClose>
+					<h3 tw="text-center">Are you sure you want to remove this exchange connection?</h3>
+					<p tw="text-center flex justify-center">
+						<a href="/myexchanges" tw="inline-block p-4 text-center bg-primary-700 hover:bg-primary-900 text-black rounded-md tracking-wide box-border font-bold no-underline w-48">No</a>
+						<a href="/myexchanges" tw="inline-block p-4 text-center border border-solid border-primary-700 text-primary-700 hover:border-primary-900 hover:text-primary-900 rounded-md tracking-wide box-border font-bold no-underline w-48 ml-2">Yes</a>
 					</p>
 				</div>
 			</ModalBox>
