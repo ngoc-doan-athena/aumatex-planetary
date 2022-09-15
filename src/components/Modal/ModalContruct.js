@@ -1,13 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import ModalWrapper from "./ModalContext.js";
+import {ModalWrapper as ModalWrap} from "./ModalContext.js";
 import Icon from "../Icon/index.js"
 
-const ModalWrapper = styled.div`
+const ModalWrapper = styled(ModalWrap)`
 	&.modal__overlay {
 		${tw`fixed inset-0 z-50 bg-white/75 dark:bg-black/75`}
 	}
@@ -31,7 +31,7 @@ const ModalBox = (props, children) => {
 	const toggleModal = () => setModalIsOpen(!modalIsOpen);
 
 	return (
-		<ModalWrapper
+		<ModalWrap
 			className="modal"
 			isOpen={modalIsOpen}
 			onRequestClose={toggleModal}
@@ -46,7 +46,7 @@ const ModalBox = (props, children) => {
 				<Icon icon="x" size="24" />
 			</ModalClose>
 			{children}
-		</ModalWrapper>
+		</ModalWrap>
 	);
 };
 

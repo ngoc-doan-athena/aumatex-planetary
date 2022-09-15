@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "react-modal";
 
 /* wraps react-modal to allow styling the modal overlay */
-export const ModalWrapper = ({ className, ...props }) => {
+export default ({ className, modalIsOpen, setModalIsOpen, ...props }) => {
 	const contentClassName = `${className}__container`;
 	const overlayClassName = `${className}__overlay`;
 

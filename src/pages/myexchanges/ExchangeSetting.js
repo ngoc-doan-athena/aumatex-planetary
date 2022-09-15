@@ -19,6 +19,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import Icon from "../../components/Icon/index.js";
+import ModalContext from "../../components/Modal/ModalContext.js";
 import {
 	InputBase as Input,
 	InputPassword,
@@ -49,6 +50,25 @@ const RemoveButton = styled.button`
 	${tw`inline-block tracking-wide text-base font-semibold border border-solid border-state-danger bg-transparent text-state-danger w-56 py-4 rounded-md focus:shadow-outline focus:outline-none text-center`}
 `;
 
+const ModalBox = styled(ModalContext)`
+	&.modal__overlay {
+		${tw`fixed inset-0 z-50 bg-black/75`}
+	}
+	&.modal__container {
+		${tw`m-auto m-auto max-w-[90vw] lg:max-w-[60vw] max-h-[95vh] lg:max-h-[60vh] absolute inset-0 flex justify-center items-center outline-none`}
+	}
+	.modal__content {
+		${tw`relative w-full p-4 pt-6 lg:p-16 rounded-md bg-white text-black dark:bg-gray-dark dark:text-white outline-none drop-shadow-lg box-border`}
+	}
+`;
+const ModalButton = tw.a`ml-2 inline-block justify-self-end tracking-wide text-base font-semibold border-none text-black w-auto p-4 rounded-md focus:shadow-outline focus:outline-none text-center no-underline`;
+const ModalClose = styled.button`
+	${tw`absolute top-0 right-0 mt-2 mr-2 hocus:text-primary-500 border-0 text-black dark:text-white bg-transparent`}
+	svg {
+		${tw`stroke-current`}
+	}
+`;
+
 const Setting = ({
 	submitButtonText = "Connect Exchange",
 	removeButtonText = "Remove",
@@ -75,7 +95,11 @@ const Setting = ({
 		},
 	}),
 }) => {
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const toggleModal = () => setModalIsOpen(!modalIsOpen);
+
 	return (
+		<>
 			<FormContainer>
 				<Form onSubmit={formik.handleSubmit}>
 					<FormBlock className="form-block">
@@ -107,7 +131,7 @@ const Setting = ({
 									href="#"
 									tw="text-primary-900"
 									className="acr-primary"
-									// onClick={toggleModal}
+									onClick={toggleModal}
 								>
 									{textHint}
 								</a>
@@ -204,21 +228,21 @@ const Setting = ({
 					</ButtonGroup>
 				</Form>
 			</FormContainer>
-			/*<StyledModal
+			<ModalBox
 				className="modal"
 				isOpen={modalIsOpen}
 				onRequestClose={toggleModal}
 				closeTimeoutMS={300}
 				shouldCloseOnOverlayClick={true}
 			>
-				<ModalClose
-					onClick={toggleModal}
-					title="Close Modal"
-					className="modal__close"
-				>
-					<Icon icon="x" size="24" />
-				</ModalClose>
 				<div className="modal__content">
+					<ModalClose
+						onClick={toggleModal}
+						title="Close Modal"
+						className="modal__close"
+					>
+						<Icon icon="x" size="24" />
+					</ModalClose>
 					<h3>How to get your Binance API-Key?</h3>
 					<ol>
 						<li>Click the link below to go to the Binance API Management page.</li>
@@ -230,11 +254,12 @@ const Setting = ({
 						<li>Copy the API-Key and API-Secret to the fields here on xTrading.</li>
 						<li>Make sure the API access is working by testing the connection.</li>
 					</ol>
-					<p>
-						<a href="https://www.binance.com/en/my/settings/api-management" target="_blank" className="button-primary">Go to Binance API Management</a>
+					<p tw="text-center">
+						<ModalButton href="https://www.binance.com/en/my/settings/api-management" target="_blank" className="button-primary">Go to Binance API Management</ModalButton>
 					</p>
 				</div>
-			</StyledModal>*/
+			</ModalBox>
+		</>
 	);
 };
 

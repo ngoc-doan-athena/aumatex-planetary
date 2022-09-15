@@ -1,1 +1,1 @@
-export { default } from '../Modal/ModalConstruct.js';
+export { default } from './ModalContruct.js';
