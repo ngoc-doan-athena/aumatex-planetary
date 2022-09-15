@@ -102,7 +102,7 @@ const Setting = ({
 										: "")
 								}
 							/>
-							<span tw="inline-block align-middle w-32 ml-2 mt-1">
+							<span tw="inline-block align-middle w-[10.5em] lg:w-32 ml-2 mt-1">
 								<a
 									href="#"
 									tw="text-primary-900"
