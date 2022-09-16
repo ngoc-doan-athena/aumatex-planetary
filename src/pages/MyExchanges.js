@@ -25,7 +25,7 @@ import data from "../pages/myexchanges/exchanges.json";
 
 const Container = tw(
 	ContainerBase
-)`h-screen lg:min-h-screen font-medium flex justify-center m-0 font-inter`;
+)`min-h-screen pb-8 lg:pb-0 font-medium flex justify-center m-0 font-inter`;
 const Content = tw.div`bg-gray-100 dark:bg-black text-black dark:text-white w-full lg:w-auto flex flex-col lg:flex-row justify-center flex-1 relative`;
 const MainContent = tw.div`flex-1 p-4 pt-0 lg:px-12 lg:pb-8 order-first lg:order-last`;
 
@@ -40,7 +40,7 @@ const TRow = tw.tr`relative`;
 const ExchangeIcon = styled.span`
 	${tw`p-2 rounded-full inline-block leading-none text-[0px]`}
 	svg {
-		${tw`w-[26px] h-[26px] lg:w-auto lg:h-auto`}
+		${tw`w-[20px] h-[20px] lg:w-auto lg:h-auto`}
 	}
 `;
 const ExchangeName = tw.span`font-bold`;
@@ -66,12 +66,15 @@ const ButtonControl = styled.a`
 	* {
 		${tw`inline-block align-middle`}
 	}
+	svg {
+		${tw`w-[16px] h-[16px] lg:w-auto lg:h-auto`}
+	}
 `;
 
 const AddExchange = tw.div`relative mt-4`;
 // const AddExchangeButton = tw.button`tracking-wide inline-block bg-transparent border border-solid border-primary-700 text-primary-700 hover:text-primary-900 hover:border-primary-900 p-3 rounded-md`;
 const AddExchangeButton = styled.a`
-	${tw`tracking-wide inline-block bg-transparent border border-solid border-primary-700 text-primary-700 hover:text-primary-900 hover:border-primary-900 p-3 rounded-md no-underline leading-none transition duration-300 ease-in-out`}
+	${tw`tracking-wide inline-block bg-transparent border border-solid border-primary-700 text-primary-700 hover:text-primary-900 hover:border-primary-900 p-3 rounded-md no-underline leading-none transition duration-300 ease-in-out w-full lg:w-auto box-border text-center`}
 	* {
 		${tw`inline-block align-middle`}
 	}
@@ -124,7 +127,7 @@ export default ({ headingText = "My Exchanges" }) => {
 				<Sidebar />
 				<MainContent>
 					<HeaderRoot headingText={headingText} />
-					<Box>
+					<Box tw="pt-2 lg:pt-4">
 						<Table className="table-data">
 							<THead>
 								<TRow>

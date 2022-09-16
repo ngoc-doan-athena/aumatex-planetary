@@ -55,10 +55,10 @@ const ModalBox = styled(ModalContext)`
 		${tw`fixed inset-0 z-50 bg-black/75`}
 	}
 	&.modal__container {
-		${tw`m-auto m-auto max-w-[90vw] lg:max-w-[60vw] max-h-[95vh] lg:max-h-[60vh] absolute inset-0 flex justify-center items-center outline-none`}
+		${tw`m-auto m-auto max-w-[90vw] lg:max-w-[60vw] max-h-[95vh] lg:max-h-[60vh] absolute inset-0 flex justify-center items-center outline-none overflow-hidden`}
 	}
 	.modal__content {
-		${tw`relative w-full p-4 pt-6 lg:p-16 rounded-md bg-white text-black dark:bg-gray-dark dark:text-white outline-none drop-shadow-lg box-border`}
+		${tw`relative w-full p-4 pt-6 lg:p-16 rounded-md bg-white text-black dark:bg-gray-dark dark:text-white outline-none drop-shadow-lg box-border overflow-scroll`}
 	}
 `;
 const ModalButton = tw.a`ml-2 inline-block justify-self-end tracking-wide text-base font-semibold border-none text-black w-auto p-4 rounded-md focus:shadow-outline focus:outline-none text-center no-underline`;
@@ -85,6 +85,7 @@ const Setting = ({
 			apikey: "",
 			apisecret: "",
 			accountname: "",
+			tos: true,
 		},
 		validationSchema: Yup.object({
 			apikey: Yup.string().required("This field is required."),

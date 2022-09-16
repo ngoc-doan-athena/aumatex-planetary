@@ -170,14 +170,15 @@ input:-webkit-autofill:focus {
 .sidebar__menu__item.active {
   color: #181A1F;
   background: #fdb04b;
+  font-weight: bold;
 }
 
-@media screen and (min-width: 1024px){
+/*@media screen and (min-width: 1024px){
   .sidebar__menu__item.active {
     color: #fdb04b;
     background: #181A1F;
   }
-}
+}*/
 
 .table-data {
   border-spacing: 0 0.5rem;
