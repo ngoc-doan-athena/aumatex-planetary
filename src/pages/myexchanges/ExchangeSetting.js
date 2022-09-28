@@ -23,6 +23,7 @@ import ModalContext from "../../components/Modal/ModalContext.js";
 import {
 	InputBase as Input,
 	InputPassword,
+	InputCheckbox,
 } from "../../components/Input/index.js"; // eslint-disable-next-line
 
 // styling
@@ -42,12 +43,12 @@ const InputLabel = styled.label`
 		${tw`text-state-danger`}
 	}
 `;
-const ButtonGroup = tw.p`flex justify-end mt-8`;
+const ButtonGroup = tw.p`flex flex-col-reverse lg:flex-row lg:justify-end mt-8`;
 const SubmitButton = styled.button`
-	${tw`ml-2 inline-block justify-self-end tracking-wide text-base font-semibold border-none text-black w-56 py-4 rounded-md focus:shadow-outline focus:outline-none text-center disabled:bg-none disabled:bg-gray-400 disabled:text-gray-600 disabled:cursor-not-allowed disabled:pointer-events-none`}
+	${tw`lg:ml-2 inline-block justify-self-end tracking-wide text-base font-semibold border-none text-black w-full lg:w-56 py-4 rounded-md focus:shadow-outline focus:outline-none text-center disabled:bg-none disabled:bg-gray-400 disabled:text-gray-600 disabled:cursor-not-allowed disabled:pointer-events-none`}
 `;
 const RemoveButton = styled.button`
-	${tw`inline-block tracking-wide text-base font-semibold border border-solid border-red-700 bg-transparent text-red-700 w-56 py-4 rounded-md focus:shadow-outline focus:outline-none text-center hover:text-red-900 hover:border-red-900`}
+	${tw`inline-block tracking-wide text-base font-semibold border border-solid border-red-700 bg-transparent text-red-700 w-full lg:w-56 py-4 mt-4 lg:mt-0 rounded-md focus:shadow-outline focus:outline-none text-center hover:text-red-900 hover:border-red-900`}
 `;
 
 const ModalBox = styled(ModalContext)`
@@ -115,7 +116,7 @@ const Setting = ({
 								*
 							</span>
 						</InputLabel>
-						<div tw="flex flex-row items-center">
+						<div tw="flex flex-col lg:flex-row lg:items-center">
 							<Input
 								type="text"
 								name="apikey"
@@ -132,7 +133,7 @@ const Setting = ({
 										: "")
 								}
 							/>
-							<span tw="inline-block align-middle w-[10.5em] lg:w-32 ml-2 mt-1">
+							<span tw="inline-block align-middle w-[10.5em] lg:w-32 lg:ml-2 mt-1">
 								<a
 									href="#"
 									tw="text-primary-900"
@@ -196,19 +197,13 @@ const Setting = ({
 							className="input"
 						/>
 					</FormBlock>
-					<p tw="mt-4 mb-0 text-xs text-gray-600">
-						<span tw="inline-block align-text-bottom">
-							<input
-								type="checkbox"
-								name="tos"
-								id="tos"
-								className="input-checkbox"
-								type="checkbox"
-								checked
-								onChange={formik.handleChange}
-								tw="appearance-none border-solid border-2 border-gray-900 rounded-sm"
-							/>
-						</span>
+					<p className="input-checkbox-label" tw="mt-4 mb-0 text-xs text-gray-600">
+						<InputCheckbox
+							name="tos"
+							id="tos"
+							onChange={formik.handleChange}
+							value="tos"
+						/>
 						<InputLabel htmlFor="tos">
 							{tosHint}{" "}
 							<a

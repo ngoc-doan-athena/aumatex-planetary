@@ -45,7 +45,15 @@ export default ({
 			<Content>
 				<Sidebar />
 				<MainContent>
-					<HeaderDetail headingText={headingText} />
+					<HeaderDetail
+						pageType="detail"
+						pageParent="myexchanges"
+						headingText={headingText}
+						headingAccountText="My Account"
+						headingUserAvatar="https://ui-avatars.com/api/?name=xavier+trevor&background=fdb04b&rounded=true&bold=true"
+						headingHasNotif="true"
+						headingHasSearch="false"
+					/>
 					<Setting />
 				</MainContent>
 			</Content>

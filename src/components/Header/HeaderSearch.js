@@ -4,22 +4,33 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; // eslint-disable-next-line
 
 import Icon from "../Icon/index.js";
-import HeaderAccount from "../Header/HeaderAccount.js";
+import {
+	InputBase as InputSearch,
+	InputTextGroup,
+	InputButton as InputSearchButton,
+} from "../Input/index.js";
 
-const Header = tw.header`relative py-4`;
-const HeaderLogo = tw.p`block text-center lg:hidden`;
-const HeaderContent = tw.div`flex flex-row`;
-const HeaderSearch = tw.div`relative`;
+const HeaderSearchWrap = tw.div`relative ml-2 max-w-[370px] w-[50px] focus:w-auto`;
 const Heading = tw.h2`m-0 inline-block align-middle`;
+const InputBase = tw(InputSearch)`bg-transparent focus:bg-white border-transparent focus:border-white`;
+const InputButton = tw(InputSearchButton)`mt-0 text-gray-900`;
 
-const HeaderSearch = ({ headingText }) => {
+const HeaderSearch = () => {
 	return (
-		<Header className="header">
-			<HeaderContent className="header-content">
-				<HeaderLogo className="header-logo" />
-				<HeaderAccount />
-			</HeaderContent>
-		</Header>
+		<HeaderSearchWrap>
+			<InputTextGroup className="input-group">
+				<InputBase
+					type="text"
+					id="globalSearch"
+					name="globalSearch"
+					value=""
+					placeholder=""
+				/>
+				<InputButton type="button">
+					<Icon icon="search" />
+				</InputButton>
+			</InputTextGroup>
+		</HeaderSearchWrap>
 	);
 };
 

@@ -13,7 +13,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import MyExchangesPage from "./pages/MyExchanges.js";
 import MyExchangesSettingPage from "./pages/myexchanges/MyExchangeSetting.js";
 import MyExchangesCreatePage from "./pages/myexchanges/MyExchangeCreate.js";
-import MyPortfolioPage from "./pages/MyPortfolio.js";
+import PortfoliosPage from "./pages/Portfolios.js";
 import MarketPage from "./pages/Market.js";
 import BotsPage from "./pages/Bots.js";
 import LoginPage from "./pages/Login.js";
@@ -39,7 +39,7 @@ export default function App() {
 				<Route exact path="/myexchanges" element={<MyExchangesPage />} />
 				<Route exact path="/myexchanges/create" element={<MyExchangesCreatePage />} />
 				<Route exact path="/myexchanges/setting/:id" element={<MyExchangesSettingPage />} />
-				<Route exact path="/strategies/myportfolio" element={<MyPortfolioPage />} />
+				<Route exact path="/strategies" element={<PortfoliosPage />} />
 				<Route exact path="/market" element={<MarketPage />} />
 				<Route exact path="/bots" element={<BotsPage />} />
 				<Route exact path="/contact" element={<ContactPage />} />

@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import IconContext from "../Icon/IconContext";
 
-// Setting values for the props
 const Icon = ({
 	icon,
 	size = 24,
 	className = "",
 	fill = "currentColor",
 	stroke = "none",
+	strokeWidth = "1.5",
 	...otherProps
 }) => {
 	if (!icon) {
@@ -22,7 +22,7 @@ const Icon = ({
 			viewBox={`0 0 ${size} ${size}`}
 			fill={fill}
 			stroke={stroke}
-			strokeWidth="1.5"
+			strokeWidth={strokeWidth}
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			className={`icon-${icon}`}

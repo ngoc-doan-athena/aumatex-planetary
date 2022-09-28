@@ -26,14 +26,20 @@ const SideBarConfig = [
 	{
 		text: "Auto Invest",
 		icon: <Icon icon="portfolio" />,
-		to: "/strategies/myportfolio",
-		page: "myportfolio",
+		to: "/strategies",
+		page: "strategies",
 	},
 	{
 		text: "My Exchanges",
 		icon: <Icon icon="exchange" />,
 		to: "/myexchanges",
 		page: "exchanges",
+	},
+	{
+		text: "History",
+		icon: <Icon icon="history" />,
+		to: "/history",
+		page: "history",
 	},
 	{
 		text: "Contact",

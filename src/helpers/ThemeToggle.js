@@ -17,6 +17,8 @@ const Toggle = () => {
 				{theme === "dark" ? (
 					<FeatherIcon
 						icon="sun"
+						size="24"
+						stroke-width="1.5"
 						onClick={() =>
 							setTheme(theme === "dark" ? "light" : "dark")
 						}
@@ -24,6 +26,8 @@ const Toggle = () => {
 				) : (
 					<FeatherIcon
 						icon="moon"
+						size="24"
+						stroke-width="1.5"
 						onClick={() =>
 							setTheme(theme === "dark" ? "light" : "dark")
 						}

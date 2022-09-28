@@ -6,10 +6,11 @@ import { css } from "styled-components/macro"; // eslint-disable-next-line
 import {
 	InputBase as Input,
 	InputPassword,
+	InputCheckbox,
 } from "../../components/Input/index.js";
 
 // form validation
-import Firebase from 'firebase/compat/app';
+import Firebase from "firebase/compat/app";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Recaptcha from "react-google-recaptcha";
@@ -136,10 +137,7 @@ const LoginForm = ({
 					)}
 				</FormBlock>
 
-				<SubmitButton
-					type="submit"
-					className="button-primary"
-				>
+				<SubmitButton type="submit" className="button-primary">
 					{submitButtonText}
 				</SubmitButton>
 			</Form>
@@ -349,18 +347,13 @@ const SignupForm = ({
 						)}
 				</FormBlock>
 
-				<p tw="mt-4 mb-0 text-xs text-gray-600">
-					<span tw="inline-block align-text-bottom">
-						<input
-							type="checkbox"
+				<p className="input-checkbox-label" tw="mt-4 mb-0 text-xs text-gray-600">
+					<InputCheckbox
 							name="tos"
 							id="tos"
 							onChange={formik.handleChange}
 							value="tos"
-							className="input-checkbox"
-							tw="appearance-none border-solid border-2 border-gray-900 rounded-sm"
 						/>
-					</span>
 					<InputLabel htmlFor="tos">
 						{agreementPrompt}{" "}
 						<a
@@ -386,10 +379,7 @@ const SignupForm = ({
 					</FormPrompt>
 				)}
 
-				<SubmitButton
-					type="submit"
-					className="button-primary"
-				>
+				<SubmitButton type="submit" className="button-primary">
 					{submitButtonText}
 				</SubmitButton>
 			</Form>

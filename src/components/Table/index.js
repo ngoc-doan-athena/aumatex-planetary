@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 
 import BoxBase from "../Box/index.js";
 
-const Table = tw.table`w-full border-separate `;
-const THead = tw.thead``;
-const THeadCell = tw.th`align-middle bg-gray-100 dark:bg-gray-dark dark:text-white p-3 text-left first:w-12 last:w-28 first:rounded-l-md last:rounded-r-md`;
-const TBody = tw.tbody`p-3`;
-const TBodyRow = tw.tr`transition-all hover:bg-gray-100 dark:hover:bg-gray-dark`;
-const TBodyCell = tw.td`align-middle p-3 first:rounded-l-md last:rounded-r-md`;
-const TRow = tw.tr`relative`;
+const Table = tw.div`w-full border-separate `;
+const THead = tw.div``;
+const THeadCell = tw.div`align-middle bg-gray-100 dark:bg-gray-dark dark:text-white p-3 text-left first:w-12 last:w-28 first:rounded-l-md last:rounded-r-md`;
+const TBody = tw.div`p-3`;
+const TBodyRow = tw.div`transition-all hover:bg-gray-100 dark:hover:bg-gray-dark`;
+const TBodyCell = tw.div`align-middle p-3 first:rounded-l-md last:rounded-r-md`;
+const TRow = tw.div`relative grid`;
 
 function Table({ columns, rows, props... }) {
 	const renderColumns = columns.map((item, key) => {

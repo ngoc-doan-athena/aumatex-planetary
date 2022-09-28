@@ -17,9 +17,9 @@ const HeaderRoot = ({ headingText }) => {
 		<Header className="header">
 			<HeaderContent className="header-content">
 				<HeaderLogo className="header-logo" />
-				<HeaderSearch className="header-search"></HeaderSearch>
 				<Heading>{headingText}</Heading>
-				<HeaderAccount />
+				<HeaderSearch className="header-search"></HeaderSearch>
+				<HeaderAccount  />
 			</HeaderContent>
 		</Header>
 	);

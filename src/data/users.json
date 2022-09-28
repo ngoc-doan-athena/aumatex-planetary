@@ -16,21 +16,21 @@
         "secret": "bznxg04b5s20homdn9sddoy9mymj5m4m",
         "name": "Bybit",
         "balance": "$4,191",
-        "portfolio_url": "/strategies/myportfolio/684kzsb"
+        "portfolio_url": "/portfolios/684kzsb"
       },
       {
         "is_connected": false,
         "secret": "le5fnt3p7951i08jhwgptib7oeuknznq",
         "name": "Binance",
         "balance": "$5,847",
-        "portfolio_url": "/strategies/myportfolio/hxpjlwm"
+        "portfolio_url": "/portfolios/hxpjlwm"
       },
       {
         "is_connected": true,
         "secret": "tkfofle8ql74y5je0cpr9t0grod54w4",
         "name": "Coinbase",
         "balance": "$6,060",
-        "portfolio_url": "/strategies/myportfolio/0n37g52"
+        "portfolio_url": "/portfolios/0n37g52"
       }
     ],
     "country": "USA",
@@ -53,14 +53,14 @@
         "secret": "ayrej2t3nx51pxno34j063hrumdkgu8",
         "name": "Coinbase",
         "balance": "$4,571",
-        "portfolio_url": "/strategies/myportfolio/7pssej6"
+        "portfolio_url": "/portfolios/7pssej6"
       },
       {
         "is_connected": false,
         "secret": "uzvp8tkhre4877lfjmvcakzani7o9hdm",
         "name": "Binance",
         "balance": "$9,223",
-        "portfolio_url": "/strategies/myportfolio/k3r5m7s"
+        "portfolio_url": "/portfolios/k3r5m7s"
       }
     ],
     "country": "Hong Kong",
@@ -83,7 +83,7 @@
         "secret": "nga5g8hf722z7fp6dmoqew6v2xqsoiq",
         "name": "FTX",
         "balance": "$8,391",
-        "portfolio_url": "/strategies/myportfolio/8e8tpli"
+        "portfolio_url": "/portfolios/8e8tpli"
       }
     ],
     "country": "Vietnam",
@@ -106,35 +106,35 @@
         "secret": "hhnxf6jhfl22g4uq67am3cvibuff5xi",
         "name": "Bybit",
         "balance": "$8,508",
-        "portfolio_url": "/strategies/myportfolio/15352q4"
+        "portfolio_url": "/portfolios/15352q4"
       },
       {
         "is_connected": false,
         "secret": "9qklad4acl51brogjihngev2aacdkmg",
         "name": "Bybit",
         "balance": "$6,846",
-        "portfolio_url": "/strategies/myportfolio/afdu7h0"
+        "portfolio_url": "/portfolios/afdu7h0"
       },
       {
         "is_connected": true,
         "secret": "0x8jtx272k17lqo6636x9cp66m8jcam7",
         "name": "Kucoin",
         "balance": "$7,816",
-        "portfolio_url": "/strategies/myportfolio/fycs4aq"
+        "portfolio_url": "/portfolios/fycs4aq"
       },
       {
         "is_connected": false,
         "secret": "56j5n52aze81m96rzbt67ja68l56w5r",
         "name": "Coinbase",
         "balance": "$6,688",
-        "portfolio_url": "/strategies/myportfolio/e5jgupp"
+        "portfolio_url": "/portfolios/e5jgupp"
       },
       {
         "is_connected": true,
         "secret": "22qndgg9n21ucjbxkgajflnavnj0g8h",
         "name": "Kucoin",
         "balance": "$461",
-        "portfolio_url": "/strategies/myportfolio/fsg4bon"
+        "portfolio_url": "/portfolios/fsg4bon"
       }
     ],
     "country": "Singapore",
@@ -157,14 +157,14 @@
         "secret": "x7yoxb4eqd94dmyejju3p5yx6lkxwlxn",
         "name": "Kucoin",
         "balance": "$485",
-        "portfolio_url": "/strategies/myportfolio/jrno9nl"
+        "portfolio_url": "/portfolios/jrno9nl"
       },
       {
         "is_connected": true,
         "secret": "4fi2sav0er69u9bfp2qzay9cc20vn1c",
         "name": "Coinbase",
         "balance": "$1,488",
-        "portfolio_url": "/strategies/myportfolio/a4fhlk9"
+        "portfolio_url": "/portfolios/a4fhlk9"
       }
     ],
     "country": "Canada",
@@ -187,28 +187,28 @@
         "secret": "bnuv67b3v99t2adsostsprhgoa34m",
         "name": "Coinbase",
         "balance": "$5,632",
-        "portfolio_url": "/strategies/myportfolio/h1lgbr4"
+        "portfolio_url": "/portfolios/h1lgbr4"
       },
       {
         "is_connected": false,
         "secret": "cracs3tg77754mj29f95zhwzayewct",
         "name": "Kucoin",
         "balance": "$8,963",
-        "portfolio_url": "/strategies/myportfolio/faduqgi"
+        "portfolio_url": "/portfolios/faduqgi"
       },
       {
         "is_connected": true,
         "secret": "22ajiwsd7q87ggpkp0u0rp0rtudhby0r",
         "name": "Coinbase",
         "balance": "$7,182",
-        "portfolio_url": "/strategies/myportfolio/0fatv0t"
+        "portfolio_url": "/portfolios/0fatv0t"
       },
       {
         "is_connected": false,
         "secret": "r1sjjy6g371jqvjccsiqj581yfv6b8",
         "name": "Binance",
         "balance": "$9,411",
-        "portfolio_url": "/strategies/myportfolio/88ft2yz"
+        "portfolio_url": "/portfolios/88ft2yz"
       }
     ],
     "country": "Hong Kong",
@@ -231,35 +231,35 @@
         "secret": "f04cp6e0g989w162c75ufj755cahnf0c",
         "name": "Binance",
         "balance": "$7,692",
-        "portfolio_url": "/strategies/myportfolio/20o2tdd"
+        "portfolio_url": "/portfolios/20o2tdd"
       },
       {
         "is_connected": true,
         "secret": "6o6e1uai4854o8ovuc551chnzncrmw7w",
         "name": "FTX",
         "balance": "$807",
-        "portfolio_url": "/strategies/myportfolio/upgme3w"
+        "portfolio_url": "/portfolios/upgme3w"
       },
       {
         "is_connected": true,
         "secret": "9qsdv9wocx85a5z5ku3s7n7kd6atpsp",
         "name": "Bybit",
         "balance": "$5,552",
-        "portfolio_url": "/strategies/myportfolio/bw472ng"
+        "portfolio_url": "/portfolios/bw472ng"
       },
       {
         "is_connected": true,
         "secret": "6rfsh6wtbn51ybdg8nf5ldltv0gzfpr7",
         "name": "Bybit",
         "balance": "$7,566",
-        "portfolio_url": "/strategies/myportfolio/hnnes1n"
+        "portfolio_url": "/portfolios/hnnes1n"
       },
       {
         "is_connected": false,
         "secret": "4bwai9p7ce192xtjrg4h67oimiuegvkd",
         "name": "Binance",
         "balance": "$3,291",
-        "portfolio_url": "/strategies/myportfolio/lm67n8o"
+        "portfolio_url": "/portfolios/lm67n8o"
       }
     ],
     "country": "Canada",
@@ -312,35 +312,35 @@
         "secret": "x7ofycwjf32hlebks0r6fbk3q18wcbyv",
         "name": "Kucoin",
         "balance": "$6,790",
-        "portfolio_url": "/strategies/myportfolio/k58g8l2"
+        "portfolio_url": "/portfolios/k58g8l2"
       },
       {
         "is_connected": true,
         "secret": "h44rph9yz22adud30q32ul5y1b0q2ya",
         "name": "FTX",
         "balance": "$4,729",
-        "portfolio_url": "/strategies/myportfolio/ugkshij"
+        "portfolio_url": "/portfolios/ugkshij"
       },
       {
         "is_connected": false,
         "secret": "hrriy4n5xj786v0hzqppxqcrx00zolwq",
         "name": "Binance",
         "balance": "$7,772",
-        "portfolio_url": "/strategies/myportfolio/o2gulia"
+        "portfolio_url": "/portfolios/o2gulia"
       },
       {
         "is_connected": false,
         "secret": "l6bc0qsf5o940sg7riyw8fhlmg2uuq7w",
         "name": "Bybit",
         "balance": "$4,527",
-        "portfolio_url": "/strategies/myportfolio/todsqdn"
+        "portfolio_url": "/portfolios/todsqdn"
       },
       {
         "is_connected": true,
         "secret": "jycvj4n0iy1252n2bcey46a1725pv3i",
         "name": "Bybit",
         "balance": "$9,384",
-        "portfolio_url": "/strategies/myportfolio/fzsbovy"
+        "portfolio_url": "/portfolios/fzsbovy"
       }
     ],
     "country": "USA",
@@ -363,35 +363,35 @@
         "secret": "y4899tmpec12clm81xkktr0wzoa4tpp",
         "name": "Binance",
         "balance": "$7,756",
-        "portfolio_url": "/strategies/myportfolio/t8ljuhg"
+        "portfolio_url": "/portfolios/t8ljuhg"
       },
       {
         "is_connected": false,
         "secret": "36o0orr31dm84v7czmd3yte39lsw2d2b",
         "name": "Binance",
         "balance": "$9,071",
-        "portfolio_url": "/strategies/myportfolio/ps1rmn4"
+        "portfolio_url": "/portfolios/ps1rmn4"
       },
       {
         "is_connected": false,
         "secret": "0684p05wj392tsh8v7kq8aj0rctxoytc6",
         "name": "Coinbase",
         "balance": "$2,412",
-        "portfolio_url": "/strategies/myportfolio/3wbev1m"
+        "portfolio_url": "/portfolios/3wbev1m"
       },
       {
         "is_connected": true,
         "secret": "9337vmi99d75x1stm5za8cokuwauq2j",
         "name": "FTX",
         "balance": "$3,818",
-        "portfolio_url": "/strategies/myportfolio/9d1apgb"
+        "portfolio_url": "/portfolios/9d1apgb"
       },
       {
         "is_connected": true,
         "secret": "m98zbjmpdb83gtbd0n9smfksi9flyf4u",
         "name": "Kucoin",
         "balance": "$9,364",
-        "portfolio_url": "/strategies/myportfolio/38bdjf2"
+        "portfolio_url": "/portfolios/38bdjf2"
       }
     ],
     "country": "Vietnam",
@@ -414,21 +414,21 @@
         "secret": "4tsyw3qwr124gmotqi8s61jfx1964",
         "name": "Coinbase",
         "balance": "$3,148",
-        "portfolio_url": "/strategies/myportfolio/jjpin49"
+        "portfolio_url": "/portfolios/jjpin49"
       },
       {
         "is_connected": false,
         "secret": "20f4iz65210tz6omynbdb80avkcfwv",
         "name": "FTX",
         "balance": "$5,094",
-        "portfolio_url": "/strategies/myportfolio/7uzmr6f"
+        "portfolio_url": "/portfolios/7uzmr6f"
       },
       {
         "is_connected": true,
         "secret": "xtwi3ocfef48e88gzu4t6c1j8fk8zz5a",
         "name": "Binance",
         "balance": "$6,793",
-        "portfolio_url": "/strategies/myportfolio/ga9j46j"
+        "portfolio_url": "/portfolios/ga9j46j"
       }
     ],
     "country": "Vietnam",
@@ -451,28 +451,28 @@
         "secret": "gpx81d8v5j97q9ghhm5hklq5pqifm2ec",
         "name": "Kucoin",
         "balance": "$9,574",
-        "portfolio_url": "/strategies/myportfolio/3drupeb"
+        "portfolio_url": "/portfolios/3drupeb"
       },
       {
         "is_connected": false,
         "secret": "eiacmmdosb17j9u4meoaowp06ywztrqh",
         "name": "Bybit",
         "balance": "$9,344",
-        "portfolio_url": "/strategies/myportfolio/zqn6otz"
+        "portfolio_url": "/portfolios/zqn6otz"
       },
       {
         "is_connected": true,
         "secret": "muu9gw8m87594m2yb3qcifux513ajfq",
         "name": "Coinbase",
         "balance": "$6,647",
-        "portfolio_url": "/strategies/myportfolio/8z1xv7y"
+        "portfolio_url": "/portfolios/8z1xv7y"
       },
       {
         "is_connected": true,
         "secret": "790yq5dpoh81rhjvpwh5mfot0spsunaj",
         "name": "Coinbase",
         "balance": "$8,969",
-        "portfolio_url": "/strategies/myportfolio/0uuaj3r"
+        "portfolio_url": "/portfolios/0uuaj3r"
       }
     ],
     "country": "Vietnam",
@@ -495,35 +495,35 @@
         "secret": "frsaff645f42cf9vkr1jkx72klyx0hc",
         "name": "Coinbase",
         "balance": "$8,745",
-        "portfolio_url": "/strategies/myportfolio/xdbks8s"
+        "portfolio_url": "/portfolios/xdbks8s"
       },
       {
         "is_connected": true,
         "secret": "kxg4y7sasp49raexvqu5y6rw1t04mqa9",
         "name": "Kucoin",
         "balance": "$4,340",
-        "portfolio_url": "/strategies/myportfolio/dyalxv9"
+        "portfolio_url": "/portfolios/dyalxv9"
       },
       {
         "is_connected": false,
         "secret": "wi5uyukun938cc41ddse31ktdmv0et",
         "name": "Bybit",
         "balance": "$2,776",
-        "portfolio_url": "/strategies/myportfolio/tt5rqcf"
+        "portfolio_url": "/portfolios/tt5rqcf"
       },
       {
         "is_connected": true,
         "secret": "da0btrcxhc89g4uznnppld8n5eqmedrm",
         "name": "Coinbase",
         "balance": "$6,422",
-        "portfolio_url": "/strategies/myportfolio/ff5w4ma"
+        "portfolio_url": "/portfolios/ff5w4ma"
       },
       {
         "is_connected": false,
         "secret": "0gtj66f24l52x7c2j9s4b6n6y3dsi6o",
         "name": "Coinbase",
         "balance": "$6,390",
-        "portfolio_url": "/strategies/myportfolio/8twdqsc"
+        "portfolio_url": "/portfolios/8twdqsc"
       }
     ],
     "country": "Vietnam",
@@ -546,21 +546,21 @@
         "secret": "rxcth61zf798miulgi7v5mcpm7t4ul",
         "name": "Coinbase",
         "balance": "$5,380",
-        "portfolio_url": "/strategies/myportfolio/vp2zhyd"
+        "portfolio_url": "/portfolios/vp2zhyd"
       },
       {
         "is_connected": true,
         "secret": "e01hmjvsg29byjwz113mq1lcr3neq5",
         "name": "Bybit",
         "balance": "$3,853",
-        "portfolio_url": "/strategies/myportfolio/uo9fj5o"
+        "portfolio_url": "/portfolios/uo9fj5o"
       },
       {
         "is_connected": true,
         "secret": "spvfxl1s0j70wmh3o1h8tzlo769oliu",
         "name": "FTX",
         "balance": "$8,144",
-        "portfolio_url": "/strategies/myportfolio/d1mzgy7"
+        "portfolio_url": "/portfolios/d1mzgy7"
       }
     ],
     "country": "Singapore",

@@ -11,7 +11,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 
 import { Container as ContainerBase } from "../components/Layouts";
 import Sidebar from "../components/SideBar/index.js";
-import HeaderRoot from "../components/Header/HeaderRoot.js";
+import HeaderDetail from "../components/Header/HeaderDetail.js";
 import { BoxBase as Box } from "../components/Box";
 import Pagination from "../components/Pagination/index.js";
 import Icon from "../components/Icon/index.js";
@@ -126,7 +126,14 @@ export default ({ headingText = "My Exchanges" }) => {
 			<Content>
 				<Sidebar />
 				<MainContent>
-					<HeaderRoot headingText={headingText} />
+					<HeaderDetail
+						pageType="main"
+						headingText={headingText}
+						headingAccountText="My Account"
+						headingUserAvatar="https://ui-avatars.com/api/?name=xavier+trevor&background=fdb04b&rounded=true&bold=true"
+						headingHasNotif="true"
+						headingHasSearch="false"
+					/>
 					<Box tw="pt-2 lg:pt-4">
 						<Table className="table-data">
 							<THead>
