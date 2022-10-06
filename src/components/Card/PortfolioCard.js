@@ -5,7 +5,7 @@ import Highcharts from "highcharts/highstock";
 import PieChart from "highcharts-react-official";
 import PropTypes from "prop-types";
 
-import data from "cryptocurrency-icons/manifest.json";
+// import data from "cryptocurrency-icons/manifest.json";
 
 import tw from "twin.macro";
 import styled from "styled-components";
