@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from "react";
-import {
-	BrowserRouter as Router,
-	Route,
-	Link,
-	Redirect,
-} from "react-router-dom";
+import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; // eslint-disable-next-line
 
 import Icon from "../Icon/index.js";
 import FeatherIcon from "feather-icons-react";
+import HeaderLogoImgSrc from "../../images/logo-xtrading.svg";
 import HeaderAccount from "../Header/HeaderAccount.js";
 import HeaderSearch from "../Header/HeaderSearch.js";
 import HeaderNotif from "../Header/HeaderNotif.js";
 
 const Header = tw.header`relative pr-[1.5rem] lg:pr-[0px] py-4`;
-const HeaderLogo = tw.p`block text-center lg:hidden`;
-const HeaderContent = tw.div`flex flex-row items-start lg:items-center`;
+const HeaderLogo = tw.p`block text-center lg:hidden max-w-[3rem] m-0 py-[0.2rem]`;
+const HeaderLogoImg = tw.img`max-w-full`;
+const HeaderContent = tw.div`flex flex-row flex-wrap items-start lg:items-center`;
 const Heading = styled.h1`
-	${tw`m-0 inline-block align-middle text-[1rem] text-[1.5rem]`}
+	${tw`my-2 mx-0 lg:m-0 inline-block align-middle text-[1rem] text-[1.5rem] order-3 lg:order-first w-full lg:w-auto`}
 	svg {
 		${tw`inline-block align-middle mr-2`}
 	}
@@ -38,6 +34,7 @@ const HeaderDetail = ({
 	headingUserAvatar,
 	headingHasNotif,
 	headingHasSearch,
+	HeaderLogoImgAlt,
 }) => {
 	let connectedStatus = new URLSearchParams(window.location.search).get(
 		"connected"
@@ -46,7 +43,6 @@ const HeaderDetail = ({
 	return (
 		<Header className="header">
 			<HeaderContent className="header-content">
-				<HeaderLogo className="header-logo" />
 				{pageType === "detail" ? (
 					<>
 						<Heading>
@@ -68,6 +64,12 @@ const HeaderDetail = ({
 				) : (
 					<Heading>{headingText}</Heading>
 				)}
+				<HeaderLogo className="header-logo">
+					<HeaderLogoImg
+					src={HeaderLogoImgSrc}
+					alt={HeaderLogoImgAlt}
+				/>
+				</HeaderLogo>
 				<HeaderSetting>
 					{headingHasSearch === "true" && (
 						<HeaderSearch className="header-search" />

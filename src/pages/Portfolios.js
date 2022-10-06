@@ -14,8 +14,8 @@ const Container = tw(
 	ContainerBase
 )`h-screen lg:min-h-screen font-medium flex justify-center m-0 font-inter`;
 const Content = tw.div`bg-gray-100 dark:bg-black text-black dark:text-white w-full lg:w-auto flex flex-col lg:flex-row justify-center flex-1 relative`;
-const MainContent = tw.div`flex-1 p-4 pt-0 lg:px-12 lg:pb-8 order-first lg:order-last`;
-const Grid = tw.div`grid grid-cols-3 grid-flow-col gap-4`;
+const MainContent = tw.div`flex-1 p-4 pt-0 lg:px-12 lg:pb-8 order-first lg:order-last overflow-y-scroll`;
+const Grid = tw.div`grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4`;
 export default ({
 	headingText = "Auto Invest Portfolios",
 	tabItems = [

@@ -8,4 +8,6 @@ export const Label = styled.span`
 	${props => props.danger ? `${tw`bg-state-danger/10 text-state-danger border-state-danger`}`}
 	${props => props.warning ? `${tw`bg-state-warning/10 text-state-warning border-state-warning`}`}
 	${props => props.neutral ? `${tw`bg-gray-700/10 text-gray-700 border-gray-700`}`}
+	${props => props.aggressive ? `${tw`bg-primary-700/10 text-primary-700 border-primary-700`}`}
+	${props => props.conservative ? `${tw`bg-blue-700/10 text-blue-700 border-blue-700`}`}
 `;

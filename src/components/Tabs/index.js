@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-next-line
 
 const TabWrapper = tw.div`relative`;
-const TabSwitch = tw.div`w-full max-w-sm flex md:w-auto bg-white dark:bg-gray-black rounded-md p-2`;
+const TabSwitch = tw.div`w-full max-w-sm flex md:w-auto bg-white dark:bg-gray-black rounded-md p-2 box-border`;
 const TabSwitchButton = styled.button`
 	${tw`w-1/2 p-2 rounded-md focus:outline-none font-medium text-gray-500 bg-transparent border-0 transition duration-300 ease-in-out last:ml-2`}
 	${(props) =>

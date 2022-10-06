@@ -23,8 +23,8 @@ const HeaderAccount = ({ userAvatar, accountText }) => {
 				/>
 				<HeaderAccountText className="header-account__text">
 					{accountText}
+					<Icon icon="caret-down" tw="pl-2" />
 				</HeaderAccountText>
-				<Icon icon="caret-down" />
 			</HeaderAccountButton>
 		</HeaderAccountBox>
 	);
