@@ -13,7 +13,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 
 import { Container as ContainerBase } from "../../components/Layouts";
 import Sidebar from "../../components/SideBar/index.js";
-import HeaderDetail from "../../components/Header/HeaderDetail.js";
+import Header from "../../components/Header/Header.js";
 import Icon from "../../components/Icon/index.js";
 import Setting from "./ExchangeSetting.js";
 
@@ -32,7 +32,7 @@ export default ({
 			<Content>
 				<Sidebar />
 				<MainContent>
-					<HeaderDetail
+					<Header
 						pageType="detail"
 						pageParent="myexchanges"
 						headingText={headingText}

@@ -1,37 +1,25 @@
 import React from "react";
 import tw from "twin.macro";
-import styled from "styled-components";
-import { css } from "styled-components/macro"; // eslint-disable-next-line
+
 import FeatherIcon from "feather-icons-react";
 import { ThemeContext } from "./ThemeContext";
 
-const ThemeToggle = tw.div`absolute right-0 top-0 z-10`;
-const ThemeToggleButton = tw.div`transition duration-500 ease-in-out rounded-full p-2 my-4 mx-2 text-2xl cursor-pointer text-gray-900 dark:text-primary-900`;
+const ThemeToggle = tw.div`relative`;
+const ThemeToggleButton = tw.div`transition duration-500 ease-in-out rounded-md p-3 text-2xl cursor-pointer text-gray-900 dark:text-white border border-solid border-gray-300 dark:border-gray-900 hover:text-primary-700 hover:border-primary-700 text-[0px]`;
 
 const Toggle = () => {
 	const { theme, setTheme } = React.useContext(ThemeContext);
 
 	return (
 		<ThemeToggle className="theme-toggle">
-			<ThemeToggleButton className="theme-toggle__button">
+			<ThemeToggleButton
+				className="theme-toggle__button"
+				onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+			>
 				{theme === "dark" ? (
-					<FeatherIcon
-						icon="sun"
-						size="24"
-						stroke-width="1.5"
-						onClick={() =>
-							setTheme(theme === "dark" ? "light" : "dark")
-						}
-					/>
+					<FeatherIcon icon="sun" size="24" strokeWidth="1.5" />
 				) : (
-					<FeatherIcon
-						icon="moon"
-						size="24"
-						stroke-width="1.5"
-						onClick={() =>
-							setTheme(theme === "dark" ? "light" : "dark")
-						}
-					/>
+					<FeatherIcon icon="moon" size="24" strokeWidth="1.5" />
 				)}
 			</ThemeToggleButton>
 		</ThemeToggle>

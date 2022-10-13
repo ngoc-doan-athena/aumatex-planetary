@@ -8,6 +8,7 @@ import illustration from "../images/xtrading-login-illustration.svg";
 import logo from "../images/logo-xtrading-text.svg";
 
 import { Container as ContainerBase } from "../components/Layouts";
+import { default as HeaderLogin } from "../components/Header";
 import { LogoByTheme as LogoToggle } from "../components/Logo"; // eslint-disable-next-line
 import { LoginForm } from "../pages/authentication/Authentication.js";
 
@@ -28,6 +29,7 @@ const IllustrationImage = styled.div`
 	${(props) => `background-image: url("${props.imageSrc}");`}
 	${tw`m-12 xl:m-16 w-3/4 max-w-lg bg-contain bg-center bg-no-repeat`}
 `;
+const Header = tw(HeaderLogin)`absolute top-[1rem] right-[1rem]`;
 
 export default ({
 	logoLinkUrl = "/",
@@ -44,6 +46,12 @@ export default ({
 				<IllustrationImage imageSrc={illustrationImageSrc} alt="" />
 			</IllustrationContainer>
 			<MainContainer>
+				<HeaderLogin
+					pageUserLog="true"
+					pageType="main"
+					headingHasNotif="false"
+					headingHasSearch="false"
+				/>
 				<LogoLinkContent>
 					<LogoToggle />
 				</LogoLinkContent>

@@ -9,11 +9,12 @@ import illustration from "../images/xtrading-signup-illustration.svg";
 import logo from "../images/logo-xtrading-text.svg";
 
 // import modules
+import { default as HeaderSignup } from "../components/Header";
 import { Container as ContainerBase } from "../components/Layouts";
 import { LogoByTheme as LogoToggle } from "../components/Logo";
 import { SignupForm } from "../pages/authentication/Authentication.js";
 
-// declare const
+// declare components
 const Container = tw(
 	ContainerBase
 )`min-h-screen font-medium flex justify-center m-0 font-inter`;
@@ -47,6 +48,12 @@ export default ({
 				<IllustrationImage imageSrc={illustrationImageSrc} />
 			</IllustrationContainer>
 			<MainContainer>
+				<HeaderSignup
+					pageUserLog="true"
+					pageType="main"
+					headingHasNotif="false"
+					headingHasSearch="false"
+				/>
 				<LogoLinkContent>
 					<LogoToggle />
 				</LogoLinkContent>

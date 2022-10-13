@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; // eslint-disable-next-line
 
 import illustration from "../../../images/xtrading-login-illustration.svg";
 import logo from "../../../images/logo-xtrading-text.svg";
-import logoDark from "../../../images/logo-xtrading-text-dark.svg";
-import Icon from "../../../components/Icon/index.js";
+import Icon from "../../../components/Icon";
 
+import { default as HeaderLogin } from "../../../components/Header";
+import { LogoByTheme as LogoToggle } from "../../../components/Logo"; // eslint-disable-next-line
 import { Container as ContainerBase } from "../../../components/Layouts";
-import {
-	InputBase as Input,
-	InputPassword,
-} from "../../../components/Input/index.js";
+import { InputBase as Input, InputPassword } from "../../../components/Input";
 
 import { ThemeContext } from "../../../helpers/ThemeContext";
 
 // import recaptcha, Formik & Yup for form validation
-import { useFormik, Field, ErrorMessage } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const Container = tw(
@@ -55,17 +53,6 @@ const IllustrationImage = styled.div`
 	${(props) => `background-image: url("${props.imageSrc}");`}
 	${tw`m-12 xl:m-16 w-3/4 max-w-lg bg-contain bg-center bg-no-repeat`}
 `;
-
-const LogoContent = () => {
-	const { theme } = React.useContext(ThemeContext);
-	const logoLinkUrl = "/";
-
-	return (
-		<LogoLinkContent href={logoLinkUrl}>
-			<LogoImage src={theme === "dark" ? logoDark : logo} />
-		</LogoLinkContent>
-	);
-};
 
 export default ({
 	logoLinkUrl = "/",
@@ -111,8 +98,7 @@ export default ({
 				.required("This field is required."),
 		}),
 		onSubmit: (values) => {
-			console.log("Info sent!");
-			// history.push('/myexchanges');
+			window.location.href = "/changedpassword";
 		},
 	}),
 }) => (
@@ -125,7 +111,15 @@ export default ({
 				<IllustrationImage imageSrc={illustrationImageSrc} alt="" />
 			</IllustrationContainer>
 			<MainContainer>
-				<LogoContent />
+				<HeaderLogin
+					pageUserLog="true"
+					pageType="main"
+					headingHasNotif="false"
+					headingHasSearch="false"
+				/>
+				<LogoLinkContent>
+					<LogoToggle />
+				</LogoLinkContent>
 				<MainContent>
 					<Heading>{headingText}</Heading>
 					<SubText>{subText}</SubText>

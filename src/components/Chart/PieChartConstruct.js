@@ -45,7 +45,7 @@ let options = {
 	},
 	series: {
 		data: null,
-	}
+	},
 };
 
 class PieChartWrap extends React.Component {
@@ -55,10 +55,10 @@ class PieChartWrap extends React.Component {
 
 	componentDidMount() {
 		fetch("../../data/portfoliodata.json")
-			.then(response => response.ok && response.json())
-			.then(data => {
+			.then((response) => response.ok && response.json())
+			.then((data) => {
 				let newData = JSON.stringify(data);
-				console.log(newData)
+				console.log(newData);
 				for (let i = 0; i < data.coins_invested.length; i++) {
 					newData.push({
 						y: data.coins_invested[i].allocation,
@@ -69,7 +69,8 @@ class PieChartWrap extends React.Component {
 				options.series[0].data = newData;
 
 				this.setState({ data: newData });
-			}).catch(error => console.error(error.message));
+			})
+			.catch((error) => console.error(error.message));
 	}
 
 	render() {

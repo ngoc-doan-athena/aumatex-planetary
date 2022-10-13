@@ -77,6 +77,7 @@ const Setting = ({
 	apiKeyText = "API Key",
 	apiSecretText = "API Secret",
 	accountNameText = "Account Name",
+	expiryDate = "Expiry Date",
 	tosHint = "By checking this box you have agreed to our",
 	tosText = "Terms of Service",
 

@@ -1,11 +1,10 @@
 import React from "react";
 import tw from "twin.macro";
-import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
 import { Container as ContainerBase } from "../components/Layouts";
-import Sidebar from "../components/SideBar/index.js";
-import HeaderDetail from "../components/Header/HeaderDetail.js";
+import Sidebar from "../components/SideBar";
+import Header from "../components/Header";
 // import { BoxBase as Box } from "../components/Box/index.js";
 import { TabBox } from "../components/Tabs/index.js";
 import { Card as PortfolioCard } from "../components/Card/PortfolioCard.js";
@@ -35,7 +34,8 @@ export default ({
 			<Content>
 				<Sidebar />
 				<MainContent>
-					<HeaderDetail
+					<Header
+						pageUserLog="false"
 						pageType="main"
 						headingText={headingText}
 						headingAccountText="My Account"

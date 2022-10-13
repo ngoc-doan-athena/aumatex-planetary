@@ -1,18 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import tw from "twin.macro";
 import styled from "styled-components";
+import { css } from "styled-components/macro"; // eslint-disable-next-line
 
+import Icon from "../Icon/index.js";
 import FeatherIcon from "feather-icons-react";
 import HeaderLogoImgSrc from "../../images/logo-xtrading.svg";
-
 import HeaderAccount from "../Header/HeaderAccount";
 import HeaderSearch from "../Header/HeaderSearch";
 import HeaderNotif from "../Header/HeaderNotif";
 import Toggle from "../../helpers/ThemeToggle";
 import { Label } from "../../components/Label";
 
-const HeaderWrap = tw.header`relative pr-[1.5rem] lg:pr-[0px] lg:mr-[-2rem] py-3`;
+const HeaderWrap = tw.header`relative pr-[1.5rem] lg:pr-[0px] py-4`;
 const HeaderSimpleWrap = tw.header`absolute top-[1rem] right-[1rem]`;
 const HeaderLogo = tw.p`block text-center lg:hidden max-w-[3rem] m-0 py-[0.2rem]`;
 const HeaderLogoImg = tw.img`max-w-full`;

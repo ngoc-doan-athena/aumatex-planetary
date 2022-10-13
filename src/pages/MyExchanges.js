@@ -11,7 +11,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 
 import { Container as ContainerBase } from "../components/Layouts";
 import Sidebar from "../components/SideBar/index.js";
-import HeaderDetail from "../components/Header/HeaderDetail.js";
+import Header from "../components/Header/Header.js";
 import { BoxBase as Box } from "../components/Box";
 import Pagination from "../components/Pagination/index.js";
 import Icon from "../components/Icon/index.js";
@@ -126,7 +126,8 @@ export default ({ headingText = "My Exchanges" }) => {
 			<Content>
 				<Sidebar />
 				<MainContent>
-					<HeaderDetail
+					<Header
+						pageUserLog="false"
 						pageType="main"
 						headingText={headingText}
 						headingAccountText="My Account"
@@ -195,6 +196,7 @@ export default ({ headingText = "My Exchanges" }) => {
 											key={index}
 											data-exchange-id={item._id}
 											data-connect={item.isConnected}
+											loading="lazy"
 										>
 											<TBodyCell>
 												<ExchangeIcon
@@ -301,7 +303,7 @@ export default ({ headingText = "My Exchanges" }) => {
 														</LabelSuccess>
 													) : (
 														<LabelDanger className="label-danger">
-															Disconnected
+															Error
 														</LabelDanger>
 													)}
 												</ExchangeStatus>

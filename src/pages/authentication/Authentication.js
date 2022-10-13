@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; // eslint-disable-next-line
@@ -7,35 +7,36 @@ import {
 	InputBase as Input,
 	InputPassword,
 	InputCheckbox,
-} from "../../components/Input/index.js";
+} from "../../components/Input";
+import { Button } from "../../components/Button";
 
 // form validation
 import Firebase from "firebase/compat/app";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Recaptcha from "react-google-recaptcha";
+import FeatherIcon from "feather-icons-react";
+import ReactTooltip from "react-tooltip";
 
 const FormContainer = tw.div`w-full flex-1 mt-1`;
 const Form = tw.form`mx-auto max-w-xs`;
 const FormBlock = styled.div`
 	${tw`first:mt-0 mt-4`}
 	.input {
-		${tw`mt-2`}
+		${tw`mt-2 shadow-none`}
 	}
 `;
 const FormPrompt = tw.p`transition duration-300 ease-in-out`;
-const InputBase = tw(Input)`px-8 py-4 first:mt-0 mt-1 shadow-none`;
 const InputLabel = styled.label`
 	${tw`mt-6 text-sm text-gray-600`}
 	.require {
 		${tw`text-state-danger`}
 	}
 `;
-const SubmitButton = styled.button`
-	${tw`mt-8 tracking-wide text-base font-semibold border-none text-black w-full py-4 rounded-md focus:shadow-outline focus:outline-none text-center disabled:bg-none disabled:bg-gray-400 disabled:text-gray-600 disabled:cursor-not-allowed disabled:pointer-events-none`}
-`;
+const SubmitButton = tw(Button)`mt-8 w-full`;
 
 const LoginForm = ({
+	siteKey = "6Lc5nCkhAAAAAPf6YClkfVSILUdUJlJ2Fhr5kHl0",
 	inputLabelEmail = "Email Address",
 	inputLabelPassword = "Password",
 	submitButtonText = "Continue",
@@ -44,7 +45,10 @@ const LoginForm = ({
 	signupPrompt = "Don't have an account?",
 	signupText = "Sign up",
 	signupUrl = "/signup",
+	props,
 }) => {
+	const captchaRef = useRef();
+
 	const formik = useFormik({
 		initialValues: {
 			email: "",
@@ -119,14 +123,25 @@ const LoginForm = ({
 						<p className="form-prompt">{formik.errors.password}</p>
 					)}
 				</FormBlock>
+				<p tw="mt-2">
+					<a
+						href={forgotPasswordUrl}
+						tw="text-primary-900"
+						className="acr-primary"
+					>
+						{forgotPasswordText}
+					</a>
+				</p>
 				<FormBlock className="form-block">
 					<div className="box-captcha" tw="flex justify-center">
 						<Recaptcha
-							sitekey="6Lc5nCkhAAAAAPf6YClkfVSILUdUJlJ2Fhr5kHl0"
+							ref={captchaRef}
+							sitekey={siteKey}
 							render="explicit"
 							data-size="compact"
-							verifyCallback={(response) => {
-								formik.setFieldValue("recaptcha", response);
+							onChange={(value) => {
+								formik.setFieldValue("recaptcha", value);
+								formik.setSubmitting(false);
 							}}
 						/>
 					</div>
@@ -137,9 +152,12 @@ const LoginForm = ({
 					)}
 				</FormBlock>
 
-				<SubmitButton type="submit" className="button-primary">
-					{submitButtonText}
-				</SubmitButton>
+				<SubmitButton
+					isPrimary
+					type="submit"
+					className="button-primary"
+					textButton={submitButtonText}
+				/>
 			</Form>
 			<p tw="mt-4 text-sm text-gray-600 text-center">
 				{signupPrompt}{" "}
@@ -226,6 +244,9 @@ const SignupForm = ({
 			window.location.href = "/register-completed";
 		},
 	});
+
+	const [tooltip, showTooltip] = useState(true);
+
 	return (
 		<FormContainer>
 			<Form onSubmit={formik.handleSubmit}>
@@ -291,6 +312,49 @@ const SignupForm = ({
 						<span className="require" aria-hidden="true">
 							*
 						</span>
+						<span
+							className="tooltip-password"
+							aria-label="password hint"
+							tw="inline-block align-middle ml-2"
+							data-tip
+							data-for="globalPasswordHint"
+							onMouseEnter={() => showTooltip(true)}
+							onMouseLeave={() => {
+								showTooltip(false);
+								setTimeout(() => showTooltip(true), 50);
+							}}
+						>
+							<FeatherIcon icon="info" size="16" />
+						</span>
+						<ReactTooltip
+							id="globalPasswordHint"
+							aria-haspopup="true"
+							place="top"
+							type="light"
+							effect="solid"
+						>
+							<p>
+								<strong>Strong password should contain:</strong>
+							</p>
+							<ul tw="p-0">
+								<li>At least 8 characters</li>
+								<li tw="mt-2">
+									At least 3 of the following:
+									<ul tw="pl-3">
+										<li tw="mt-2">
+											Lowercase letters [a-z]
+										</li>
+										<li tw="mt-2">
+											Uppercase letters [A-Z]
+										</li>
+										<li tw="mt-2">Numbers [0-9]</li>
+										<li tw="mt-2">
+											Special characters [!@#$%^&]
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</ReactTooltip>
 					</InputLabel>
 					<InputPassword
 						name="password"
@@ -347,13 +411,16 @@ const SignupForm = ({
 						)}
 				</FormBlock>
 
-				<p className="input-checkbox-label" tw="mt-4 mb-0 text-xs text-gray-600">
+				<p
+					className="input-checkbox-label"
+					tw="mt-4 mb-0 text-xs text-gray-600"
+				>
 					<InputCheckbox
-							name="tos"
-							id="tos"
-							onChange={formik.handleChange}
-							value="tos"
-						/>
+						name="tos"
+						id="tos"
+						onChange={formik.handleChange}
+						value="tos"
+					/>
 					<InputLabel htmlFor="tos">
 						{agreementPrompt}{" "}
 						<a
@@ -379,9 +446,12 @@ const SignupForm = ({
 					</FormPrompt>
 				)}
 
-				<SubmitButton type="submit" className="button-primary">
-					{submitButtonText}
-				</SubmitButton>
+				<SubmitButton
+					isPrimary
+					type="submit"
+					className="button-primary"
+					textButton={submitButtonText}
+				/>
 			</Form>
 			<p tw="mt-4 text-sm text-gray-600 text-center">
 				{signInPrompt}{" "}
